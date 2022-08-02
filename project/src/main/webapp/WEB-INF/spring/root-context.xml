@@ -16,8 +16,8 @@
 	<!-- jdbc모듈을 이용하여 dataSource추가하기. -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://13.209.47.138:3306/test1"></property>
-        <property name="username" value="root"></property>   
+        <property name="url" value="jdbc:mysql://capstone.cmgf6xaqr6vy.ap-northeast-2.rds.amazonaws.com:3306/capstone"></property>
+        <property name="username" value="admin"></property>   
         <property name="password" value="user1234"></property>
     </bean>
     
