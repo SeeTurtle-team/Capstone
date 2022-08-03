@@ -10,7 +10,7 @@
   	</select>
   	
   	<insert id = "insertFreeBoard">
-  		insert into freeboard(title,content,userId,time,image) values (#{title},#{content},#{userId},#{time},#{img})
+  		insert into freeboard(title,content,userId,time,image) values (#{title},#{content},#{userId},#{time},#{image})
   	</insert>
   	
   	<select id="searchAll" resultType="hansung.cap.project.FreeBoardVO">

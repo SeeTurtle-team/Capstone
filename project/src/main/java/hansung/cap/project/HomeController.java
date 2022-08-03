@@ -871,9 +871,13 @@ public class HomeController {
 			rlist = frDao.querry(seq);
 			int size = rlist.size();
 			
-			String imgUrl = "/getByteImage?number="+seq;
+			if(fVO.image!=null) {
+				String imgUrl = "/getByteImage?option=free&number="+seq;
+				model.addAttribute("imgSrc", imgUrl);
+			}
+			
 			System.out.println(size);
-			model.addAttribute("imgSrc", imgUrl);
+			
 			model.addAttribute("id",user_id);
 			model.addAttribute("size",size);
 			model.addAttribute("rlist",rlist);
@@ -969,6 +973,7 @@ public class HomeController {
 		return "Free";
 	}
 	
+	//자유게시판 등록
 	@RequestMapping(value = "/freeEnroll", method = {RequestMethod.GET, RequestMethod.POST})
 	public String freeEnroll(HttpServletRequest request, Model model, String title, String content) {
 		
@@ -986,7 +991,7 @@ public class HomeController {
 		try {
 			file = mhsr.getFile("imgFile").getBytes();
 			if(file.length==0) {
-				fVO.setImg(null);
+				fVO.setImage(null);
 			}
 
 		} catch (IOException e1) {
@@ -999,7 +1004,13 @@ public class HomeController {
 			fVO.setContent(content);
 			fVO.setTime(time1);
 			fVO.setUserId(user_id);
-			fVO.setImg(file);
+			if(file.length==0) {
+				fVO.setImage(null);
+			}
+			else {
+				fVO.setImage(file);
+			}
+			
 			
 		} catch (Exception e){
 			System.out.println(e.getMessage());
@@ -1012,17 +1023,24 @@ public class HomeController {
 	//자유게시판 페이지(<img>)에서 불러오기
 	@RequestMapping(value="/getByteImage", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getByteImage(HttpServletRequest request) {//ResponseEntity�� HttpEntity�� ��ӹ������ν� HttpHeader�� body�� ���� �� ����
-		FreeBoardVO vo = new FreeBoardVO();
-		String a = request.getParameter("number");
-		int temp = Integer.parseInt(a) ;
-		
+		String option = request.getParameter("option");
+		if(option==null) {
 			
-		vo = fDao.Read(temp);
-	    byte[] imageContent = vo.image;
-	    System.out.println(vo.image);
-	    final HttpHeaders headers = new HttpHeaders();
-	    headers.setContentType(MediaType.IMAGE_PNG);  
-	    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
+		}
+		else if(option.equals("free")) {
+			FreeBoardVO vo = new FreeBoardVO();
+			String a = request.getParameter("number");
+			int temp = Integer.parseInt(a) ;
+			
+				
+			vo = fDao.Read(temp);
+		    byte[] imageContent = vo.image;
+		    System.out.println(vo.image);
+		    final HttpHeaders headers = new HttpHeaders();
+		    headers.setContentType(MediaType.IMAGE_PNG);  
+		    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
+		}
+		return new ResponseEntity<byte[]>(null);
 	}
 	
 	//-------------------------만든 이들 소개 페이지----------------------//

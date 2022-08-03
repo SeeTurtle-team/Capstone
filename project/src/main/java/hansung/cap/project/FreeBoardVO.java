@@ -16,6 +16,7 @@ public class FreeBoardVO {
 		this.content="";
 		this.userId="";
 		this.time="";
+		this.image=null;
 	}
 	
 	public FreeBoardVO(int Seq,String title,String content,String userId,String time,byte[] image) {
@@ -61,7 +62,7 @@ public class FreeBoardVO {
 		return image;
 	}
 
-	public void setImg(byte[] image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 	
