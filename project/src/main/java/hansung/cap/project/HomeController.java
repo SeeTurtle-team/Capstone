@@ -362,34 +362,7 @@ public class HomeController {
 			model.addAttribute("list",clist);
 			return "carList";
 		}
-		else if(option.equals("image")) {
-			int a = Integer.parseInt(httpServletRequest.getParameter("seq"));
-			
-			System.out.println(a);
-			List<Map<String,Object>> resultList = new ArrayList<Map<String,Object>>();
-			System.out.println("여기서?");
-			resultList = lDao.selectImg(a);
-			System.out.println(resultList);
-			
-			System.out.println(resultList.size());
-			Map<String,Object> resultMap = resultList.get(0);
-			System.out.println(resultMap.size()+" size는 몇일까");
-			for (Entry<String, Object> entry : resultMap.entrySet()) {
-				System.out.println("[key]:" + entry.getKey() + ", [value]:" + entry.getValue());
-			}
-			
-			System.out.println("여기가 문제일까");
-			
-			
-		    byte[] arr = (byte[]) resultMap.get("base64");
-		    
-		    System.out.println(arr+" ????????????");
-		    String base64ToString = new String(arr);
-
-		    model.addAttribute("imgSrc",base64ToString);
-		    
-		    return "test";
-		}
+		
 		else {
 			
 		}

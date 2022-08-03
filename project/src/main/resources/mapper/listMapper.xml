@@ -46,12 +46,7 @@
   	</select>
   	
   	
-  	<resultMap type="java.util.Map" id="imgMap">
-	<result property="base64" column="image" javaType="[B" jdbcType="BLOB"/>
-	</resultMap>
-	<select id="selectImg" resultMap="imgMap">
-		SELECT image FROM list where seq like #{a}
-	</select> 
+  
 
 	
 </mapper>

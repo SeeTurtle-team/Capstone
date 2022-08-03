@@ -65,10 +65,6 @@ public class listDAOimp implements listDAO {
 		return result;
     }
     
-    @Override
-    public List<Map<String, Object>> selectImg(int a){
-    	return sqlSession.selectList(namespace+".selectImg",a);
-    }
 
 
 }
