@@ -33,15 +33,10 @@
 		location.href = "/carList"+"?option=search&name="+car+"&sel="+sel;
 	}
 	
-	
-	function CCTV(){
-		if("${id}" == "manage1234"){
-			alert("CCTV 저장 스토리지로 이동합니다 \n 인덱스를 통해 조회할 수 있습니다");
-			
-			location.href="https://drive.google.com/drive/folders/1-VtPonDD8UEOrdKokqe4Oj2mx930Hgke?usp=sharing";
-		}
-		else
-			alert("관리자 아이디가 필요합니다");
+	function img(seq){
+		console.log(seq);
+		var seq = seq;
+		location.href = "/carList"+"?option=img&seq="+seq;
 	}
 </script>
 <body>
@@ -95,8 +90,8 @@
          <tbody>
             <c:forEach items="${list}" begin="0" end="9" var="dataVO"><!--   begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status">-->
                 <tr>
-                  <td title="결과 사진을 보고 싶다면 관리자 권한으로 CCTV 확인 버튼을 누르세요"><c:out value="${dataVO.seq}"/></td>
-                  <td title="결과 사진을 보고 싶다면 관리자 권한으로 CCTV 확인 버튼을 누르세요" ><c:out value="${dataVO.model}"/></td>
+                  <td><c:out value="${dataVO.seq}"/></td>
+                  <td onclick="img('${dataVO.seq}')"><c:out value="${dataVO.model}"/></td>
                   <td><c:out value="${dataVO.time}"/></td>
                         
                  </tr>

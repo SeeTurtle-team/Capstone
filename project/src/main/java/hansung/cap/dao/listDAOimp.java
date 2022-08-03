@@ -49,6 +49,12 @@ public class listDAOimp implements listDAO {
     	
 		return sqlSession.selectList(namespace+".searchName",msg);
     }
+    
+    @Override
+    public listVO selectOne(int a) {
+    	return sqlSession.selectOne(namespace+".selectOne",a);
+    }
+    
     @Override
     public int countBoard(listVO vo) {
     	int result = sqlSession.selectOne(namespace+".countBoard", vo);

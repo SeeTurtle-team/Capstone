@@ -5,6 +5,7 @@ public class listVO {
 	public String model;
 	public String carColor;
 	public String time;
+	public String imgUrl;
 	
 	
 	
@@ -13,16 +14,16 @@ public class listVO {
 		this.model ="";
 		this.carColor ="";
 		this.time ="";
-		
+		this.imgUrl="";
 		
 	}
 	
-	public listVO(int seq, String model, String carColor, String time){
-		this.seq =seq;
-		this.model =model;
-		this.carColor =carColor;
-		this.time =time;
-		
+	public listVO(int seq, String model, String carColor, String time, String imgUrl){
+		this.seq = seq;
+		this.model = model;
+		this.carColor = carColor;
+		this.time = time;
+		this.imgUrl = imgUrl;
 	}
 
 	public int getSeq() {
@@ -55,6 +56,14 @@ public class listVO {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 	
 	

@@ -363,6 +363,14 @@ public class HomeController {
 			return "carList";
 		}
 		
+		else if(option.equals("img")) {
+			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
+			listVO lVO = new listVO();
+			lVO = lDao.selectOne(seq);
+			System.out.println(lVO.model);
+			System.out.println(lVO.imgUrl);
+		}
+		
 		else {
 			
 		}
