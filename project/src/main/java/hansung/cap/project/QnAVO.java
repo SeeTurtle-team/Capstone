@@ -6,6 +6,7 @@ public class QnAVO {
 	public String content;
 	public String userId;
 	public String time;
+	public byte[] image;
 	
 	public QnAVO() {
 		this.seq=0;
@@ -13,14 +14,16 @@ public class QnAVO {
 		this.content="";
 		this.userId="";
 		this.time="";
+		this.image=null;
 	}
 	
-	public QnAVO(int Seq,String title,String content,String userId,String time) {
+	public QnAVO(int Seq,String title,String content,String userId,String time,byte[] image) {
 		this.seq=Seq;
 		this.title=title;
 		this.content=content;
 		this.userId=userId;
 		this.time=time;
+		this.image=image;
 	}
 	
 	public int getSeq() {
@@ -52,6 +55,14 @@ public class QnAVO {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	
 	

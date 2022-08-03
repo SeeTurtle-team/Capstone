@@ -101,40 +101,43 @@
     <div class="bar3"> <h1 class="write_title2">작성 내용</h1></div>
     <div class="content_table">
 		${list.content}
-	</div>
-<div class="wab">
-    <div class="WriterAndbtn">
-    <div id="revise" onclick = "modify()" >수정</div>
-    <div id="delete" onclick = "delQnA()">삭제</div>
-    </div>
-</div>
-<div class="Writer">${list.userId}</div>
-
-<c:forEach items="${manage}" var="dataVO">
-	<div id="form-commentInfo"> 
-	<input id="comment-input" placeholder="댓글을 입력해 주세요."> 
-	<button onclick="enroll()">등록</button> </div>
-	<div id=comments> </div>
-</c:forEach>
-
-
-<!-- QnA 답글 -->
-<c:forEach items="${rlist}" var="dataVO">
-	<div class="coment_writer">
-	    <div class="inline">
-	    관리자</div>
-	     <div class="inline">${dataVO.time}</div>
-	        
-	    <div class="conment_box">
-			${dataVO.text}
+		<div>
+			<img src="${imgSrc}">
 		</div>
-	    <div class="pull-right">
-	       
-	        <div id="delete" onclick="del('${dataVO.commentNum}')">삭제</div>
+	</div>
+	<div class="wab">
+	    <div class="WriterAndbtn">
+	    <div id="revise" onclick = "modify()" >수정</div>
+	    <div id="delete" onclick = "delQnA()">삭제</div>
 	    </div>
 	</div>
+	<div class="Writer">${list.userId}</div>
+	
+	<c:forEach items="${manage}" var="dataVO">
+		<div id="form-commentInfo"> 
+		<input id="comment-input" placeholder="댓글을 입력해 주세요."> 
+		<button onclick="enroll()">등록</button> </div>
+		<div id=comments> </div>
+	</c:forEach>
 
-</c:forEach>
+
+	<!-- QnA 답글 -->
+	<c:forEach items="${rlist}" var="dataVO">
+		<div class="coment_writer">
+		    <div class="inline">
+		    관리자</div>
+		     <div class="inline">${dataVO.time}</div>
+		        
+		    <div class="conment_box">
+				${dataVO.text}
+			</div>
+		    <div class="pull-right">
+		       
+		        <div id="delete" onclick="del('${dataVO.commentNum}')">삭제</div>
+		    </div>
+		</div>
+	
+	</c:forEach>
 
 
 

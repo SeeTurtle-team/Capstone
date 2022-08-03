@@ -20,7 +20,7 @@
   	</select>
   	
   	<select id="paging" resultType="hansung.cap.project.CarKindVO">
-  		<![CDATA[select * from carkind where seq <=#{paging} order by seq desc limit 6;]]>
+  		<![CDATA[select * from carKind where seq <=#{paging} order by seq desc limit 6;]]>
   	</select>
   	
   	<select id="countBoard" resultType="int">

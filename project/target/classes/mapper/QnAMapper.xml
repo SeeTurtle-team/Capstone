@@ -7,7 +7,7 @@
   <mapper namespace="hansung.cap.mapper.QnAMapper">
   
   	<insert id="insertQnA">
-  		insert into qna(title,content,userId,time) values (#{title},#{content},#{userId},#{time})
+  		insert into qna(title,content,userId,time,image) values (#{title},#{content},#{userId},#{time},#{image})
   	</insert>
   	
   	<select id="queryAll" resultType="hansung.cap.project.QnAVO">

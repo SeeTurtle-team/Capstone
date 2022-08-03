@@ -530,7 +530,14 @@ public class HomeController {
 				int a = Integer.parseInt(httpServletRequest.getParameter("seq"));
 				QnAVO qVO = new QnAVO();
 				qVO = qDao.read(a);
-									
+				
+				qVO.setContent(qVO.content.replaceAll("\r\n", "<br>"));
+				
+				if(qVO.image!=null) {
+					String imgUrl = "/getByteImage?option=qna&number="+a;
+					model.addAttribute("imgSrc", imgUrl);
+				}
+				
 				if((user_id).equals("manage1234")) {  //관리자 아이디일시 QnA 답변란 제공
 					model.addAttribute("manage",user_id);
 				}
@@ -583,15 +590,7 @@ public class HomeController {
 				model.addAttribute("id",user_id);
 				return "QnAWrite";
 			}
-			else if(option.equals("enrollQnA")) {  //QnA 글 등록
-				qVo.title = httpServletRequest.getParameter("title");
-				qVo.content = httpServletRequest.getParameter("content");
-				qVo.userId = httpServletRequest.getParameter("writer");
-				qVo.time = httpServletRequest.getParameter("time");
-				
-				qDao.enrollQnA(qVo);
-				System.out.println("insert");
-			}
+			
 			else if(option.equals("modify")) {  //QnA 글 수정페이지로 이동
 				int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
 				qVo = qDao.read(seq);
@@ -1022,6 +1021,52 @@ public class HomeController {
 		return "redirect:/free";
 	}
 	
+	@RequestMapping(value = "/QnAEnroll", method = {RequestMethod.GET, RequestMethod.POST})
+	public String QnAEnroll(HttpServletRequest request, Model model, String title, String content) {
+		HttpSession session=request.getSession();
+		
+		String user_id=(String)session.getAttribute("userId");
+		
+		MultipartHttpServletRequest mhsr=(MultipartHttpServletRequest) request;
+		QnAVO qVO = new QnAVO();
+		byte[] file= "0".getBytes();
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format.format(time);
+		
+		
+		try {
+			file = mhsr.getFile("imgFile").getBytes();
+			if(file.length==0) {
+				qVO.setImage(null);
+			}
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			System.out.println(e1.getMessage());
+		}
+		
+		try {
+			qVO.setTitle(title);
+			qVO.setContent(content);
+			qVO.setTime(time1);
+			qVO.setUserId(user_id);
+			if(file.length==0) {
+				qVO.setImage(null);
+			}
+			else {
+				qVO.setImage(file);
+			}
+			
+			
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+		qDao.enrollQnA(qVO);
+		return "redirect:/QnA";
+	}
+	
 	//자유게시판 페이지(<img>)에서 불러오기
 	@RequestMapping(value="/getByteImage", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getByteImage(HttpServletRequest request) {//ResponseEntity�� HttpEntity�� ��ӹ������ν� HttpHeader�� body�� ���� �� ����
@@ -1042,8 +1087,23 @@ public class HomeController {
 		    headers.setContentType(MediaType.IMAGE_PNG);  
 		    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
 		}
+		
+		else if(option.equals("qna")) {
+			QnAVO vo = new QnAVO();
+			String a = request.getParameter("number");
+			int temp = Integer.parseInt(a) ;
+			
+				
+			vo = qDao.read(temp);
+		    byte[] imageContent = vo.image;
+		    System.out.println(vo.image);
+		    final HttpHeaders headers = new HttpHeaders();
+		    headers.setContentType(MediaType.IMAGE_PNG);  
+		    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
+		}
 		return new ResponseEntity<byte[]>(null);
 	}
+	
 	
 	//-------------------------만든 이들 소개 페이지----------------------//
 	@RequestMapping(value = "/developer", method = RequestMethod.GET)
