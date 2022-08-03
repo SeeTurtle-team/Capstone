@@ -1008,13 +1008,9 @@ public class HomeController {
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		}
-		System.out.println(fVO.getTitle());
-		System.out.println(fVO.getContent());
-		System.out.println(fVO.getImg());
-		System.out.println(fVO.getUserId());
-		System.out.println(fVO.getTime());
+		
 		fDao.insert(fVO);
-		return "/free";
+		return "redirect:/free";
 	}
 	
 	//-------------------------만든 이들 소개 페이지----------------------//
