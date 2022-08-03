@@ -41,7 +41,9 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>   
     </bean>
 	
-	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> </bean>
+    <context:component-scan base-package="com.company.*"></context:component-scan>
+       
 	<context:component-scan base-package="hansung.cap.dao"></context:component-scan>
 
 

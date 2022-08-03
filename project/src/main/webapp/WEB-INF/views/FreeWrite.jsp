@@ -67,25 +67,27 @@
 
     <section>
         <div class="bar1">&nbsp<h5 class="write_title1">*표는 필수 입력사항입니다.</h5></div>
+		<form action="/freeEnroll"enctype="multipart/form-data" method="post">
+		    <div class="bar2"><h1 class="write_title2">작성 제목*</h1></div>
+	    	<input name= title type="search-input" class="search-input" id="title" value="">
+	
+	    	<div class="bar3"> <h1 class="write_title2">작성 내용*</h1></div>
+	    	<table class="content_table">
+	        <tr>
+		        <td>
+		        	<textarea name="content" class="content" id="content"></textarea>
+		        </td>	
+	        </tr>
+	        </table>
+	       
+	       
+	        <input class="data" type='file' name='imgFile' multiple/>
+	        
+	
+	        <div class="hr">${id}</div>
+	        <button class="d-btn" type="submit">등록</button >   
+		</form>
 
-    <div class="bar2"><h1 class="write_title2">작성 제목*</h1></div>
-    <input type="search-input" class="search-input" id="title" value="">
-
-    <div class="bar3"> <h1 class="write_title2">작성 내용*</h1></div>
-    <table class="content_table">
-        <tr>
-	        <td>
-	        	<textarea class="content" id="content"></textarea>
-	        </td>	
-        </tr>
-       </table>
-       
-       <!--  <form class="data" action="서버" method="post" enctype="multipart/form-data">
-            <input type='file' name='' multiple/>
-        </form> -->
-
-        <div class="hr">${id}</div>
-        <button class="d-btn"onclick="Enroll()">등록</button >   
 
 
 </section>

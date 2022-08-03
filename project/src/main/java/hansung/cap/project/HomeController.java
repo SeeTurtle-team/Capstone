@@ -3,6 +3,8 @@ package hansung.cap.project;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
@@ -24,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import hansung.cap.dao.CarKindDAO;
 import hansung.cap.dao.qCommentDAO;
@@ -968,6 +971,50 @@ public class HomeController {
 		list = fDao.paging(paging);
 		model.addAttribute("list",list);
 		return "Free";
+	}
+	
+	@RequestMapping(value = "/freeEnroll", method = {RequestMethod.GET, RequestMethod.POST})
+	public String freeEnroll(HttpServletRequest request, Model model, String title, String content) {
+		
+		HttpSession session=request.getSession();
+		
+		String user_id=(String)session.getAttribute("userId");
+		
+		MultipartHttpServletRequest mhsr=(MultipartHttpServletRequest) request;
+		FreeBoardVO fVO = new FreeBoardVO();
+		byte[] file= "0".getBytes();
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format.format(time);
+		
+		try {
+			file = mhsr.getFile("imgFile").getBytes();
+			if(file.length==0) {
+				fVO.setImg(null);
+			}
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			System.out.println(e1.getMessage());
+		}
+		
+		try {
+			fVO.setTitle(title);
+			fVO.setContent(content);
+			fVO.setTime(time1);
+			fVO.setUserId(user_id);
+			fVO.setImg(file);
+			
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		System.out.println(fVO.getTitle());
+		System.out.println(fVO.getContent());
+		System.out.println(fVO.getImg());
+		System.out.println(fVO.getUserId());
+		System.out.println(fVO.getTime());
+		fDao.insert(fVO);
+		return "/free";
 	}
 	
 	//-------------------------만든 이들 소개 페이지----------------------//
