@@ -109,6 +109,10 @@
     <div class="bar3"> <h1 class="write_title2">작성 내용</h1></div>
     <div class="content_table">
 	${list.content}
+	<div>
+		<img src="${imgSrc}">
+	</div>
+	
 	</div>
 <div class="wab">
     <div class="WriterAndbtn">

@@ -17,27 +17,7 @@
 
 </head>
 
-<script type="text/javascript">
-	function Enroll(){
-		var title=document.getElementById("title").value;
-		var content=document.getElementById("content").value;
-		var writer = "${id}";
-		var time= new Date();
-		var timeString = time.toLocaleString();
-		content = content.replaceAll(/(\n|\r\n)/g, "<br>");
-		if(title==""){
-			alert("제목을 입력하세요");
-			return false;
-		}
-		if(content==""){
-			alert("내용을 입력하세요");
-			return false;
-		}
-		
-		alert("등록이 완료되었습니다!");
-		location.href="/free"+"?option=enroll&title="+title+"&content="+content+"&writer="+writer+"&time="+timeString;
-	}
-</script>
+
 <body>
       
 

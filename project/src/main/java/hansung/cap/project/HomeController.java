@@ -22,6 +22,10 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -867,7 +871,9 @@ public class HomeController {
 			rlist = frDao.querry(seq);
 			int size = rlist.size();
 			
+			String imgUrl = "/getByteImage?number="+seq;
 			System.out.println(size);
+			model.addAttribute("imgSrc", imgUrl);
 			model.addAttribute("id",user_id);
 			model.addAttribute("size",size);
 			model.addAttribute("rlist",rlist);
@@ -922,17 +928,7 @@ public class HomeController {
 			model.addAttribute("id",user_id);
 			return "FreeWrite";
 		}
-		else if(option.equals("enroll")) {  //글을 등록
-			System.out.println("글을 등록");
-			FreeBoardVO fVO = new FreeBoardVO();
-			fVO.title=httpServletRequest.getParameter("title");
-			fVO.content=httpServletRequest.getParameter("content");
-			fVO.userId=httpServletRequest.getParameter("writer");
-			fVO.time=httpServletRequest.getParameter("time");
-			
-			System.out.println(fVO.time);
-			fDao.insert(fVO);
-		}
+
 		else if(option.equals("modify")) {//수정 페이지로 이동
 			int a = Integer.parseInt(httpServletRequest.getParameter("seq"));
 			FreeBoardVO fVO = new FreeBoardVO();
@@ -1013,6 +1009,22 @@ public class HomeController {
 		return "redirect:/free";
 	}
 	
+	//자유게시판 페이지(<img>)에서 불러오기
+	@RequestMapping(value="/getByteImage", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> getByteImage(HttpServletRequest request) {//ResponseEntity�� HttpEntity�� ��ӹ������ν� HttpHeader�� body�� ���� �� ����
+		FreeBoardVO vo = new FreeBoardVO();
+		String a = request.getParameter("number");
+		int temp = Integer.parseInt(a) ;
+		
+			
+		vo = fDao.Read(temp);
+	    byte[] imageContent = vo.image;
+	    System.out.println(vo.image);
+	    final HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.IMAGE_PNG);  
+	    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
+	}
+	
 	//-------------------------만든 이들 소개 페이지----------------------//
 	@RequestMapping(value = "/developer", method = RequestMethod.GET)
 	public String freeBoard(HttpServletRequest httpServletRequest, Model model) {
@@ -1088,371 +1100,4 @@ public class HomeController {
 			return "SCarModel";
 		}
 }
-	/*
 	
-	//---------------------------------자유게시판화면-------------------------------------//
-		@RequestMapping(value = "/freeBoard", method = RequestMethod.GET)
-		public String freeBoard(HttpServletRequest httpServletRequest, Model model) {
-			System.out.println("first page return");
-			
-			HttpSession session=httpServletRequest.getSession();
-			
-			String user_id=(String)session.getAttribute("userId");;
-			System.out.println("----------------------------------"+user_id);
-			
-			List<FreeBoardVO> list = new ArrayList<FreeBoardVO>();
-			list = fDao.QueryAll();
-			String option = httpServletRequest.getParameter("option");
-			if(option==null) {
-				
-			}
-			
-			else if(option.equals("gotoEnroll")) {  //글 작성 페이지로 이동
-				model.addAttribute("id",user_id);
-				System.out.println("이거되니");
-				return "FreeEnroll";
-			}
-			
-			else if(option.equals("enroll")) { //글 등록
-				FreeBoardVO vo = new FreeBoardVO();
-				vo.title = httpServletRequest.getParameter("title");
-				vo.content = httpServletRequest.getParameter("content");
-				vo.userId = httpServletRequest.getParameter("userId");
-				vo.time = httpServletRequest.getParameter("timeString");
-				
-				fDao.insert(vo);
-				list = fDao.QueryAll();
-				model.addAttribute("list",list);
-				return "freeBoard";
-			}
-			
-			else if(option.equals("search")) { //검색
-				String keyWord=httpServletRequest.getParameter("keyWord");
-				list = fDao.Search("%"+keyWord+"%");
-			}
-			model.addAttribute("list",list);
-			return "freeBoard";
-		}
-	
-		
-	//---------------------------------firstpage 띄우기-------------------------------------//
-	@RequestMapping(value = "/firstpage", method = RequestMethod.GET)
-	public String firstpage(HttpServletRequest httpServletRequest, Model model, HttpServletResponse response) {
-		 
-		MemberVO mVo=new MemberVO();
-		
-		String option=httpServletRequest.getParameter("option");
-		System.out.println(httpServletRequest.getParameter("userId")+","+httpServletRequest.getParameter("userPw"));
-		System.out.println();
-		
-		HttpSession session=httpServletRequest.getSession();
-		
-		String user_id;
-		
-		
-		if(option==null) {
-			System.out.println("first page loading");
-		}
-		
-		else if(option.equals("login")) {
-			mVo.userId=httpServletRequest.getParameter("userId");
-			mVo.userPw=httpServletRequest.getParameter("userPw");
-			MemberVO login = new MemberVO();
-			login=mDao.login(mVo);
-			String s = "no";
-			if(login == null) {
-				System.out.println("hey");
-				model.addAttribute("failFlag",s);
-			}
-			else {
-				session.setAttribute("userId", mVo.userId);
-				user_id=(String)session.getAttribute("userId");
-				System.out.println(user_id);
-				model.addAttribute("id",user_id);
-				return "menu";
-				
-			}
-			
-		}
-		
-		else if(option.equals("logOut")) {
-			System.out.println("log Out!!!");
-			session.invalidate();
-			System.out.println("session delete");
-			
-			return "firstpage";
-		}
-			
-		
-		System.out.println("first page return");
-		//model.addAttribute("serverTime", formattedDate );
-		
-		return "firstpage";
-	}
-	/*
-	@RequestMapping(value = "menu", method = RequestMethod.GET)
-	public String menu(HttpServletRequest httpServletRequest, Model model) {
-		loginMap loginMap1 = loginMap.getInstance();
-		
-		String option=httpServletRequest.getParameter("option");
-		
-		model.addAttribute("option",option);
-		
-		
-		System.out.println("second page return");
-		//model.addAttribute("serverTime", formattedDate );
-		
-		return "menu";
-	}*/
-	
-	/*@RequestMapping(value = "/menu", method = RequestMethod.GET)
-	public String menu(HttpServletRequest httpServletRequest, Model model) {
-		HttpSession session=httpServletRequest.getSession();
-		String user_id=(String)session.getAttribute("userId"); ;
-		model.addAttribute("id",user_id);
-		return "menu";
-	}
-	
-	//-----------------------------------------차량 리스트 띄우기--------------------------------------------------//
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(HttpServletRequest httpServletRequest, Model model) {
-		HttpSession session=httpServletRequest.getSession();
-		String user_id=(String)session.getAttribute("userId"); //아이디 세션 불러오기
-
-		
-		System.out.println("----------------------------------"+user_id);
-		if(user_id==null) {
-			return "firstpage";
-		}
-		
-		
-		
-		List<listVO> list = new ArrayList<listVO>();
-		
-		listVO vo=new listVO();
-		//DataMap dataMap = DataMap.getInstance();
-		
-		String option=httpServletRequest.getParameter("option");
-		int firstIndex=0;
-		int lastIndex=9;
-		list = lDao.QueryAll();
-		
-		
-		if(option==null) {
-			
-		}
-		/*
-		else if(option.equals("search")) {
-			List<listVO> searchList = new ArrayList();
-			System.out.println(httpServletRequest.getParameter("name"));
-			for(int i=0;i<dataMap.list.size();i++) {
-				if(httpServletRequest.getParameter("name").equals(dataMap.list.get(i).carNum)||httpServletRequest.getParameter("name").equals(dataMap.list.get(i).carColor)||httpServletRequest.getParameter("name").equals(dataMap.list.get(i).carKind)||httpServletRequest.getParameter("name").equals(dataMap.list.get(i).carMaster)){
-					searchList.add(dataMap.list.get(i));
-				}
-			}
-			model.addAttribute("list",searchList);
-			return "list";
-		}*/
-		/*
-		else if (option.equals("search")) {
-			String msg=  httpServletRequest.getParameter("name");
-			System.out.println(msg);
-			list = lDao.searchName("%"+msg+"%");
-			System.out.println(list);
-		}
-		
-		else if(option.equals("page")) {
-			int pageNum=Integer.parseInt(httpServletRequest.getParameter("pageNum"));
-			System.out.println(pageNum);
-			firstIndex=(pageNum-1)*10;
-			lastIndex=firstIndex+9;
-			System.out.println(firstIndex);
-			System.out.println(lastIndex);
-		}
-		
-		else if(option.equals("carKind")) {
-			List<CarKindVO> clist = new ArrayList<CarKindVO>();
-			String kind=httpServletRequest.getParameter("kind");
-			System.out.println(kind);
-			clist=cDao.Querrycar(kind);
-			/*if(clist.isEmpty()) {
-				kind="";
-			}*/
-		/*	
-			model.addAttribute("id",kind);
-			model.addAttribute("list",clist);
-			return "carKind";
-		}
-
-	
-		model.addAttribute("id",user_id);
-		model.addAttribute("list",list);
-		model.addAttribute("firstIndex",firstIndex);
-		model.addAttribute("lastIndex", lastIndex);
-		System.out.println("third page return");
-		//model.addAttribute("serverTime", formattedDate );
-		
-		return "list";
-	}
-
-	*/
-//--------------------------------회원가입-----------------------------//
-	
-	/*@RequestMapping(value = "/SignUp", method = RequestMethod.GET)
-	public String signUp(HttpServletRequest httpServletRequest, Model model) {
-		String option=httpServletRequest.getParameter("option");
-		
-		MemberVO mVo=new MemberVO();
-		
-		
-		if(option==null) {
-			
-		}
-		else if(option.equals("signUp")) {
-			mVo.userId=httpServletRequest.getParameter("userId");
-			mVo.userPw=httpServletRequest.getParameter("userPw");
-			System.out.println(mVo.userId);
-			mDao.InsertId(mVo);
-			return "firstpage";
-		}
-		return "Signup";
-	}*/
-	
-//-------------------------------QnA List---------------------------------------------//
-	/*@RequestMapping(value = "/QnAList", method = RequestMethod.GET)
-	public String QnAList(HttpServletRequest httpServletRequest, Model model,HttpServletResponse response) throws ServletException,IOException{
-		List<QnAVO> list = new ArrayList<QnAVO>();
-		
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		HttpSession session=httpServletRequest.getSession();
-		String user_id=(String)session.getAttribute("userId"); //아이디 세션 불러오기
-		
-		
-		System.out.println("----------------------------------"+user_id);
-		//if(user_id==null) {
-			//return "firstpage";
-		//}
-		
-		QnAVO qVo=new QnAVO();
-		//DataMap dataMap = DataMap.getInstance();
-		
-		String option=httpServletRequest.getParameter("option");
-		int firstIndex=0;
-		int lastIndex=9;
-		list = qDao.QueryAll();
-			
-		
-		if(option==null) {
-			
-		}
-		
-		else if(option.equals("gotoEnroll")) {
-			model.addAttribute("id",user_id);
-			return "QnA";
-		}
-		else if(option.equals("enroll")) {                 //QnA 등록하기
-			qVo.title=httpServletRequest.getParameter("title");
-			qVo.content=httpServletRequest.getParameter("content");
-			qVo.userId=httpServletRequest.getParameter("writer");
-			qVo.time=httpServletRequest.getParameter("time");
-			
-			System.out.println(qVo.time);
-			qDao.enrollQnA(qVo);  //insert qna
-			list = qDao.QueryAll();
-			model.addAttribute("id",user_id);
-			model.addAttribute("list",list);
-			model.addAttribute("firstIndex",firstIndex);
-			model.addAttribute("lastIndex", lastIndex);
-			System.out.println(list);
-			return "QnAList";
-		}
-		
-		else if(option.equals("page")) {      //QnA 리스트 페이지
-			int pageNum=Integer.parseInt(httpServletRequest.getParameter("pageNum"));
-			System.out.println(pageNum);
-			firstIndex=(pageNum-1)*10;
-			lastIndex=firstIndex+9;
-			System.out.println(firstIndex);
-			System.out.println(lastIndex);
-		}
-		
-		else if(option.equals("search")) {     //QnA 검색
-			System.out.println("search if 실행");
-			String searchTag=httpServletRequest.getParameter("name");
-			System.out.println(searchTag);
-			list = qDao.search("%"+searchTag+"%");
-		}
-		
-		else if(option.equals("read")) {      //QnA 열람
-			List<qCommentVO> rlist = new ArrayList<qCommentVO>();
-			int keyword=Integer.parseInt(httpServletRequest.getParameter("keyword"));
-			System.out.println(keyword);
-			QnAVO qRead=new QnAVO();
-			qRead=qDao.read(keyword);
-			rlist=rDao.CommentAll(keyword);
-			
-			model.addAttribute("id",user_id);
-			model.addAttribute("QnAVO",qRead);
-			return "QnARead";
-		}
-		
-		else if(option.equals("delete")) {    //QnA 삭제
-			int deleter=Integer.parseInt(httpServletRequest.getParameter("index"));
-			System.out.println(deleter);
-			qDao.delete(deleter);
-			list = qDao.QueryAll();
-			rDao.delete(deleter);
-			model.addAttribute("list",list);
-			model.addAttribute("firstIndex",firstIndex);
-			model.addAttribute("lastIndex", lastIndex);
-			return "QnAList";
-		}
-		
-		else if(option.equals("comment")) {   //댓글 등록
-			List<qCommentVO> rlist = new ArrayList<qCommentVO>();
-			qCommentVO rvo= new qCommentVO();
-			rvo.userId=user_id;
-			rvo.text=httpServletRequest.getParameter("text");
-			rvo.QnANum=Integer.parseInt(httpServletRequest.getParameter("QnANum"));
-			System.out.println("리플 등록자 : "+rvo.userId);
-			System.out.println("text : "+rvo.text);
-			rDao.InsertComment(rvo);
-			rlist=rDao.CommentAll(rvo.QnANum);
-			
-			QnAVO qRead=new QnAVO();
-			qRead=qDao.read(rvo.QnANum);
-			
-			model.addAttribute("id",user_id);
-			model.addAttribute("QnAVO",qRead);
-			return "QnARead";
-		}
-		
-		else if(option.equals("delComment")) {
-			int delComment=Integer.parseInt(httpServletRequest.getParameter("index"));
-			System.out.println(delComment);
-			rDao.delete(delComment);
-			
-			List<qCommentVO> rlist = new ArrayList<qCommentVO>();
-			int keyword=Integer.parseInt(httpServletRequest.getParameter("QnANum"));
-			System.out.println(keyword);
-			QnAVO qRead=new QnAVO();
-			qRead=qDao.read(keyword);
-			rlist=rDao.CommentAll(keyword);
-			
-			model.addAttribute("id",user_id);
-			model.addAttribute("QnAVO",qRead);
-			return "QnARead";
-			
-		}
-		
-				
-		model.addAttribute("list",list);
-		model.addAttribute("firstIndex",firstIndex);
-		model.addAttribute("lastIndex", lastIndex);
-		System.out.println("QnA list");
-		return "exQnAList";
-	}
-	
-	
-}*/

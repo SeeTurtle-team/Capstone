@@ -8,7 +8,7 @@ public class FreeBoardVO {
 	public String content;
 	public String userId;
 	public String time;
-	public byte[] img;
+	public byte[] image;
 	
 	public FreeBoardVO() {
 		this.seq=0;
@@ -18,13 +18,13 @@ public class FreeBoardVO {
 		this.time="";
 	}
 	
-	public FreeBoardVO(int Seq,String title,String content,String userId,String time,byte[] img) {
+	public FreeBoardVO(int Seq,String title,String content,String userId,String time,byte[] image) {
 		this.seq=Seq;
 		this.title=title;
 		this.content=content;
 		this.userId=userId;
 		this.time=time;
-		this.img =img;
+		this.image =image;
 	}
 	
 	public int getSeq() {
@@ -57,12 +57,12 @@ public class FreeBoardVO {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public byte[] getImg() {
-		return img;
+	public byte[] getImage() {
+		return image;
 	}
 
-	public void setImg(byte[] img) {
-		this.img = img;
+	public void setImg(byte[] image) {
+		this.image = image;
 	}
 	
 
