@@ -871,6 +871,7 @@ public class HomeController {
 			rlist = frDao.querry(seq);
 			int size = rlist.size();
 			
+			fVO.setContent(fVO.content.replaceAll("\r\n", "<br>"));
 			if(fVO.image!=null) {
 				String imgUrl = "/getByteImage?option=free&number="+seq;
 				model.addAttribute("imgSrc", imgUrl);
@@ -987,6 +988,7 @@ public class HomeController {
 		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
 		String time1 = format.format(time);
+		
 		
 		try {
 			file = mhsr.getFile("imgFile").getBytes();

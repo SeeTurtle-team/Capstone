@@ -17,11 +17,8 @@
 
 </head>
 
-
 <body>
-      
 
-    
 <div class="all">
     <header class="back_color"></header><!----3.23--->
     <footer class="back_color2"></footer><!---3.23-->
@@ -47,7 +44,8 @@
 
     <section>
         <div class="bar1">&nbsp<h5 class="write_title1">*표는 필수 입력사항입니다.</h5></div>
-		<form action="/freeEnroll"enctype="multipart/form-data" method="post">
+        
+		<form action="/freeEnroll"enctype="multipart/form-data" method="post" id="write"> 
 		    <div class="bar2"><h1 class="write_title2">작성 제목*</h1></div>
 	    	<input name= title type="search-input" class="search-input" id="title" value="">
 	
