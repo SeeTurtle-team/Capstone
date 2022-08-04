@@ -368,7 +368,11 @@ public class HomeController {
 			listVO lVO = new listVO();
 			lVO = lDao.selectOne(seq);
 			System.out.println(lVO.model);
-			System.out.println(lVO.imgUrl);
+			String img = lVO.imgUrl;
+			String[] imgUrl = img.split("\\?");
+			lVO.setImgUrl(imgUrl[0]);
+			model.addAttribute("cctv",lVO);
+			return "CCTV";
 		}
 		
 		else {

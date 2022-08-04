@@ -91,7 +91,7 @@
             <c:forEach items="${list}" begin="0" end="9" var="dataVO"><!--   begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status">-->
                 <tr>
                   <td><c:out value="${dataVO.seq}"/></td>
-                  <td onclick="img('${dataVO.seq}')"><c:out value="${dataVO.model}"/></td>
+                  <td title="클릭하시면 해당 CCTV 캡쳐본을 보실 수 있습니다" onclick="img('${dataVO.seq}')"><c:out value="${dataVO.model}"/></td>
                   <td><c:out value="${dataVO.time}"/></td>
                         
                  </tr>

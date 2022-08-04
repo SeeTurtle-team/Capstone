@@ -7,11 +7,6 @@
  
 <mapper namespace="hansung.cap.mapper.listMapper">
 
-    <insert id="insertList">
-        insert into list(model,carColor,Time) values
-                          (#{model},#{carColor},#{Time})
-    </insert>
-    
       <select id="queryAll" resultType="hansung.cap.project.listVO">
     	select * from list
     </select>
@@ -32,6 +27,9 @@
 		select * from list where model like #{msg} or carColor like #{msg} or time like #{msg}
 	</select>
 	
+	<select id="selectOne" resultType="hansung.cap.project.listVO">
+		select * from list where seq = #{a}
+	</select>
 	<!-- 총 게시글 갯수 출력 -->
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM list
@@ -46,12 +44,7 @@
   	</select>
   	
   	
-  	<resultMap type="java.util.Map" id="imgMap">
-	<result property="base64" column="image" javaType="[B" jdbcType="BLOB"/>
-	</resultMap>
-	<select id="selectImg" resultMap="imgMap">
-		SELECT image FROM list where seq like #{a}
-	</select> 
+  
 
 	
 </mapper>
