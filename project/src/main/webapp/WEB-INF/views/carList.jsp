@@ -123,7 +123,7 @@
             </c:if>
         </div>
 
-        <button class="d-btn"onclick="CCTV()">CCTV 확인</button ><!-- 관리자 아이디일시 CCTV 화면이 저장된 구글드라이브 페이지로 이동 -->
+        <button class="d-btn"onclick="CCTV()">여기에 cctv 슬라이드를 넣을 생각 중</button ><!-- 관리자 아이디일시 CCTV 화면이 저장된 구글드라이브 페이지로 이동 -->
 
     </div>
     

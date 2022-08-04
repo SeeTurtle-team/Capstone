@@ -89,7 +89,6 @@ public class HomeController {
 		}
 		else {
 			login = "LogOut";
-			System.out.println(user_id+"????");
 			model.addAttribute("login",user_id);
 			model.addAttribute("logOut","logOut");
 		}
@@ -116,7 +115,7 @@ public class HomeController {
 		
 		System.out.println(id);
 		String user_id=(String)session.getAttribute("userId");;
-		System.out.println("----------------------------------"+user_id);
+		
 		if(user_id!=null) {  //로그인이 될 상황일시
 			model.addAttribute("login",user_id);
 			return "index";
@@ -140,13 +139,12 @@ public class HomeController {
 			login=mDao.login(mVo);
 			String signal = "no";
 			if(login == null) {
-				System.out.println("fail");
 				model.addAttribute("failFlag",signal);
 			}
 			else {
 				session.setAttribute("userId", mVo.userId);
 				user_id=(String)session.getAttribute("userId");
-				System.out.println(user_id);
+				
 				model.addAttribute("id",user_id);
 				model.addAttribute("login",user_id);
 				
@@ -164,7 +162,7 @@ public class HomeController {
 		HttpSession session=httpServletRequest.getSession();
 		
 		String user_id=(String)session.getAttribute("userId");;
-		System.out.println("----------------------------------"+user_id);
+		
 		if(user_id!=null) {   //로그인이 되어 있을 시 
 			return "index";
 		}
@@ -209,7 +207,7 @@ public class HomeController {
 		HttpSession session=httpServletRequest.getSession();
 		
 		String user_id=(String)session.getAttribute("userId");;
-		System.out.println("----------------------------------"+user_id);
+		
 		if(user_id!=null) {  //로그인 되어있을시
 			return "index";
 		}
@@ -227,7 +225,7 @@ public class HomeController {
 			mVo.userQuestion=forgot_answer;
 			
 			String userPw=mDao.forgot(mVo);
-			//System.out.println(userPw);
+			
 			
 			if(userPw == null) {  //해당 답변에 해당하는 비밀번호가 없을 때
 				System.out.println("fail");
@@ -269,7 +267,7 @@ public class HomeController {
 		model.addAttribute("blockSize", blockSize);
 		String nowBlock = httpServletRequest.getParameter("nowBlock");
 		String user_id=(String)session.getAttribute("userId");;
-		System.out.println("----------------------------------"+user_id);
+		
 		
 		if(user_id==null) {
 			return "login";
@@ -367,7 +365,7 @@ public class HomeController {
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
 			listVO lVO = new listVO();
 			lVO = lDao.selectOne(seq);
-			System.out.println(lVO.model);
+			
 			String img = lVO.imgUrl;
 			String[] imgUrl = img.split("\\?");
 			lVO.setImgUrl(imgUrl[0]);
@@ -685,7 +683,6 @@ public class HomeController {
 			}
 		}
 		else if(option.equals("search")) {  //검색 기능
-			System.out.println("검색 기능입니다");
 			String searchText = httpServletRequest.getParameter("name");
 			String sel =  httpServletRequest.getParameter("sel");
 			if(searchText=="") {
@@ -698,7 +695,6 @@ public class HomeController {
 				return "CarModel";
 			}
 			if(sel.equals("carkind")){ //차 이름으로 검색
-				System.out.println("차 이름으로 검색");
 				list = cDao.Querrycar("%"+searchText+"%");
 				listSize = cDao.ScountBoard1("%"+searchText+"%");
 				if(listSize%6==0) {
@@ -708,7 +704,6 @@ public class HomeController {
 				}
 			}
 			else if(sel.equals("carmaker")) {  //제조사로 검색
-				System.out.println("제조사로 검색");
 				list = cDao.QuerryMaker("%"+searchText+"%");
 				listSize = cDao.ScountBoard2("%"+searchText+"%");
 				if(listSize%6==0) {
@@ -861,8 +856,6 @@ public class HomeController {
 				model.addAttribute("imgSrc", imgUrl);
 			}
 			
-			System.out.println(size);
-			
 			model.addAttribute("id",user_id);
 			model.addAttribute("size",size);
 			model.addAttribute("rlist",rlist);
@@ -890,7 +883,6 @@ public class HomeController {
 			return "freeView";
 		}
 		else if(option.equals("commentDel")) {  //freeboard 댓글 삭제
-			System.out.println("댓 삭");
 			int num = Integer.parseInt(httpServletRequest.getParameter("commentNum"));
 			frDao.DelComment(num);
 			
@@ -942,7 +934,6 @@ public class HomeController {
 			rlist = frDao.querry(fVO.seq);
 			int size = rlist.size();
 			
-			System.out.println(size);
 			model.addAttribute("id",user_id);
 			model.addAttribute("size",size);
 			model.addAttribute("rlist",rlist);
@@ -1052,7 +1043,7 @@ public class HomeController {
 		return "redirect:/QnA";
 	}
 	
-	//자유게시판 페이지(<img>)에서 불러오기
+	//자유게시판,QnA 페이지(<img>)에서 불러오기
 	@RequestMapping(value="/getByteImage", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getByteImage(HttpServletRequest request) {//ResponseEntity�� HttpEntity�� ��ӹ������ν� HttpHeader�� body�� ���� �� ����
 		String option = request.getParameter("option");
@@ -1067,7 +1058,7 @@ public class HomeController {
 				
 			vo = fDao.Read(temp);
 		    byte[] imageContent = vo.image;
-		    System.out.println(vo.image);
+		   
 		    final HttpHeaders headers = new HttpHeaders();
 		    headers.setContentType(MediaType.IMAGE_PNG);  
 		    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
@@ -1081,7 +1072,7 @@ public class HomeController {
 				
 			vo = qDao.read(temp);
 		    byte[] imageContent = vo.image;
-		    System.out.println(vo.image);
+		    
 		    final HttpHeaders headers = new HttpHeaders();
 		    headers.setContentType(MediaType.IMAGE_PNG);  
 		    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
