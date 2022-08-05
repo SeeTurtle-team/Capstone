@@ -8,9 +8,10 @@
     <meta name="건호" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/Free.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
-<title>carList</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
+
+	<title>carList</title>
 <script
      src="https://kit.fontawesome.com/af4e1eff79.js"
      crossorigin="anonymous"></script>
@@ -82,9 +83,10 @@
         
             <thead>
                 <tr>
-                <th>인덱스</th>
-                <th>차종</th>
-                <th>시간</th>                
+	                <th>인덱스</th>
+	                <th>차종</th>
+	                <th>시간</th>
+	                <th>보기</th>                
                 </tr>
          </thead>
          <tbody>
@@ -93,11 +95,12 @@
                   <td><c:out value="${dataVO.seq}"/></td>
                   <td title="클릭하시면 해당 CCTV 캡쳐본을 보실 수 있습니다" onclick="img('${dataVO.seq}')"><c:out value="${dataVO.model}"/></td>
                   <td><c:out value="${dataVO.time}"/></td>
-                        
+                  <td><p>캡쳐 보기</p><p>cctv 보기</p></td>
                  </tr>
              </c:forEach>
              </tbody>               
         </table>
+        
         <div class="paging">
             <c:if test = "${pageSize==1 }">
         		<a href="/carList?page=1" class="num ">1</a>
