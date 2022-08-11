@@ -19,20 +19,7 @@
   		select * from carKind 
   	</select>
   	
-  	<select id="paging" resultType="hansung.cap.project.CarKindVO">
-  		<![CDATA[select * from carKind where seq <=#{paging} order by seq desc limit 6;]]>
-  	</select>
-  	
   	<select id="countBoard" resultType="int">
   		SELECT COUNT(*) FROM carKind
   	</select>
-  	
-  	<select id="ScountBoard1" resultType="int">
-  		SELECT COUNT(*) FROM carKind where carKind like #{msg}
-  	</select>
-  	
-  	<select id="ScountBoard2" resultType="int">
-  		SELECT COUNT(*) FROM carKind where carMaker like #{msg}
-  	</select>
-  	
   </mapper>

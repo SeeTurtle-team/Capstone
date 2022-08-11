@@ -116,29 +116,28 @@
             </tbody>
         </table>
         <div class="paging">
-            <c:if test = "${pageSize==1 }">
-        		<a href="/QnA?page=1" class="num ">1</a>
-        	</c:if>
-        	<c:if test = "${pageSize==2 }">
-        		<a href="/QnA?page=1" class="num ">1</a>
-            	<a href="/QnA?page=2" class="num ">2</a>
-        	</c:if>
-        	<c:if test = "${pageSize==3 }">
-        		<a href="/QnA?page=1" class="num ">1</a>
-            	<a href="/QnA?page=2" class="num ">2</a>
-            	<a href="/QnA?page=3" class="num ">3</a>
-        	</c:if>
-        	<c:if test = "${pageSize>3 }">
-            <a href="/QnA?option=first" class="bt">처음</a>
-            <a href="/QnA?option=back&&page=${page}&&nowBlock=${nowBlock-1}" class="num"> &lt; </a>
-            <c:set var="pageSize" value="${pageSize}"/>
-            <c:forEach var="page" begin="${nowBlock}" end="${nowBlock+2}" step="1">
-            <a href="/QnA?page=${page}&&nowBlock=${nowBlock}" class="num">${page}</a>
-            </c:forEach>
-            <a href="/QnA?option=next&&page=${page}&&nowBlock=${nowBlock+1}" class="num"> &gt; </a>
-            <a href="/QnA?option=last" class="bt">마지막</a>
-            </c:if>
-        </div>
+	<c:if test="${prev}">
+		 <span>[ <a href="/SFree?page=${startPageNum - 1}">이전</a> ]</span>
+		</c:if>
+		
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
+		 <span>
+		 
+		  <c:if test="${select != page}">
+		   <a href="/SQnA?page=${page}">${page}</a>
+		  </c:if>    
+		  
+		  <c:if test="${select == page}">
+		   <a>${page}</a>
+		  </c:if>
+		    
+		 </span>
+		</c:forEach>
+		
+		<c:if test="${next}">
+		 <span>[ <a href="/SQnA?page=${endPageNum + 1}">다음</a> ]</span>
+		</c:if>
+	</div>
 
         <button class="d-btn"onclick="enroll()">등록</button >
 

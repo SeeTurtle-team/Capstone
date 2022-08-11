@@ -11,19 +11,19 @@
   	</insert>
   	
   	<select id="queryAll" resultType="hansung.cap.project.QnAVO">
-  		select * from qna
+  		select * from qna order by time desc
   	</select>
   	
   	<select id="search" resultType="hansung.cap.project.QnAVO">
-  		select * from qna where title like #{s} or content like #{s} or userid like #{s} 
+  		select * from qna where title like #{s} or content like #{s} or userid like #{s} order by time desc
   	</select>
   	
   	<select id="searchTitle" resultType="hansung.cap.project.QnAVO">
-  		select * from qna where title like #{s}  
+  		select * from qna where title like #{s} order by time desc
   	</select>
   	
   	<select id="searchUser" resultType="hansung.cap.project.QnAVO">
-  		select * from qna where userid like #{s} 
+  		select * from qna where userid like #{s} order by time desc
   	</select>
   	
   	<select id="read" resultType="hansung.cap.project.QnAVO">
@@ -37,23 +37,7 @@
   		update qna set title=#{title}, content=#{content}, userId=#{userId}, time = #{time} where seq like #{seq} 
   	</update>
   	
-  	<select id="paging" resultType="hansung.cap.project.QnAVO">
-  		<![CDATA[select * from qna order by time desc limit #{paging},10;]]>
-  	</select>
-  	
   	<select id="countBoard" resultType="int">
   		SELECT COUNT(*) FROM qna
-  	</select>
-  	
-  	<select id="ScountBoard1" resultType="int">
-  		SELECT COUNT(*) FROM qna where title like #{msg}
-  	</select>
-  	
-  	<select id="ScountBoard2" resultType="int">
-  		SELECT COUNT(*) FROM qna where userId like #{msg}
-  	</select>
-  	
-  	<select id="ScountBoard3" resultType="int">
-  		SELECT COUNT(*) FROM qna where title like #{msg} or userId like #{msg}
   	</select>
   </mapper>

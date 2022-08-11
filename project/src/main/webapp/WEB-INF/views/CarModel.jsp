@@ -110,29 +110,28 @@ console.log("${nowBlock}");
     <div class ="board_list_wrap">
 		<!--  -->
         <div class="paging">
-            <c:if test = "${pageSize==1 }">
-        		<a href="/CarModel?page=1" class="num ">1</a>
-        	</c:if>
-        	<c:if test = "${pageSize==2 }">
-        		<a href="/CarModel?page=1" class="num ">1</a>
-            	<a href="/CarModel?page=2" class="num ">2</a>
-        	</c:if>
-        	<c:if test = "${pageSize==3 }">
-        		<a href="/CarModel?page=1" class="num ">1</a>
-            	<a href="/CarModel?page=2" class="num ">2</a>
-            	<a href="/CarModel?page=3" class="num ">3</a>
-        	</c:if>
-        	<c:if test = "${pageSize>3 }">
-            <a href="/CarModel?option=first" class="bt">처음</a>
-            <a href="/CarModel?option=back&&page=${page}&&nowBlock=${nowBlock-1}" class="num"> &lt; </a>
-            <c:set var="pageSize" value="${pageSize}"/>
-            <c:forEach var="page" begin="${nowBlock}" end="${nowBlock+2}" step="1">
-            <a href="/CarModel?page=${page}&&nowBlock=${nowBlock}" class="num">${page}</a>
-            </c:forEach>
-            <a href="/CarModel?option=next&&page=${page}&&nowBlock=${nowBlock+1}" class="num"> &gt; </a>
-            <a href="/CarModel?option=last" class="bt">마지막</a>
-            </c:if>
-        </div>
+	<c:if test="${prev}">
+		 <span>[ <a href="/CarModel?page=${startPageNum - 1}">이전</a> ]</span>
+		</c:if>
+		
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
+		 <span>
+		 
+		  <c:if test="${select != page}">
+		   <a href="/CarModel?page=${page}">${page}</a>
+		  </c:if>    
+		  
+		  <c:if test="${select == page}">
+		   <a>${page}</a>
+		  </c:if>
+		    
+		 </span>
+		</c:forEach>
+		
+		<c:if test="${next}">
+		 <span>[ <a href="/CarModel?page=${endPageNum + 1}">다음</a> ]</span>
+		</c:if>
+	</div>
 
         <div class="modal_admin">
             <button class="x">&times;</button>

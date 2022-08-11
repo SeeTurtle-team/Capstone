@@ -6,7 +6,7 @@
 
   <mapper namespace="hansung.cap.mapper.FreeBoardMapper">
     <select id="queryAll" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard
+  		select * from freeboard order by time desc
   	</select>
   	
   	<insert id = "insertFreeBoard">
@@ -14,15 +14,15 @@
   	</insert>
   	
   	<select id="searchAll" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard where title like #{s} or userid like #{s} 
+  		select * from freeboard where title like #{s} or userid like #{s} order by time desc
   	</select>
   	
   	<select id="searchTitle" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard where title like #{s} 
+  		select * from freeboard where title like #{s} order by time desc
   	</select>
   	
   	<select id="searchUser" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard where userid like #{s} 
+  		select * from freeboard where userid like #{s} order by time desc
   	</select>
   	
   	<select id="read" resultType="hansung.cap.project.FreeBoardVO">
@@ -37,23 +37,8 @@
   		update freeboard set title=#{title}, content=#{content}, userId=#{userId}, time = #{time} where seq like #{seq} 
   	</update>
   	
-  	<select id="paging" resultType="hansung.cap.project.FreeBoardVO">
-    	<![CDATA[
-		select * from freeboard order by time desc limit #{paging},10;]]>
-    </select>
-  	
   	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM freeboard
-	</select>
-	
-	<select id="ScountBoard1" resultType="int">
-		SELECT COUNT(*) FROM freeboard where title like #{msg}
-	</select>
-	<select id="ScountBoard2" resultType="int">
-		SELECT COUNT(*) FROM freeboard where userId like #{msg}
-	</select>
-	<select id="ScountBoard3" resultType="int">
-		SELECT COUNT(*) FROM freeboard where title like #{msg} or userId like #{msg}
 	</select>
   </mapper>
   

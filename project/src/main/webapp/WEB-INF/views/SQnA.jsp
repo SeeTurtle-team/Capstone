@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="건호" content="width=device-width, initial-scale=1.0">
     <title>QnA</title>
-    <link rel="stylesheet" href="resources/css/Search.css">
+    <link rel="stylesheet" href="resources/css//Free.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
@@ -108,7 +108,29 @@
                  </c:forEach>
             </tbody>
         </table>
-        
+        <div class="paging">
+	<c:if test="${prev}">
+		 <span>[ <a href="/SFree?page=${startPageNum - 1}">이전</a> ]</span>
+		</c:if>
+		
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
+		 <span>
+		 
+		  <c:if test="${select != page}">
+		   <a href="/SQnA?page=${page}">${page}</a>
+		  </c:if>    
+		  
+		  <c:if test="${select == page}">
+		   <a>${page}</a>
+		  </c:if>
+		    
+		 </span>
+		</c:forEach>
+		
+		<c:if test="${next}">
+		 <span>[ <a href="/SQnA?page=${endPageNum + 1}">다음</a> ]</span>
+		</c:if>
+	</div>
 
     </div>
     

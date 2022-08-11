@@ -51,7 +51,6 @@
 		alert("로그아웃 되었습니다!");
 		location.href = "/"+"?option=logOut";
 	}
-	console.log("${nowBlock}");
 </script>
 <body>
       
@@ -102,7 +101,7 @@
                 </tr>
          </thead>
          	<tbody>
-            	<c:forEach items="${list}" begin="0" end="9" var="dataVO"><!--  begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status"> -->
+            	<c:forEach items="${list}" var="dataVO" begin="${(select-1)*10}" end="${(select*10)-1}"><!--  begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status"> -->
                       <tr>
                       	  <td><c:out value="${dataVO.seq }"/></td>
 	                      <td onclick="view(${dataVO.seq})"><c:out value="${dataVO.title}"/></td>
@@ -110,33 +109,37 @@
 	                      <td><c:out value="${dataVO.time}"/></td>
 	         
                        </tr>
+                       
                  </c:forEach>
+                 
             </tbody>
         </table>
         <div class="paging">
-            <c:if test = "${pageSize==1 }">
-        		<a href="/free?page=1" class="num ">1</a>
-        	</c:if>
-        	<c:if test = "${pageSize==2 }">
-        		<a href="/free?page=1" class="num ">1</a>
-            	<a href="/free?page=2" class="num ">2</a>
-        	</c:if>
-        	<c:if test = "${pageSize==3 }">
-        		<a href="/free?page=1" class="num ">1</a>
-            	<a href="/free?page=2" class="num ">2</a>
-            	<a href="/free?page=3" class="num ">3</a>
-        	</c:if>
-        	<c:if test = "${pageSize>3 }">
-            <a href="/free?option=first" class="bt">처음</a>
-            <a href="/free?option=back&&page=${page}&&nowBlock=${nowBlock-1}" class="num"> &lt; </a>
-            <c:set var="pageSize" value="${pageSize}"/>
-            <c:forEach var="page" begin="${nowBlock}" end="${nowBlock+2}" step="1">
-            <a href="/free?page=${page}&&nowBlock=${nowBlock}" class="num">${page}</a>
-            </c:forEach>
-            <a href="/free?option=next&&page=${page}&&nowBlock=${nowBlock+1}" class="num"> &gt; </a>
-            <a href="/free?option=last" class="bt">마지막</a>
-            </c:if>
-        </div>
+	<c:if test="${prev}">
+		 <span>[ <a href="/free?page=${startPageNum - 1}">이전</a> ]</span>
+		</c:if>
+		
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
+		 <span>
+		 
+		  <c:if test="${select != page}">
+		   <a href="/free?page=${page}">${page}</a>
+		  </c:if>    
+		  
+		  <c:if test="${select == page}">
+		   <a>${page}</a>
+		  </c:if>
+		    
+		 </span>
+		</c:forEach>
+		
+		<c:if test="${next}">
+		 <span>[ <a href="/free?page=${endPageNum + 1}">다음</a> ]</span>
+		</c:if>
+	</div>
+        
+
+
 
         <button class="d-btn"onclick="gotoEnroll()">등록</button >
 
@@ -149,7 +152,6 @@
 </body>
 
 <script>
-
 </script>
 
 

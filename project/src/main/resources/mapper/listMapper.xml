@@ -8,23 +8,19 @@
 <mapper namespace="hansung.cap.mapper.listMapper">
 
       <select id="queryAll" resultType="hansung.cap.project.listVO">
-    	select * from list
+    	select * from list order by time desc
     </select>
     
     <select id = "queryModel" resultType="hansung.cap.project.listVO">
-   		select * from list where model like #{model}
+   		select * from list where model like #{model} order by time desc
     </select>
     
     <select id = "queryTime" resultType="hansung.cap.project.listVO">
-    	select * from list where time like #{time}
-    </select>
-    
-    <select id="paging" resultType="hansung.cap.project.listVO">
-    	<![CDATA[select * from list where seq <=#{paging} order by seq desc limit 10;]]>
+    	select * from list where time like #{time} order by time desc
     </select>
     
 	<select id="searchName" resultType="hansung.cap.project.listVO">
-		select * from list where model like #{msg} or carColor like #{msg} or time like #{msg}
+		select * from list where model like #{msg} or carColor like #{msg} or time like #{msg} order by time desc
 	</select>
 	
 	<select id="selectOne" resultType="hansung.cap.project.listVO">
@@ -34,18 +30,6 @@
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM list
 	</select>
-	
-	<select id="ScountBoard1" resultType="int">
-  		SELECT COUNT(*) FROM list where model like #{msg}
-  	</select>
-  	
-  	<select id="ScountBoard2" resultType="int">
-  		SELECT COUNT(*) FROM list where time like #{msg}
-  	</select>
-  	
-  	
-  
 
-	
 </mapper>
 

@@ -109,6 +109,30 @@ console.log("${nowBlock}");
 
     <div class ="board_list_wrap">
 		
+		<div class="paging">
+	<c:if test="${prev}">
+		 <span>[ <a href="/SCarModel?page=${startPageNum - 1}">이전</a> ]</span>
+		</c:if>
+		
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
+		 <span>
+		 
+		  <c:if test="${select != page}">
+		   <a href="/SCarModel?page=${page}">${page}</a>
+		  </c:if>    
+		  
+		  <c:if test="${select == page}">
+		   <a>${page}</a>
+		  </c:if>
+		    
+		 </span>
+		</c:forEach>
+		
+		<c:if test="${next}">
+		 <span>[ <a href="/SCarModel?page=${endPageNum + 1}">다음</a> ]</span>
+		</c:if>
+	</div>
+		
         <div class="modal_admin">
             <button class="x">&times;</button>
             <div class="modalBox_admin"> 
