@@ -26,14 +26,14 @@ public class testDataSource {
     @Test
     public void testDS() throws Exception{
 
-       
-        try(Connection con = ds.getConnection()){
-            System.out.println("dataSource¼³Á¤ ¼º°ø");
+       /*
+        //try(Connection con = ds.getConnection()){
+            System.out.println("dataSourceï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
             System.out.println(con);
         }catch(Exception e){
-            System.out.println("½ÇÆÐ");
+            System.out.println("ï¿½ï¿½ï¿½ï¿½");
             e.printStackTrace();
-        }
+        }*/
     }
    
 

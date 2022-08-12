@@ -17,15 +17,15 @@ public class mysqlTest1 {
  
  @Test
  public void testConnection() throws Exception{
-  Class.forName(DRIVER);
+ /* Class.forName(DRIVER);
   
-  try(Connection con = DriverManager.getConnection(URL, USER, PW)){
+  //try(Connection con = DriverManager.getConnection(URL, USER, PW)){
    System.out.println("����");
    System.out.println(con);
   }catch (Exception e) {
    System.out.println("�����߻�");
    e.printStackTrace();
-  }
+  }*/
  }
 
 }
