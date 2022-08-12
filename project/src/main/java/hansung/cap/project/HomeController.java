@@ -79,7 +79,7 @@ public class HomeController {
 		System.out.println("----------------------------------"+user_id);
 		model.addAttribute("id",user_id);
 		
-		String login;
+		String login = null;
 		String option = httpServletRequest.getParameter("option");
 		
 		if(user_id==null) {
@@ -213,9 +213,7 @@ public class HomeController {
 		}
 		
 		MemberVO mVo = new MemberVO();
-		System.out.println("Post : "+forgot_id);
-		System.out.println("Post : "+forgot_email);
-		System.out.println("Post : "+forgot_answer);
+		
 		if(forgot_id==null) {
 			
 		}
@@ -255,7 +253,7 @@ public class HomeController {
 		
 		List<listVO> list = new ArrayList<listVO>();
 		list = lDao.QueryAll();
-		listVO lVo=new listVO();
+		
 		String option = httpServletRequest.getParameter("option");
 		String page = httpServletRequest.getParameter("page");
 		
@@ -401,12 +399,12 @@ public class HomeController {
 			else if(option.equals("read")) {  //글 열람
 				System.out.println("QnA read");
 				int a = Integer.parseInt(httpServletRequest.getParameter("seq"));
-				QnAVO qVO = new QnAVO();
-				qVO = qDao.read(a);
 				
-				qVO.setContent(qVO.content.replaceAll("\r\n", "<br>"));
+				qVo = qDao.read(a);
 				
-				if(qVO.image!=null) {
+				qVo.setContent(qVo.content.replaceAll("\r\n", "<br>"));
+				
+				if(qVo.image!=null) {
 					String imgUrl = "/getByteImage?option=qna&number="+a;
 					model.addAttribute("imgSrc", imgUrl);
 				}
@@ -432,7 +430,7 @@ public class HomeController {
 					model.addAttribute("rlist",qlist);
 				}
 				
-				model.addAttribute("list",qVO);
+				model.addAttribute("list",qVo);
 				return "QnAView";
 			}
 			else if(option.equals("enroll")) {  //QnA 댓글 등록
@@ -444,8 +442,8 @@ public class HomeController {
 				qrDao.InsertComment(vo);
 				
 				int a = vo.QnANum;
-				QnAVO qVO = new QnAVO();
-				qVO = qDao.read(a);
+				
+				qVo = qDao.read(a);
 				
 				if((user_id).equals("manage1234")) {
 					model.addAttribute("manage",user_id);
@@ -455,7 +453,7 @@ public class HomeController {
 				qlist = qrDao.CommentAll(a);
 				
 				model.addAttribute("rlist",qlist);
-				model.addAttribute("list",qVO);
+				model.addAttribute("list",qVo);
 				
 				return "QnAView";
 			}
@@ -506,12 +504,7 @@ public class HomeController {
 	public String carModel(HttpServletRequest httpServletRequest, Model model) {
 		//많은 차들의 다양한 정보를 제공하는 페이지
 		HttpSession session=httpServletRequest.getSession();
-		String user_id=(String)session.getAttribute("userId"); ;
-		model.addAttribute("id",user_id);
 		
-		if(user_id==null) {
-			return "login";
-		}
 		List<CarKindVO> list = new ArrayList<CarKindVO>();
 		list = cDao.QuerryAll();
 		CarKindVO cVO = new CarKindVO();
@@ -636,14 +629,14 @@ public class HomeController {
 		}
 		else if(option.equals("view")) {   //freeboard 보기
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
-			FreeBoardVO fVO = new FreeBoardVO();
-			fVO = fDao.Read(seq);
+			
+			fVo = fDao.Read(seq);
 			System.out.println(seq);
 			rlist = frDao.querry(seq);
 			int size = rlist.size();
 			
-			fVO.setContent(fVO.content.replaceAll("\r\n", "<br>"));
-			if(fVO.image!=null) {
+			fVo.setContent(fVo.content.replaceAll("\r\n", "<br>"));
+			if(fVo.image!=null) {
 				String imgUrl = "/getByteImage?option=free&number="+seq;
 				model.addAttribute("imgSrc", imgUrl);
 			}
@@ -651,7 +644,7 @@ public class HomeController {
 			model.addAttribute("id",user_id);
 			model.addAttribute("size",size);
 			model.addAttribute("rlist",rlist);
-			model.addAttribute("list",fVO);
+			model.addAttribute("list",fVo);
 			return "freeView";
 		}
 		else if(option.equals("comment")) {  //댓글 쓰기
@@ -662,8 +655,8 @@ public class HomeController {
 			fCVO.time = httpServletRequest.getParameter("time");
 			
 			frDao.InsertComment(fCVO);
-			FreeBoardVO fVO = new FreeBoardVO();
-			fVO = fDao.Read(fCVO.freeNum);
+			
+			fVo= fDao.Read(fCVO.freeNum);
 			rlist = frDao.querry(fCVO.freeNum);
 			int size = rlist.size();
 			
@@ -671,15 +664,14 @@ public class HomeController {
 			model.addAttribute("id",user_id);
 			model.addAttribute("size",size);
 			model.addAttribute("rlist",rlist);
-			model.addAttribute("list",fVO);
+			model.addAttribute("list",fVo);
 			return "freeView";
 		}
 		else if(option.equals("commentDel")) {  //freeboard 댓글 삭제
 			int num = Integer.parseInt(httpServletRequest.getParameter("commentNum"));
 			frDao.DelComment(num);
 			
-			FreeBoardVO fVO = new FreeBoardVO();
-			fVO = fDao.Read(Integer.parseInt(httpServletRequest.getParameter("freeNum")));
+			fVo = fDao.Read(Integer.parseInt(httpServletRequest.getParameter("freeNum")));
 			
 			rlist = frDao.querry(Integer.parseInt(httpServletRequest.getParameter("freeNum")));
 			int size = rlist.size();
@@ -688,7 +680,7 @@ public class HomeController {
 			model.addAttribute("id",user_id);
 			model.addAttribute("size",size);
 			model.addAttribute("rlist",rlist);
-			model.addAttribute("list",fVO);
+			model.addAttribute("list",fVo);
 			return "freeView";
 		}
 		else if(option.equals("delFree")) {  //freeboard 글 삭제
@@ -704,32 +696,31 @@ public class HomeController {
 
 		else if(option.equals("modify")) {//수정 페이지로 이동
 			int a = Integer.parseInt(httpServletRequest.getParameter("seq"));
-			FreeBoardVO fVO = new FreeBoardVO();
-			fVO=fDao.Read(a);
 			
-			fVO.setContent(fVO.getContent().replaceAll("<br>", "\r\n"));
-			model.addAttribute("list",fVO);
+			fVo=fDao.Read(a);
+			
+			fVo.setContent(fVo.getContent().replaceAll("<br>", "\r\n"));
+			model.addAttribute("list",fVo);
 			model.addAttribute("seq",a);
 			return "FreeModify";
 		}
 		else if(option.equals("modifySuccess")) { //수정 완료
-			FreeBoardVO fVO = new FreeBoardVO();
+					
+			fVo.seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
+			fVo.title = httpServletRequest.getParameter("title");
+			fVo.content = httpServletRequest.getParameter("content");
+			fVo.userId = httpServletRequest.getParameter("writer");
+			fVo.time = httpServletRequest.getParameter("time");
 			
-			fVO.seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
-			fVO.title = httpServletRequest.getParameter("title");
-			fVO.content = httpServletRequest.getParameter("content");
-			fVO.userId = httpServletRequest.getParameter("writer");
-			fVO.time = httpServletRequest.getParameter("time");
+			fDao.modify(fVo); //수정 쿼리
 			
-			fDao.modify(fVO); //수정 쿼리
-			
-			rlist = frDao.querry(fVO.seq);
+			rlist = frDao.querry(fVo.seq);
 			int size = rlist.size();
 			
 			model.addAttribute("id",user_id);
 			model.addAttribute("size",size);
 			model.addAttribute("rlist",rlist);
-			model.addAttribute("list",fVO);
+			model.addAttribute("list",fVo);
 			return "freeView";
 		}
 		model.addAttribute("page", page);
