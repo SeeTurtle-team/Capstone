@@ -13,32 +13,38 @@
     font-style: normal;
 }
 
+
 @font-face {
-    font-family: 'GangwonEduPowerExtraBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
+    font-family: 'Tium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/Tium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HaenamFont';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/HaenamFont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
+@font-face {font-family: "Apple SD Gothic Neo"; 
+    src: url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot"); 
+    src: url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot?#iefix")
+     format("embedded-opentype"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff2") 
+     format("woff2"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff") 
+     format("woff"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.ttf") 
+     format("truetype"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.svg#Apple SD Gothic Neo") format("svg"); } 
 
 
 body{
-    font-family:'Electrolize';
-    height: 100%;
-    width: 100%; 
+    /* font-family:'Electrolize'; */
+    margin:0;
 }
 
 *{
 	margin: 0;
 	padding: 0;
 }
-
-/*body {
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}*/
 
 .imgList1 {
     margin-top:1%;
@@ -77,7 +83,8 @@ body{
     transition: 0.5s;
 }
 
-.modal {
+
+.modal1 {
 	display: none;
 	z-index: 500;
 	width: 100%;
@@ -89,15 +96,44 @@ body{
 	background-color: rgba(0,0,0,0.8)
 }
 
-.modal button {
+.modal2 {
+	display: none;
+	z-index: 500;
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+    font-family: 'WooridaumB';
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.8)
+}
+
+
+.modal1 button {
 	position: absolute;
+    z-index: 500;
 	top: 3rem;
 	right: 3rem;
 	background: transparent;
 	border: 0;
 	color: #ffffff;
 	font-size: 3rem;
+    cursor:pointer;
 }
+
+.modal2 button {
+	position: absolute;
+    z-index: 500;
+	top: 3rem;
+	right: 3rem;
+	background: transparent;
+	border: 0;
+	color: #ffffff;
+	font-size: 3rem;
+    cursor:pointer;
+}
+
+
 
 .modalBox {
 	position: relative;
@@ -113,11 +149,10 @@ body{
 .modal_content{
     box-sizing: content-box;
     border: 0px solid;
-    width: 600px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
     word-break:break-all;
     border: solid #000 0px;
-    text-align:left;
 }
 
 span.info{
@@ -127,11 +162,50 @@ span.info{
 }
 
 
-.modalBox img {
-	width: 100%;
+.img_container{
+    width:100%; height:100%;
+}
+.img_container1{
+    width:100%; height:80%;
 }
 
-.modalBox pre {
+.img_container1 img{
+    object-fit: cover;
+    width:100rem;
+    height:100rem;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.img_container img{
+    object-fit: cover;
+    width:100rem;
+    height:100rem;
+    max-width: 100%;
+    max-height: 100%;
+}
+.swiper-container{
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+
+.swiper-wrapper img{
+    object-fit: cover;
+    width:100rem;
+    height:70rem;
+    max-width: 100%;
+    max-height: 80%;
+}
+.swiper-slide{
+    flex-shrink:0;
+    position: fixed;
+    }
+
+
+.modalBox p {
 	color: #ffffff;
 	background-color: transparent;
 	font-size: 1.5rem;
@@ -140,8 +214,26 @@ span.info{
     padding-left:20px;
     padding-bottom:20px;
     text-align: center;
-    
+}
 
+.modal_content1 p{
+    color: #ffffff;
+	background-color: transparent;
+	font-size: 1.5rem;
+    font-family: 'IBMPlexSansKR-ExtraLight';
+    padding-bottom:20px;
+    text-align: center;
+    height: 10%;
+}
+
+.modal_content2 p {
+	color: #ffffff;
+	background-color: transparent;
+	font-size: 1.5rem;
+    font-family: 'IBMPlexSansKR-ExtraLight';
+    padding-bottom:20px;
+    text-align: center;
+    height: 10%;
 }
 
 .modal_admin{
@@ -212,84 +304,106 @@ a{
     color: black;
 }
 
-.all{ 
-    margin-top:-10px;
-   
-}
-
-.back_color{ /*****곡선 주기 위한 박스*******/
+/*****곡선 주기 위한 박스*******/
+/* .back_color{ 
     position: absolute;
     width: 1018px;
     height: 200px;
     background-color: #7193C1;
-}
-
-.back_color2{ /***곡선 주기 위한 박스***/
+} */
+/***곡선 주기 위한 박스***/
+/* .back_color2{ 
     position: absolute;
     top:-0.42px;
     width: 1018px;
     height: 100%;
     background-color: #7193C1;
+} */
+
+
+.header_name{
+    float:left;
+    width: calc(60% - 25px);
+    height:calc(100% - 50px);
+    padding: 25px;
+    font-family: 'HaenamFont';
+    font-size:25px;
+    color: #fff;
 }
+.menu{
+    display:flex;
+    float:left;
+    width:calc(40% - 75px);
+    height:calc(100% - 50px);
+    padding: 25px;
+    text-align: center;
+}
+.Login_menu{
+    width:50%;
+}
+.Login_menu a{
+    color:#fff;
+    font-family: 'HaenamFont';
+    font-size:25px;
+}
+.Login_menu a:hover{
+    background-color: #d49466;
+    border-radius:4px;
+    padding: 5px;
+}
+
+.d-tbn {
+    width: 50%;
+}
+
+.d-btn a{
+    font-family: 'HaenamFont';
+    color:#fff;
+    font-size:25px;
+
+}
+.d-btn a:hover{
+    background-color: #d49466;
+    border-radius:4px;
+    padding:5px;
+    letter-spacing: -1.3px;
+}
+
+
 
 /***********타이틀부터 테이블까지 묶음***********/
 
 .all_tb{
    background-attachment: local;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    background: #C0D0E6;
-    width:76.7%;
-    height:100%;
+    background: #fff;
+    left:15%;
+    width:85%;
+    margin-top:4.7%;
+    float:left;
+    height:90%;
     position:fixed;
-    right:1px;
-    top:-1px;
-    padding-left:82.5px; 
-    padding-right:41px;
-   
-    
 }
 
-.Login_menu{
-    position: absolute;
-    left:1080px;
-    top:30px;
-    text-align: center;
-    height:45px;
-    width:90px;
-    background-color:#7193C1;
-    border:0.1px solid #7193C1;
-    border-radius: 10px;
+header{
+    position: fixed;
+    left:15%;
+    width:85%;
+    height:10%;
+    background-color:#4279ff;
 }
-.Login_menu a{
-    position: relative;
-    top:10px;
-    color:#fff;
-}
-.title h1{
-    position: relative;
-    left:100px;
-    width:200px;
-    top:0px;
-    font-size: 40px;
-    text-align: left;
-}
+
+
 .search-wrap{
-    
-    position: relative;    
-    left:90px;
-    top:10px;
-    width:500px;
-    height: 32px;
-   
+    display: inline-block;
+    padding:10px;
+    width:100%;
+    height:10%;
 }
 
 select{ 
-    border: 1px solid #ccc;
-    border-bottom: 1px solid #CCC;
+    border: 1px solid#4279ff;
+    border-bottom: 1px solid #4279ff;
     border-radius: 8px;
-    position: relative;
-    top:-0.5px;
     width:90px;
     height: 32px;
 }
@@ -299,34 +413,27 @@ input::-webkit-input-placeholder {
     color: #AAA;        }
    
 .search-input{
-    position: relative;
     border: none;
-    border-bottom: 1px solid #CCC;
-    top:-1px;
+    border-bottom: 1px solid #4279ff;
     height: 32px;
     text-align: left;
    width:300px;
 }
 
 .search-btn{
-    background-color:transparent;
-    list-style: none;
-    position: relative;
-    top: 0.5px;
     width: 35px;
     height: 32px;
-    border-radius: 7px;
-    border: 0.5px solid black;
-    font-family: 'WooridaumB';
-    font-weight: bold;
+    font-size:25px;
+    background: transparent;
+    border:none;
+    cursor:pointer;
+    color:#4279ff;
 }
 
-.board_list_wrap{   
-    width:1000px;
-    margin-left: 35px;
-    height: 15%;
-    padding-left: 55px;
-    padding-top: 40px;
+.board_list_wrap{
+    padding-left:1em;
+    width:calc(100% - 3em);
+    height:15%;
     font-family: 'WooridaumB';
 
 }
@@ -343,13 +450,12 @@ input::-webkit-input-placeholder {
 table{border-collapse:collapse;}
 
 .board_list{
-    width: 100%;
-    border-top: 2px solid #B7D5E2;
-    border-bottom: 2px solid #B7D5E2;
-    background: #fffafa;
-    border-radius: 20px;
-    height: 65%;
-   
+    width:100%;
+    margin-top:1.2rem;
+    background: #fff;
+    height:100%;
+    padding:0;
+    margin:0;
 }
 .board_list tr{
     border-bottom: 0.1px solid #7193C1;
@@ -383,7 +489,7 @@ table{border-collapse:collapse;}
    position: absolute;
    box-sizing: border-box;
    width:300px;
-   top:92%;
+   top:95%;
    left:37%; 
    font-size:0;
 }
@@ -398,14 +504,7 @@ table{border-collapse:collapse;}
     border-radius: 100px;
     color:black;
     font-weight: bold;
-
     }
-
-.board_list_wrap .paging a.num:first-child{
-
-}
-.board_list_wrap .paging a.num:nth-child(2){
-}
 
 .board_list_wrap .paging a.bt:first-child{
     margin-left:20px;
@@ -417,31 +516,12 @@ table{border-collapse:collapse;}
     border: 1px solid transparent;
 }
 
-button.d-btn{
-    position: absolute;
-    left:45.5%;
-    top:84%;
-    background: black;
-    color:#fff;
-    width:80px;
-    height: 40px;
-    border:0px;
-    border-radius: 10px;
-    font-family: 'IBMPlexSansKR-ExtraLight';
-    font-weight: bold;
-
-}
-button.d-btn:hover{
-    background-color: #d49466;
-    width: 80px;
-    border-radius: 10px;
-}
 
 button.f-btn{
     z-index: 1;
     position: absolute;
     left:45.5%;
-    top:84%;
+    top:20%;
     background: black;
     color:#fff;
     width:80px;
@@ -465,54 +545,67 @@ button.f-btn{
 .bar_menu{
     position: fixed;
     list-style: none;
-    padding:5px;
-    background:#7193C1;
-    width: 180px;
-    height: 100%;
+    background:#323232;
+    width:15%;
+    height:100%;
+    float:left;
     }
 
-.bar_menu li.bar_logo{
-   width: 260px;
-}
-.bar_menu li.bar_logo:hover{
-    background-color: #7193C1;
-    width:260px;
-   
-}
-
-   
-        .bar_menu li:hover{
-            background-color: #d49466;
-            border-radius: 20px;           
-            width:140.8px;
-        }
-     
     .bar_menu li{
-        display: block;
-        padding-top:50px;
-        padding-bottom: 50px;
-        padding-right: 40px;
-        font-size:15px;
-        text-align: left;
-        font-weight: 900;
+        text-align: center;
     }
 
-    .bar_menu li a{
-        padding:45px;
-    }
-
-
-    .bar_logo a{
-        margin-left:-15px;
-        font-size:20.5px;
-      
-    }
+    .bar_menu .bar_logo a{
+        margin-left:15px;
+        font-size: 1.8em;
+        color:#fff;
+    } 
+    .bar_logo{
+        height: calc(10% - 50px);
+        padding:25px;
+     }
     .bar_logo i{
-        margin-left:-5px;
         color:rgb(120, 120, 238);
-        font-size: 25px;
-        width: 17px;
-        height: 20px;
+        font-size:1.8em;
+        margin-left:-10px;
     }
+    .bar_menu .li li a:first-child{
+        font-family: 'HaenamFont';
+        padding:55px;
+        color:#fff;
+    }
+    .bar_menu .li li a{
+        font-family: "Apple SD Gothic Neo";
+        padding:55px;
+        color:#fff;
+    }
+
+
+    .bar_menu .li li{
+        padding-top:3.5em;
+        padding-bottom: 3.5em;
+    }
+
+
+
+
+    .bar_menu .li li:hover{
+        background-color: #4279ff;
+    }
+
+/********************************************/
+
+.cctv_img p{
+  cursor:pointer;
+
+}
+
+.cctv_img p:hover{
+    text-decoration: underline;
+
+}
 /*************pront end*****************************/
+
+
+
 
