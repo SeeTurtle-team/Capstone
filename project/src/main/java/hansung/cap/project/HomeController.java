@@ -889,7 +889,7 @@ public class HomeController {
 	//-------------------------QnA 검색결과 반환 ----------------------//
 	@RequestMapping(value = "/SQnA", method = RequestMethod.GET)
 	public String SQnA(HttpServletRequest httpServletRequest, Model model) {
-		System.out.println("developer page return");
+		
 		HttpSession session=httpServletRequest.getSession();
 		
 		String user_id=(String)session.getAttribute("userId");;
@@ -956,7 +956,7 @@ public class HomeController {
 	//-------------------------CCTV 분석결과 검색결과 반환------------------//
 	@RequestMapping(value = "/ScarList", method = RequestMethod.GET)
 	public String ScarList(HttpServletRequest httpServletRequest, Model model) {
-		System.out.println("developer page return");
+		
 		HttpSession session=httpServletRequest.getSession();
 		
 		String user_id=(String)session.getAttribute("userId");;
@@ -991,7 +991,7 @@ public class HomeController {
 	//-------------------------CarModel 검색결과 반환------------------//
 		@RequestMapping(value = "/SCarModel", method = RequestMethod.GET)
 		public String SCarModel(HttpServletRequest httpServletRequest, Model model) {
-			System.out.println("developer page return");
+			
 			HttpSession session=httpServletRequest.getSession();
 			
 			String user_id=(String)session.getAttribute("userId");;
