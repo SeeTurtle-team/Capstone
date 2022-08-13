@@ -76,7 +76,7 @@
 				<div class="Login_menu" onclick="logOut()">
 					<a href="/">로그인</a>
 				</div>
-				<div class="d-btn" onclick="CCTV()">
+				<div class="Login_menu" onclick="CCTV()">
 					<a href="/">슬라이드 버튼</a>
 				</div>
 			</div>
@@ -151,7 +151,7 @@
 
 
 				<div class="modal1">
-					<button>&times;</button>
+					<button class="x">&times;</button>
 					<div class="modal_content">
 						<!--이미지 받아오는 곳-->
 						<div class="img_container1">
@@ -170,7 +170,7 @@
 
 
 				<div class="modal2">
-					<button>&times;</button>
+					<button class="x">&times;</button>
 					<div class="modal_content">
 						<!--이미지 받아오는 곳-->
 						<div class="img_container">
@@ -224,6 +224,12 @@
 								<div class="swiper-button-next"></div>
 							</div>
 						</div>
+						                        <div class="btn-wrap">
+                            <button class="auto-start">Auto Play</button>
+                            <button class="auto-stop">Auto Stop</button>
+                        </div>
+						
+						
 					</div>
 
 					<!--slide2-->
@@ -286,7 +292,7 @@ $(function () {
         var srcText3 = srcText + "\n";
         $(".modal_content2 p").text(srcText3);
     });
-    $(".modal1 button").click(function () {
+    $(".modal1 button.x").click(function () {
         $(".modal1").hide();
     });
 });
@@ -307,39 +313,42 @@ $(function () {
         var srcText3 = srcText + "\n";
         $(".modal_content2 p").text(srcText3);
     });
-    $(".modal2 button").click(function () {
+    $(".modal2 button.x").click(function () {
         $(".modal2").hide();
     });
 });
 
-var swiper = new Swiper('.swiper-container',
-    {
-        loop: true,
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
+$("document").ready(function () {
+    var swiper = new Swiper('.swiper-container',
+        {
+            loop: true,
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+    });
+            $(".auto-start").on("click", function() {
+        // 기본 설정으로 autoplay 시작
+        swiper.autoplay.start();
     });
 
-$('.swiper-slide').hover(
-    function () {
+    $(".auto-stop").on("click", function() {
         swiper.autoplay.stop();
-    }, function () {
-        swiper.autoplay.start();
-    }
-);
-</script>
+    });
+});
 
+
+</script>
 
 
 </html>

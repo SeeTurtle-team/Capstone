@@ -109,7 +109,7 @@ body{
 }
 
 
-.modal1 button {
+.modal1 .x{
 	position: absolute;
     z-index: 500;
 	top: 3rem;
@@ -121,7 +121,7 @@ body{
     cursor:pointer;
 }
 
-.modal2 button {
+.modal2 .x{
 	position: absolute;
     z-index: 500;
 	top: 3rem;
@@ -323,53 +323,34 @@ a{
 
 .header_name{
     float:left;
-    width: calc(60% - 25px);
-    height:calc(100% - 50px);
-    padding: 25px;
+    width: calc(60% - 1.7361vw);
+    height:calc(100% - 3.4722vw);
+    padding: 1.7361vw;
     font-family: 'HaenamFont';
-    font-size:25px;
+    font-size:1.7361vw;
     color: #fff;
 }
 .menu{
-    display:flex;
     float:left;
-    width:calc(40% - 75px);
-    height:calc(100% - 50px);
-    padding: 25px;
+    display:flex;
+    width:calc(40% - 5.2083vw);
+    height:calc(100% - 3.4722vw);
+    padding: 1.7361vw;
+    font-size:1.7361vw;
     text-align: center;
 }
 .Login_menu{
     width:50%;
+    margin-top:-0.5vh;
 }
 .Login_menu a{
     color:#fff;
     font-family: 'HaenamFont';
-    font-size:25px;
 }
 .Login_menu a:hover{
     background-color: #d49466;
     border-radius:4px;
-    padding: 5px;
 }
-
-.d-tbn {
-    width: 50%;
-}
-
-.d-btn a{
-    font-family: 'HaenamFont';
-    color:#fff;
-    font-size:25px;
-
-}
-.d-btn a:hover{
-    background-color: #d49466;
-    border-radius:4px;
-    padding:5px;
-    letter-spacing: -1.3px;
-}
-
-
 
 /***********타이틀부터 테이블까지 묶음***********/
 
@@ -556,33 +537,35 @@ button.f-btn{
     }
 
     .bar_menu .bar_logo a{
-        margin-left:15px;
-        font-size: 1.8em;
+        font-size: 1.8vw;
         color:#fff;
     } 
     .bar_logo{
-        height: calc(10% - 50px);
-        padding:25px;
+        height: calc(10% - 3.4722vw);
+        padding:1.7361vw;
      }
     .bar_logo i{
         color:rgb(120, 120, 238);
-        font-size:1.8em;
-        margin-left:-10px;
+        font-size:1.8vw;
+        margin-left:-1.5vw;
     }
     .bar_menu .li li a:first-child{
         font-family: 'HaenamFont';
-        padding:55px;
+        padding:3.8194vh;
         color:#fff;
+        font-size:1.1111vw;
     }
     .bar_menu .li li a{
         font-family: "Apple SD Gothic Neo";
-        padding:55px;
+        padding:3.8194vw;
         color:#fff;
+        font-size:1.1111vw;
+
     }
 
 
     .bar_menu .li li{
-        padding-top:3.5em;
+        padding-top:3.8194vw;
         padding-bottom: 3.5em;
     }
 
@@ -603,6 +586,25 @@ button.f-btn{
 .cctv_img p:hover{
     text-decoration: underline;
 
+}
+
+.btn-wrap{
+    position: fixed;
+    display:flex;
+    top:75%;
+    width:102%;
+    height:5%;
+    z-index: 500;
+    justify-content: center;
+}
+.btn-wrap button{
+    flex-direction: row;
+    width:5em;
+    height:2em;
+    color:#fff;
+    background-color: #000;
+    cursor: pointer;
+    margin-right:1%;
 }
 /*************pront end*****************************/
 
