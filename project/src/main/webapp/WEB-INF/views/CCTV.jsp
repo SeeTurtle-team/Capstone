@@ -8,7 +8,6 @@
 </head>
 <script>
 	var url = "${list}";
-	url = url.replace("@","://");
 	console.log(url);
 	
 	var img = new Array();

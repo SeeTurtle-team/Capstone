@@ -324,7 +324,6 @@ public class HomeController {
 				url=imgUrl[0]+"?"+url;
 			}
 			
-			url = url.replace("://", "@");
 			System.out.println(url);
 			
 			model.addAttribute("list",url);
