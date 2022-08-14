@@ -36,8 +36,7 @@
 	
 </script>
 <body>
-	<h3>차량 모델 : ${cctv.model}</h3>
-	<h3>지나간 시간 : ${cctv.time}</h3>
+	
 	<div id="choonDiv"></div>
 	<img src="${cctv.imgUrl}">
 	<script>showImg();</script>

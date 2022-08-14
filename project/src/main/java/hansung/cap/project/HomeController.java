@@ -333,6 +333,22 @@ public class HomeController {
 		
 		else if(option.equals("cctvNow")) {
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
+			seq = seq-1;
+			
+			System.out.println(seq);
+			List<listVO> clist =  new ArrayList<listVO>();
+			clist = lDao.QueryAll();
+			int size = clist.size();
+			String url="";
+			
+			for(int i=seq; i<size; i++) {
+				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
+				url=imgUrl[0]+"?"+url;
+			}
+			
+			model.addAttribute("list",url);
+			
+			return "CCTV";
 		}
 		
 		else {

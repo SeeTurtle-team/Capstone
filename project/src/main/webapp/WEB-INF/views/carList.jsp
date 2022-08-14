@@ -130,7 +130,7 @@
 								<td>
 									<div class="cctv_img">
 										<p onclick = "img('${dataVO.seq}')" id="capture">캡쳐 보기</p>
-										<p onclick = "cctvNow('${dataVO.seq}')" id="LookForCctv">cctv 보기</p>
+										<p title="해당 시점부터 CCTV를 보실 수 있습니다" onclick = "cctvNow('${dataVO.seq}')" id="LookForCctv">cctv 보기</p>
 									</div>
 								</td>
 							</tr>
