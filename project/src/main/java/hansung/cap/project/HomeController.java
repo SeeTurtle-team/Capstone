@@ -320,8 +320,9 @@ public class HomeController {
 			String url="";
 			
 			for(int i=0; i<size; i++) {
+				System.out.println(clist.get(i).imgUrl);
 				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
-				url=imgUrl[0]+"?"+url;
+				url=url+"?"+imgUrl[0];
 			}
 			
 			System.out.println(url);
@@ -341,9 +342,11 @@ public class HomeController {
 			int size = clist.size();
 			String url="";
 			
-			for(int i=seq; i<size; i++) {
-				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
-				url=imgUrl[0]+"?"+url;
+			for(int i=0; i<size; i++) {
+				System.out.println(i);
+				String[] imgUrl = clist.get(seq).imgUrl.split("\\?");
+				url=url+"?"+imgUrl[0];
+				seq++;
 			}
 			
 			model.addAttribute("list",url);
