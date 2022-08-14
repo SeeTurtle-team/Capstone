@@ -84,7 +84,7 @@
 			<div class="header_name">시시티비</div>
 			<div class="menu">
 				<div class="Login_menu" onclick="logOut()">
-					<a href="/">로그인</a>
+					<a href="/?option=logOut">로그아웃</a>
 				</div>
 				<div class="Login_menu" onclick="CCTV()">
 					슬라이드 버튼
