@@ -6,12 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script>
 
-</script>
 <body>
 	<h3>차량 모델 : ${cctv.model}</h3>
 	<h3>지나간 시간 : ${cctv.time}</h3>
 	<img src="${cctv.imgUrl}">
+	
 </body>
 </html>

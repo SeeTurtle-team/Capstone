@@ -307,8 +307,31 @@ public class HomeController {
 			String img = lVO.imgUrl;
 			String[] imgUrl = img.split("\\?");
 			lVO.setImgUrl(imgUrl[0]);
+			String s = "hi";
 			model.addAttribute("cctv",lVO);
+			
+			return "Capture";
+		}
+		
+		else if(option.equals("cctv")) {
+			List<listVO> clist =  new ArrayList<listVO>();
+			clist = lDao.QueryAll();
+			int size = clist.size();
+			String url="";
+			
+			for(int i=0; i<size; i++) {
+				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
+				url=imgUrl[0]+url;
+			}
+			System.out.println(url);
+			model.addAttribute("size",size);
+			model.addAttribute("list",clist);
+			
 			return "CCTV";
+		}
+		
+		else if(option.equals("cctvNow")) {
+			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
 		}
 		
 		else {

@@ -52,6 +52,16 @@
 		var seq = seq;
 		location.href = "/carList" + "?option=img&seq=" + seq;
 	}
+	
+	function cctvNow(seq){
+		console.log(seq);
+		var seq = seq;
+		location.href = "/carList"+"?option=cctvNow&seq="+seq;
+	}
+	
+	function CCTV(){
+		location.href = "/carList"+"?option=cctv";
+	}
 </script>
 <body>
 
@@ -77,7 +87,7 @@
 					<a href="/">로그인</a>
 				</div>
 				<div class="Login_menu" onclick="CCTV()">
-					<a href="/">슬라이드 버튼</a>
+					슬라이드 버튼
 				</div>
 			</div>
 		</header>
@@ -119,8 +129,8 @@
 								<td><c:out value="${dataVO.time}" /></td>
 								<td>
 									<div class="cctv_img">
-										<p id="capture">캡쳐 보기</p>
-										<p id="LookForCctv">cctv 보기</p>
+										<p onclick = "img('${dataVO.seq}')" id="capture">캡쳐 보기</p>
+										<p onclick = "cctvNow('${dataVO.seq}')" id="LookForCctv">cctv 보기</p>
 									</div>
 								</td>
 							</tr>
@@ -131,7 +141,7 @@
 
 
 
-
+ 
 
 				<div class="imgList1">
 					<div class="imgC">
@@ -274,7 +284,7 @@
 
 
 </body>
-
+<!-- 
 <script>
 
 $(function () {
@@ -350,5 +360,5 @@ $("document").ready(function () {
 
 </script>
 
-
+ -->
 </html>
