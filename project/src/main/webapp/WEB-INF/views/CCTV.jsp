@@ -7,7 +7,13 @@
 <title>Insert title here</title>
 </head>
 <script>
-
+	var url = "${list}";
+	url = url.replace("@","://");
+	console.log(url);
+	
+	var img = new Array();
+	img = url.split("?");
+	console.log(img[2]);
 </script>
 <body>
 	<h3>차량 모델 : ${cctv.model}</h3>

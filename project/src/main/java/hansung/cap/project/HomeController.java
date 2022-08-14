@@ -321,11 +321,13 @@ public class HomeController {
 			
 			for(int i=0; i<size; i++) {
 				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
-				url=imgUrl[0]+url;
+				url=imgUrl[0]+"?"+url;
 			}
+			
+			url = url.replace("://", "@");
 			System.out.println(url);
-			model.addAttribute("size",size);
-			model.addAttribute("list",clist);
+			
+			model.addAttribute("list",url);
 			
 			return "CCTV";
 		}
