@@ -7,19 +7,11 @@
 <title>Insert title here</title>
 </head>
 <script>
-	
-	
 	var url = "${list}";
-	console.log(url);
-	
 	var img = new Array();
 	img = url.split("?");
-	console.log(img[2]);
 	var i = 0;
-	var s = "<img src="+img[0]+">";
-	console.log(s);
-	function showImg(){
-		console.log(img[i]);
+	function showImg(){		
 		if(img[i]===undefined){
 			alert("cctv가 끝났습니다");
 			location.href="/carList";
@@ -27,16 +19,12 @@
 		else{
 			document.all.choonDiv.innerHTML = "<img src="+img[i]+">";
 		    i++;
-		    
 			setTimeout("showImg()",1000);
 		}
-		
 	}
-	
 	
 </script>
 <body>
-	
 	<div id="choonDiv"></div>
 	<img src="${cctv.imgUrl}">
 	<script>showImg();</script>

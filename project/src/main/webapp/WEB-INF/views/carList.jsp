@@ -138,11 +138,6 @@
 					</tbody>
 				</table>
 
-
-
-
- 
-
 				<div class="imgList1">
 					<div class="imgC">
 						<div class="imgPlusp">
