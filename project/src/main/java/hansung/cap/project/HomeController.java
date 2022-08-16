@@ -261,8 +261,8 @@ public class HomeController {
 			page="1";
 		}
 		int Ipage = Integer.parseInt(page);
-		
-		lpagingVO pVo = new lpagingVO(Ipage, list);
+		Paging paging = new Paging();
+		paging.set(Ipage, list.size());
 		
 		if(option==null) {	//웹 페이지에서 넘겨준 값이 있으면 해당 페이지 값으로
 			
@@ -274,10 +274,10 @@ public class HomeController {
 			if(text.equals("")) {			//검색 값이 없으면
 				model.addAttribute("page", page);
 				model.addAttribute("list",list);
-				model.addAttribute("startPageNum", pVo.startPageNum);
-				model.addAttribute("endPageNum", pVo.endPageNum);
-				model.addAttribute("prev", pVo.prev);
-				model.addAttribute("next", pVo.next);
+				model.addAttribute("startPageNum", paging.startPageNum);
+				model.addAttribute("endPageNum", paging.endPageNum);
+				model.addAttribute("prev", paging.prev);
+				model.addAttribute("next", paging.next);
 				model.addAttribute("select", Ipage);
 				return "carList";
 			}
@@ -288,13 +288,13 @@ public class HomeController {
 				clist = lDao.QueryTime("%"+text+"%");
 			}
 			model.addAttribute("list",list);
-			lpagingVO spVo = new lpagingVO(Ipage, list);
+			paging.set(Ipage, list.size());
 			session.setAttribute("list", list);
 			
-			model.addAttribute("startPageNum", spVo.startPageNum);
-			model.addAttribute("endPageNum", spVo.endPageNum);
-			model.addAttribute("prev", spVo.prev);
-			model.addAttribute("next", spVo.next);
+			model.addAttribute("startPageNum", paging.startPageNum);
+			model.addAttribute("endPageNum", paging.endPageNum);
+			model.addAttribute("prev", paging.prev);
+			model.addAttribute("next", paging.next);
 			model.addAttribute("select", Ipage);
 			return "ScarList";
 		}
@@ -366,12 +366,12 @@ public class HomeController {
 		model.addAttribute("page", page);
 		model.addAttribute("list",list);
 		// 시작 및 끝 번호
-		model.addAttribute("startPageNum", pVo.startPageNum);
-		model.addAttribute("endPageNum", pVo.endPageNum);
+		model.addAttribute("startPageNum", paging.startPageNum);
+		model.addAttribute("endPageNum", paging.endPageNum);
 
 		// 이전 및 다음 
-		model.addAttribute("prev", pVo.prev);
-		model.addAttribute("next", pVo.next);
+		model.addAttribute("prev", paging.prev);
+		model.addAttribute("next", paging.next);
 		
 		// 현재 페이지
 		model.addAttribute("select", Ipage);
@@ -404,8 +404,8 @@ public class HomeController {
 				page="1";
 			}
 			int Ipage = Integer.parseInt(page);
-			
-			qpagingVO pVo = new qpagingVO(Ipage, list);
+			Paging paging = new Paging();
+			paging.set(Ipage, list.size());
 			
 			
 			if(option==null) {
@@ -417,10 +417,10 @@ public class HomeController {
 				if(keyWord.equals("")) {
 					model.addAttribute("page", page);
 					model.addAttribute("list",list);
-					model.addAttribute("startPageNum", pVo.startPageNum);
-					model.addAttribute("endPageNum", pVo.endPageNum);
-					model.addAttribute("prev", pVo.prev);
-					model.addAttribute("next", pVo.next);
+					model.addAttribute("startPageNum", paging.startPageNum);
+					model.addAttribute("endPageNum", paging.endPageNum);
+					model.addAttribute("prev", paging.prev);
+					model.addAttribute("next", paging.next);
 					model.addAttribute("select", Ipage);
 					return "QnA";
 				}
@@ -435,13 +435,13 @@ public class HomeController {
 					list = qDao.search("%"+keyWord+"%");
 				}				
 				model.addAttribute("list",list);
-				qpagingVO spVo = new qpagingVO(Ipage, list);
+				paging.set(Ipage, list.size());
 				session.setAttribute("list", list);
 				
-				model.addAttribute("startPageNum", spVo.startPageNum);
-				model.addAttribute("endPageNum", spVo.endPageNum);
-				model.addAttribute("prev", spVo.prev);
-				model.addAttribute("next", spVo.next);
+				model.addAttribute("startPageNum", paging.startPageNum);
+				model.addAttribute("endPageNum", paging.endPageNum);
+				model.addAttribute("prev", paging.prev);
+				model.addAttribute("next", paging.next);
 				model.addAttribute("select", Ipage);
 				return "SQnA";
 			}
@@ -536,12 +536,12 @@ public class HomeController {
 			model.addAttribute("page", page);
 			model.addAttribute("list",list);
 			// 시작 및 끝 번호
-			model.addAttribute("startPageNum", pVo.startPageNum);
-			model.addAttribute("endPageNum", pVo.endPageNum);
+			model.addAttribute("startPageNum", paging.startPageNum);
+			model.addAttribute("endPageNum", paging.endPageNum);
 
 			// 이전 및 다음 
-			model.addAttribute("prev", pVo.prev);
-			model.addAttribute("next", pVo.next);
+			model.addAttribute("prev", paging.prev);
+			model.addAttribute("next", paging.next);
 			
 			// 현재 페이지
 			model.addAttribute("select", Ipage);
@@ -564,8 +564,8 @@ public class HomeController {
 			page = "1";
 		}
 		int Ipage = Integer.parseInt(page);
-		
-		cpagingVO pVo = new cpagingVO(Ipage, list);
+		Paging paging = new Paging();
+		paging.set(Ipage, list.size());
 
 		if(option==null) {
 		}
@@ -575,10 +575,10 @@ public class HomeController {
 			if(searchText=="") {
 				model.addAttribute("page", page);
 				model.addAttribute("list",list);
-				model.addAttribute("startPageNum", pVo.startPageNum);
-				model.addAttribute("endPageNum", pVo.endPageNum);
-				model.addAttribute("prev", pVo.prev);
-				model.addAttribute("next", pVo.next);
+				model.addAttribute("startPageNum", paging.startPageNum);
+				model.addAttribute("endPageNum", paging.endPageNum);
+				model.addAttribute("prev", paging.prev);
+				model.addAttribute("next", paging.next);
 				model.addAttribute("select", Ipage);
 				return "CarModel";
 			}
@@ -589,25 +589,25 @@ public class HomeController {
 				list = cDao.QuerryMaker("%"+searchText+"%");
 			}
 			model.addAttribute("list",list);
-			cpagingVO spVo = new cpagingVO(Ipage, list);
+			paging.set(Ipage, list.size());
 			session.setAttribute("list", list);
 			
-			model.addAttribute("startPageNum", spVo.startPageNum);
-			model.addAttribute("endPageNum", spVo.endPageNum);
-			model.addAttribute("prev", spVo.prev);
-			model.addAttribute("next", spVo.next);
+			model.addAttribute("startPageNum", paging.startPageNum);
+			model.addAttribute("endPageNum", paging.endPageNum);
+			model.addAttribute("prev", paging.prev);
+			model.addAttribute("next", paging.next);
 			model.addAttribute("select", Ipage);
 			return "SCarModel";
 		}
 		model.addAttribute("page", page);
 		model.addAttribute("list",list);
 		// 시작 및 끝 번호
-		model.addAttribute("startPageNum", pVo.startPageNum);
-		model.addAttribute("endPageNum", pVo.endPageNum);
+		model.addAttribute("startPageNum", paging.startPageNum);
+		model.addAttribute("endPageNum", paging.endPageNum);
 
 		// 이전 및 다음 
-		model.addAttribute("prev", pVo.prev);
-		model.addAttribute("next", pVo.next);
+		model.addAttribute("prev", paging.prev);
+		model.addAttribute("next", paging.next);
 		
 		// 현재 페이지
 		model.addAttribute("select", Ipage);
@@ -636,9 +636,9 @@ public class HomeController {
 			page="1";
 		}
 		int Ipage = Integer.parseInt(page);
-		
-		pagingVO pVo = new pagingVO(Ipage, list);
-		
+		Paging paging = new Paging();
+		paging.set(Ipage, list.size());
+
 		if(option==null) {
 			
 		}
@@ -648,10 +648,10 @@ public class HomeController {
 			if(s.equals("")) {
 				model.addAttribute("page", page);
 				model.addAttribute("list",list);
-				model.addAttribute("startPageNum", pVo.startPageNum);
-				model.addAttribute("endPageNum", pVo.endPageNum);
-				model.addAttribute("prev", pVo.prev);
-				model.addAttribute("next", pVo.next);
+				model.addAttribute("startPageNum", paging.startPageNum);
+				model.addAttribute("endPageNum", paging.endPageNum);
+				model.addAttribute("prev", paging.prev);
+				model.addAttribute("next", paging.next);
 				model.addAttribute("select", Ipage);
 				return "Free";
 			}
@@ -666,13 +666,13 @@ public class HomeController {
 				list = fDao.Search("%"+s+"%");
 			}
 			model.addAttribute("list",list);
-			pagingVO spVo = new pagingVO(Ipage, list);
+			paging.set(Ipage, list.size());
 			session.setAttribute("list", list);
 			
-			model.addAttribute("startPageNum", spVo.startPageNum);
-			model.addAttribute("endPageNum", spVo.endPageNum);
-			model.addAttribute("prev", spVo.prev);
-			model.addAttribute("next", spVo.next);
+			model.addAttribute("startPageNum", paging.startPageNum);
+			model.addAttribute("endPageNum", paging.endPageNum);
+			model.addAttribute("prev", paging.prev);
+			model.addAttribute("next", paging.next);
 			model.addAttribute("select", Ipage);
 			return "SFree";
 		}
@@ -775,12 +775,12 @@ public class HomeController {
 		model.addAttribute("page", page);
 		model.addAttribute("list",list);
 		// 시작 및 끝 번호
-		model.addAttribute("startPageNum", pVo.startPageNum);
-		model.addAttribute("endPageNum", pVo.endPageNum);
+		model.addAttribute("startPageNum", paging.startPageNum);
+		model.addAttribute("endPageNum", paging.endPageNum);
 
 		// 이전 및 다음 
-		model.addAttribute("prev", pVo.prev);
-		model.addAttribute("next", pVo.next);
+		model.addAttribute("prev", paging.prev);
+		model.addAttribute("next", paging.next);
 		
 		// 현재 페이지
 		model.addAttribute("select", Ipage);
@@ -953,17 +953,18 @@ public class HomeController {
 			page = "1";
 		}
 		int Ipage = Integer.parseInt(page);
-		qpagingVO pVo = new qpagingVO(Ipage, list);
+		Paging paging = new Paging();
+		paging.set(Ipage, list.size());
 		
 		model.addAttribute("page", page);
 		model.addAttribute("list",list);
 		// 시작 및 끝 번호
-		model.addAttribute("startPageNum", pVo.startPageNum);
-		model.addAttribute("endPageNum", pVo.endPageNum);
+		model.addAttribute("startPageNum", paging.startPageNum);
+		model.addAttribute("endPageNum", paging.endPageNum);
 
 		// 이전 및 다음 
-		model.addAttribute("prev", pVo.prev);
-		model.addAttribute("next", pVo.next);
+		model.addAttribute("prev", paging.prev);
+		model.addAttribute("next", paging.next);
 
 		model.addAttribute("select", Ipage);
 		return "SQnA";
@@ -986,17 +987,18 @@ public class HomeController {
 			page = "1";
 		}
 		int Ipage = Integer.parseInt(page);
-		pagingVO pVo = new pagingVO(Ipage, list);
+		Paging paging = new Paging();
+		paging.set(Ipage, list.size());
 		
 		model.addAttribute("page", page);
 		model.addAttribute("list",list);
 		// 시작 및 끝 번호
-		model.addAttribute("startPageNum", pVo.startPageNum);
-		model.addAttribute("endPageNum", pVo.endPageNum);
+		model.addAttribute("startPageNum", paging.startPageNum);
+		model.addAttribute("endPageNum", paging.endPageNum);
 
 		// 이전 및 다음 
-		model.addAttribute("prev", pVo.prev);
-		model.addAttribute("next", pVo.next);
+		model.addAttribute("prev", paging.prev);
+		model.addAttribute("next", paging.next);
 
 		model.addAttribute("select", Ipage);
 		return "SFree";
@@ -1021,17 +1023,18 @@ public class HomeController {
 			page = "1";
 		}
 		int Ipage = Integer.parseInt(page);
-		lpagingVO pVo = new lpagingVO(Ipage, list);
+		Paging paging = new Paging();
+		paging.set(Ipage, list.size());
 		
 		model.addAttribute("page", page);
 		model.addAttribute("list",list);
 		// 시작 및 끝 번호
-		model.addAttribute("startPageNum", pVo.startPageNum);
-		model.addAttribute("endPageNum", pVo.endPageNum);
+		model.addAttribute("startPageNum", paging.startPageNum);
+		model.addAttribute("endPageNum", paging.endPageNum);
 
 		// 이전 및 다음 
-		model.addAttribute("prev", pVo.prev);
-		model.addAttribute("next", pVo.next);
+		model.addAttribute("prev", paging.prev);
+		model.addAttribute("next", paging.next);
 
 		model.addAttribute("select", Ipage);
 		return "ScarList";
@@ -1055,21 +1058,20 @@ public class HomeController {
 				page = "1";
 			}
 			int Ipage = Integer.parseInt(page);
-			cpagingVO pVo = new cpagingVO(Ipage, list);
+			Paging paging = new Paging();
+			paging.set(Ipage, list.size());
 			
 			model.addAttribute("page", page);
 			model.addAttribute("list",list);
 			// 시작 및 끝 번호
-			model.addAttribute("startPageNum", pVo.startPageNum);
-			model.addAttribute("endPageNum", pVo.endPageNum);
+			model.addAttribute("startPageNum", paging.startPageNum);
+			model.addAttribute("endPageNum", paging.endPageNum);
 
 			// 이전 및 다음 
-			model.addAttribute("prev", pVo.prev);
-			model.addAttribute("next", pVo.next);
+			model.addAttribute("prev", paging.prev);
+			model.addAttribute("next", paging.next);
 
 			model.addAttribute("select", Ipage);
-			
-			
 			return "SCarModel";
 		}
 }
