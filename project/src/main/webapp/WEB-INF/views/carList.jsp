@@ -10,9 +10,7 @@
 <link rel="stylesheet" href="/resources/css/Free.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
 <link rel="stylesheet"
@@ -21,9 +19,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <!--제이쿼리 가져옴-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <title>시시 티비</title>
 <script src="https://kit.fontawesome.com/af4e1eff79.js"
 	crossorigin="anonymous"></script>
@@ -87,7 +83,7 @@
 					<a href="/?option=logOut">로그아웃</a>
 				</div>
 				<div class="Login_menu" onclick="CCTV()">
-					슬라이드 버튼
+				<a href="/">슬라이드 버튼</a>
 				</div>
 			</div>
 		</header>
