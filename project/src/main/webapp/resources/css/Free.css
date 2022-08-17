@@ -459,8 +459,9 @@ table {
 }
 
 .board_list thead tr th{
-    color:#A9A9A9;
+    color:#656565;
     font-size: 14px;
+    font-family: 'Nanum Barun Gothic';
 }
 
 .board_list tr {
@@ -578,7 +579,7 @@ button.f-btn {
 .bar_menu {
     position: fixed;
     list-style: none;
-    background: #323232;
+    background-color: #0d82eb;
     width: 15%;
     height: 100%;
     float: left;
@@ -594,6 +595,7 @@ button.f-btn {
 .bar_logo a {
     font-size: 1.8vw;
     color: #fff;
+    font-family: 'Electrolize';
 }
 
 .bar_logo {
@@ -602,7 +604,7 @@ button.f-btn {
 }
 
 .bar_logo i {
-    color: rgb(120, 120, 238);
+    color:white;
     font-size: 1.8vw;
     margin-left: -1.5vw;
 }
