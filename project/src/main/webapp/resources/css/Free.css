@@ -526,7 +526,7 @@ table {
     justify-content: center;
     position: absolute;
     box-sizing: border-box;
-    width: 300px;
+    width: 30vw;
     top: 95%;
     left: 37%;
     font-size: 0;
@@ -638,11 +638,11 @@ button.f-btn {
     background-color: #4279ff;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px){
     .bar_menu {
         flex-direction: column;
         align-items: flex-start;
-        width: 100%;
+        width: 100vw;
         height: 31vh;
 		position: relative;
         
@@ -664,7 +664,7 @@ button.f-btn {
     header {
         display: flex;
         position: relative;
-        width: 100%;
+        width: 100vw;
         height: 4vh;
         left: 0;
     }
@@ -683,17 +683,15 @@ button.f-btn {
 
     .all_tb {
         left: auto;
-        position: relative;
         margin-top: 5vh;
         width: 100vw;
         height: auto;
     }
 
     .board_list_wrap .paging {
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100vw;
+    	position : inherit;
+		margin-top:10px;
+        width: 90vw;
     }
 }
 
