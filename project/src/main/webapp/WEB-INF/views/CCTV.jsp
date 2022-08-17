@@ -63,18 +63,17 @@ margin:auto;
 
 </style>
 <body>
-<div class="left_right">
-<i class="fa-solid fa-chevron-left"></i>
-<i class="fa-solid fa-chevron-right"></i>
-</div>
-	<div class="helpImage">
-	<img id="cctv_img" src="">
+	<div class="left_right">
+		<i class="fa-solid fa-chevron-left"></i>
+		<i class="fa-solid fa-chevron-right"></i>
 	</div>
+	<div id="choonDiv"></div>
 	<h2 class="abc">차량 모델 : ${cctv.model}</h2>
 	<h3 class="abcd">지나간 시간 : ${cctv.time}</h3>
+	
 	<div class="button">
-	<button id="back">돌아가기</button>
-	<button id="back">정지</button>
+		<button id="back">돌아가기</button>
+		<button id="back" onclick="stop()">정지</button>
 	</div>
 </body>
 
@@ -83,6 +82,7 @@ margin:auto;
 </script>
 
 <script>
+/*
 	const url = "${list}";
 	let img = new Array();
 	img = url.split("?");
@@ -91,14 +91,18 @@ margin:auto;
 		for(let i=0; i<img.length-1; i++){
 			(x => {
 			setTimeout(()=> {
+				if(img[i+1]===undefined){
+					alert("cctv가 끝났습니다");
+					location.href="/carList";
+				}
 				console.log(img[i+1]);
 				document.getElementById("cctv_img").setAttribute("src",img[i+1]);
-			},3000*x)
+			},1000*x)
 			})(i)
 		}
 	
 }
-	
+	*/
 	$(function (){
 		 $("#back").click(function(){
 			 location.href="/carList";
@@ -106,23 +110,37 @@ margin:auto;
 	})
 	// show()랑 showImg() 중 구현하시려는 거 이용해서 구현하시면 될 듯.
 	
-	/* var url = "${list}";
+	var url = "${list}";
 	var img = new Array();
 	img = url.split("?");
-	var i = 0;
+	var i = 1;
+	var flag = 0;
 	function showImg(){		
 		if(img[i]===undefined){
 			alert("cctv가 끝났습니다");
-			location.href="/carList";
+			//location.href="/carList";
 		}
 		else{
-			document.all.choonDiv.innerHTML = "<img src="+img[i]+">";
+			if(flag===1){
+				return;
+			}
+			document.all.choonDiv.innerHTML = "<img id='cctv_img' src="+img[i]+">";
 		    i++;
 			setTimeout("showImg()",1000);
 		}
-	}*/
+	}
 	
-	show();
+	function stop(){
+		if(flag===0){
+			flag=1;
+		}
+		else{
+			flag=0;
+			showImg();
+		}
+	}
+	
+	showImg();
 </script>
 
 </html>
