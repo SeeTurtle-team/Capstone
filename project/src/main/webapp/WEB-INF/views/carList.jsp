@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="건호" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/css/Free.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,22 +132,6 @@
 						</c:forEach>
 					</tbody>
 				</table>
-
-				<div class="imgList1">
-					<div class="imgC">
-						<div class="imgPlusp">
-							<!-- <c:set var="img" value="${dataVO.carImage}" /> -->
-							<img src="https://ifh.cc/g/BBpfCT.png" alt="Image Error"
-								style="display: none">
-							<p class="kind" style="color: transparent">차량 모델: test car</p>
-							<p class="detail" style="color: transparent">지나간 시간:
-								2022:08:10 14:59</p>
-							<!-- <p class="detail2" style="color:transparent">차 엔진 : test
-                                | 적재용량 : test
-                                </p> -->
-						</div>
-					</div>
-				</div>
 
 
 				<div class="modal1">
