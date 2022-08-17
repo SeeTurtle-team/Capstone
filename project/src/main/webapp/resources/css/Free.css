@@ -644,6 +644,8 @@ button.f-btn {
         align-items: flex-start;
         width: 100%;
         height: 31vh;
+		position: relative;
+        
     }
     .nav_li{
         height: 90%;
@@ -665,7 +667,6 @@ button.f-btn {
         width: 100%;
         height: 4vh;
         left: 0;
-        top: 31vh;
     }
 
     .header_name {
@@ -682,7 +683,6 @@ button.f-btn {
 
     .all_tb {
         left: auto;
-        top: 31vh;
         position: relative;
         margin-top: 5vh;
         width: 100vw;
