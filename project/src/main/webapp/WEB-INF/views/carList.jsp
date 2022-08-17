@@ -82,7 +82,7 @@
 					<a href="/?option=logOut">로그아웃</a>
 				</div>
 				<div class="Login_menu" onclick="CCTV()">
-				<a href="/">슬라이드 버튼</a>
+				<a href="/carList?option=cctv">슬라이드 버튼</a>
 				</div>
 			</div>
 		</header>

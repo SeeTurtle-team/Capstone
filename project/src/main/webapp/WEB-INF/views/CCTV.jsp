@@ -93,7 +93,7 @@ margin:auto;
 			setTimeout(()=> {
 				console.log(img[i+1]);
 				document.getElementById("cctv_img").setAttribute("src",img[i+1]);
-			},3000*x)
+			},1000*x)
 			})(i)
 		}
 	
