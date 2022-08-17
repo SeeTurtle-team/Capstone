@@ -39,11 +39,6 @@ body {
     margin: 0;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 .imgList1 {
     margin-top: 1%;
     margin-left: 7%;
@@ -465,7 +460,7 @@ table {
 
 .board_list thead tr th{
     color:#A9A9A9;
-    font-size: 1vw;
+    font-size: 14px;
 }
 
 .board_list tr {
@@ -473,11 +468,9 @@ table {
 }
 
 .board_list th,
-
 .board_list td {
-    padding: 10px;
     text-align: center;
-    font-size: 1.5vw;
+    font-size: 13px;
 }
 
 
@@ -526,7 +519,7 @@ table {
     justify-content: center;
     position: absolute;
     box-sizing: border-box;
-    width: 30vw;
+    width: 300px;
     top: 95%;
     left: 37%;
     font-size: 0;
@@ -589,6 +582,8 @@ button.f-btn {
     width: 15%;
     height: 100%;
     float: left;
+    padding:0;
+    margin:0;
 }
 
 .bar_menu li {
@@ -612,6 +607,14 @@ button.f-btn {
     margin-left: -1.5vw;
 }
 
+.bar_toogle i{
+    display: none;
+    position: absolute;
+    right:22px;
+    top:2px;
+    font-size:24px;
+}
+
 .nav_li {
     height: 90%;
 }
@@ -625,13 +628,14 @@ button.f-btn {
 .nav_li li a:first-child {
     font-family: 'HaenamFont';
     color: #fff;
-    font-size: 1vw;
+    font-size:15px;
 }
 
 .nav_li li a {
     font-family: "Apple SD Gothic Neo";
     color: #fff;
-    font-size: 1vw;
+    padding:2.5vw;
+    font-size: 15px;
 }
 
 .nav_li li:hover {
@@ -642,13 +646,12 @@ button.f-btn {
     .bar_menu {
         flex-direction: column;
         align-items: flex-start;
-        width: 100vw;
-        height: 31vh;
-		position: relative;
-        
+        width: 100%;
+        position: relative;
     }
     .nav_li{
         height: 90%;
+        display: none;
     }
 
     .nav_li li {
@@ -656,42 +659,67 @@ button.f-btn {
         line-height: 4.5vh;
     }
 
+    .nav_li li a{
+        font-size:20px;
+    }
     .bar_logo {
         padding: 0;
-        height: 10%;
     }
 
     header {
-        display: flex;
+        display: none;
         position: relative;
-        width: 100vw;
-        height: 4vh;
+        width: 100%;
         left: 0;
     }
 
     .header_name {
         width: 28.5vw;
         height: auto;
+      	font-size:15px;
+        
     }
 
     .menu {
         width: 65vw;
         height: auto;
         padding: 1.5vw;
+        font-size:15px;
         flex-direction: row-reverse;
     }
 
     .all_tb {
         left: auto;
-        margin-top: 5vh;
+        margin-top: 40px;
         width: 100vw;
         height: auto;
     }
 
     .board_list_wrap .paging {
-    	position : inherit;
-		margin-top:10px;
+        position : absolute;
         width: 90vw;
+        left:4.5vw;
+        top:85vh;
+    }
+
+    .bar_toogle i{
+        display: block;
+    }
+	.bar_toogle a{
+		display:none;
+	}
+    .bar_logo a, .bar_logo i{
+        font-size: 25px;
+        padding-top:2.5px;
+        padding-bottom:2.5px;
+    }
+
+    header.active{
+        display: flex;
+    }
+
+    .nav_li.active{
+        display: block;
     }
 }
 

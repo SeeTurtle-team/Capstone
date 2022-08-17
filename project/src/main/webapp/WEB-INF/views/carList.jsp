@@ -65,7 +65,11 @@
 	<div class="all">
 		<ul class="bar_menu">
 			<li class="bar_logo"><i class="fa-solid fa-car-crash"></i> <a
-				href="/">Han Sung</a></li>
+				href="/">Han Sung</a>
+				                <a href="#" class="bar_toogle">
+                    <i class="fa-solid fa-bars"></i>
+                </a>   
+				</li>
 			<div class="nav_li">
 				<li><a href="/carList">시시티비</a></li>
 				<li><a href="/CarModel">Car_model </a></li>
@@ -107,10 +111,10 @@
 
 					<thead>
 						<tr>
-							<th>번&nbsp;&nbsp;&nbsp;호</th>
-							<th>차&nbsp;&nbsp;&nbsp;종</th>
-							<th>시&nbsp;&nbsp;&nbsp;간</th>
-							<th>보&nbsp;&nbsp;&nbsp;기</th>
+							<th>번&nbsp;호</th>
+							<th>차&nbsp;종</th>
+							<th>시&nbsp;간</th>
+							<th>보&nbsp;기</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -124,8 +128,8 @@
 								<td><c:out value="${dataVO.time}" /></td>
 								<td>
 									<div class="cctv_img">
-										<p onclick = "img('${dataVO.seq}')" id="capture">캡쳐 보기</p>
-										<p title="해당 시점부터 CCTV를 보실 수 있습니다" onclick = "cctvNow('${dataVO.seq}')" id="LookForCctv">cctv 보기</p>
+										<p onclick = "img('${dataVO.seq}')" id="capture">캡쳐</p>
+										<p title="해당 시점부터 CCTV를 보실 수 있습니다" onclick = "cctvNow('${dataVO.seq}')" id="LookForCctv">CCTV</p>
 									</div>
 								</td>
 							</tr>
@@ -258,6 +262,16 @@
 
 
 </body>
+<script>
+        const bar_toogle=document.querySelector('.bar_toogle');
+    const menu =document.querySelector('.nav_li');
+    const header =document.querySelector('header');
+
+    bar_toogle.addEventListener('click', () =>{
+        menu.classList.toggle('active');
+        header.classList.toggle('active');
+    });
+</script>
 <!-- 
 <script>
 

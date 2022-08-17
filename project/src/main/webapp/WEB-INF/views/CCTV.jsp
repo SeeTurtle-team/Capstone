@@ -24,7 +24,7 @@ body{
     height: 100vh;
     margin:0;
 }
-.helpImage{
+#choonDiv{
     box-sizing: content-box;
     width: 100%;
     height:65%;
@@ -67,7 +67,9 @@ margin:auto;
 		<i class="fa-solid fa-chevron-left"></i>
 		<i class="fa-solid fa-chevron-right"></i>
 	</div>
-	<div id="choonDiv"></div>
+	<div id="choonDiv">
+	
+	</div>
 	<h2 class="abc">차량 모델 : ${cctv.model}</h2>
 	<h3 class="abcd">지나간 시간 : ${cctv.time}</h3>
 	
