@@ -19,10 +19,9 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <!--제이쿼리 가져옴-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>시시 티비</title>
-<script src="https://kit.fontawesome.com/af4e1eff79.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/af4e1eff79.js" crossorigin="anonymous"></script>
 
 </head>
 <script>
@@ -67,8 +66,8 @@
 		<ul class="bar_menu">
 			<li class="bar_logo"><i class="fa-solid fa-car-crash"></i> <a
 				href="/">Han Sung</a></li>
-			<div class="li">
-				<li><a href="/carList">CCTV_analysis</a></li>
+			<div class="nav_li">
+				<li><a href="/carList">시시티비</a></li>
 				<li><a href="/CarModel">Car_model </a></li>
 				<li><a href="/free">Free_Board</a></li>
 				<li><a href="/QnA">QnA</a></li>
@@ -108,10 +107,10 @@
 
 					<thead>
 						<tr>
-							<th>인덱스</th>
-							<th>차종</th>
-							<th>시간</th>
-							<th>보기</th>
+							<th>번&nbsp;&nbsp;&nbsp;호</th>
+							<th>차&nbsp;&nbsp;&nbsp;종</th>
+							<th>시&nbsp;&nbsp;&nbsp;간</th>
+							<th>보&nbsp;&nbsp;&nbsp;기</th>
 						</tr>
 					</thead>
 					<tbody>
