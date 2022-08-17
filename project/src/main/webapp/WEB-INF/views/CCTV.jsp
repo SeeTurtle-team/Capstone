@@ -64,8 +64,8 @@ margin:auto;
 </style>
 <body>
 	<div class="left_right">
-		<i class="fa-solid fa-chevron-left"></i>
-		<i class="fa-solid fa-chevron-right"></i>
+		<i class="fa-solid fa-chevron-left" onclick="i=i-2;"></i>
+		<i class="fa-solid fa-chevron-right" onclick="i=i+0.5;"></i>
 	</div>
 	<div id="choonDiv">
 	
@@ -116,31 +116,35 @@ margin:auto;
 	var img = new Array();
 	img = url.split("?");
 	var i = 1;
-	var flag = 0;
+	var flag = true;
 	function showImg(){		
-		if(img[i]===undefined){
+		if(img[parseInt(i)]===undefined){
+			console.log(i);
 			alert("cctv가 끝났습니다");
-			//location.href="/carList";
+			location.href="/carList";
 		}
 		else{
-			if(flag===1){
+			if(flag===false){
 				return;
 			}
-			document.all.choonDiv.innerHTML = "<img id='cctv_img' src="+img[i]+">";
-		    i++;
+			console.log(i);
+			document.all.choonDiv.innerHTML = "<img id='cctv_img' src="+img[parseInt(i)]+">";
+		    i=parseInt(i);
+			i++;
 			setTimeout("showImg()",1000);
 		}
 	}
 	
 	function stop(){
-		if(flag===0){
-			flag=1;
+		if(flag){
+			flag=false;
 		}
 		else{
-			flag=0;
+			flag=true;
 			showImg();
 		}
 	}
+	
 	
 	showImg();
 </script>
