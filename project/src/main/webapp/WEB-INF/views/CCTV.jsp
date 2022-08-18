@@ -163,6 +163,7 @@ margin:auto;
 		var imgUrl = img[i];
 		console.log(imgUrl);
 		var url = imgUrl.replace(/%/gi,'@');
+		//url = url.replace(/+/gi,'(');
 		console.log(url);
 		location.href = "/carList?option=img&sel=sel&url="+url;
 	}
