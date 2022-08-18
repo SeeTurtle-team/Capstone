@@ -345,7 +345,6 @@ a {
     float: left;
     display: flex;
     width: calc(40% - 5.2083vw);
-    padding: 10px;
     font-size: 20px;
     text-align: center;
     font-family:'times'
@@ -353,6 +352,7 @@ a {
 
 .Login_menu {
     width: 50%;
+    padding:10px;
 }
 
 .Login_menu a {
@@ -631,7 +631,6 @@ button.f-btn {
 
 .nav_li li a {
 	color: #fff;
-    padding:2.5vw;
     font-size: 20px;
     font-family:'times';
 }
@@ -672,17 +671,18 @@ button.f-btn {
     }
 
     .header_name {
-        width: 28.5vw;
+        width: 31vw;
         height: auto;
       	font-size:15px;
-        
+        font-weight:bolder;
     }
 
     .menu {
-        width: 65vw;
+        width: 69vw;
         height: auto;
         font-size:15px;
         flex-direction: row-reverse;
+        font-weight:bolder;
     }
 
     .all_tb {
