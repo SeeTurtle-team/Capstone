@@ -12,6 +12,7 @@ public interface listDAO {
 	public List<listVO> paging(int paging);
 	public List<listVO> searchName(String msg);
 	public listVO selectOne(int a);
+	public listVO selectImg(String url);
 	public int countBoard(listVO vo);
 	public int ScountBoard1(String msg);
 	public int ScountBoard2(String msg);

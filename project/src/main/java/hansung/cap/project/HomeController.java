@@ -300,10 +300,24 @@ public class HomeController {
 		}
 		
 		else if(option.equals("img")) {
-			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
-			listVO lVO = new listVO();
-			lVO = lDao.selectOne(seq);
 			
+			listVO lVO = new listVO();
+			
+			String select = httpServletRequest.getParameter("sel");
+			/*
+			if(select.equals("sel")) {
+				String url = httpServletRequest.getParameter("url");
+				System.out.println(url);
+				url=url.replace("@","%");
+				System.out.println(url);
+				lVO = lDao.selectImg("%"+url+"%");
+				System.out.println(lVO.imgUrl);
+				model.addAttribute("cctv",lVO);
+				
+				return "Capture";
+			}*/
+			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
+			lVO = lDao.selectOne(seq);
 			String img = lVO.imgUrl;
 			String[] imgUrl = img.split("\\?");
 			lVO.setImgUrl(imgUrl[0]);

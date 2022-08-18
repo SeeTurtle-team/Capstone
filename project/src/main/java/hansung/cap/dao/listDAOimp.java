@@ -56,6 +56,11 @@ public class listDAOimp implements listDAO {
     }
     
     @Override
+    public listVO selectImg(String url) {
+    	return sqlSession.selectOne(namespace+".selectUrl",url);
+    }
+    
+    @Override
     public int countBoard(listVO vo) {
     	int result = sqlSession.selectOne(namespace+".countBoard", vo);
 		return result;

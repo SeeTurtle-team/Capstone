@@ -76,6 +76,7 @@ margin:auto;
 	 -->
 	<div class="button">
 		<button id="back">돌아가기</button>
+		<button onclick="cctv()">정보보기</button>
 		<button id="back" onclick="stop()">정지</button>
 		<div>
 			<input id="speed" type="text" placeholder="사진간의 속도를 조절할 수 있습니다(초)" />
@@ -121,10 +122,11 @@ margin:auto;
 	var url = "${list}";
 	var img = new Array();
 	img = url.split("?");
-	var i = 1;
+	var i = 0;
 	var flag = true;
 	var sec = 1000;
-	function showImg(){		
+	function showImg(){
+		i++;
 		if(img[parseInt(i)]===undefined){
 			console.log(i);
 			alert("cctv가 끝났습니다");
@@ -137,7 +139,7 @@ margin:auto;
 			console.log(i);
 			document.all.choonDiv.innerHTML = "<img id='cctv_img' src="+img[parseInt(i)]+">";
 		    i=parseInt(i);
-			i++;
+			
 			setTimeout("showImg()",sec);
 		}
 	}
@@ -155,6 +157,14 @@ margin:auto;
 	function speed(){
 		var speed = document.getElementById("speed").value;
 		sec = speed*1000;
+	}
+	
+	function cctv(){
+		var imgUrl = img[i];
+		console.log(imgUrl);
+		var url = imgUrl.replace(/%/gi,'@');
+		console.log(url);
+		location.href = "/carList?option=img&sel=sel&url="+url;
 	}
 	
 	
