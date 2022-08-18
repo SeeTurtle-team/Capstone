@@ -70,12 +70,18 @@ margin:auto;
 	<div id="choonDiv">
 	
 	</div>
+	<!-- 구현 불가능하진 않지만 비효율적이라 판단해서 다른 방법을 찾아볼 예정
 	<h2 class="abc">차량 모델 : ${cctv.model}</h2>
 	<h3 class="abcd">지나간 시간 : ${cctv.time}</h3>
-	
+	 -->
 	<div class="button">
 		<button id="back">돌아가기</button>
 		<button id="back" onclick="stop()">정지</button>
+		<div>
+			<input id="speed" type="text" placeholder="사진간의 속도를 조절할 수 있습니다(초)" />
+			<button onclick="speed()">속도 조절</button>
+		</div>
+		
 	</div>
 </body>
 
@@ -117,6 +123,7 @@ margin:auto;
 	img = url.split("?");
 	var i = 1;
 	var flag = true;
+	var sec = 1000;
 	function showImg(){		
 		if(img[parseInt(i)]===undefined){
 			console.log(i);
@@ -131,7 +138,7 @@ margin:auto;
 			document.all.choonDiv.innerHTML = "<img id='cctv_img' src="+img[parseInt(i)]+">";
 		    i=parseInt(i);
 			i++;
-			setTimeout("showImg()",1000);
+			setTimeout("showImg()",sec);
 		}
 	}
 	
@@ -143,6 +150,11 @@ margin:auto;
 			flag=true;
 			showImg();
 		}
+	}
+	
+	function speed(){
+		var speed = document.getElementById("speed").value;
+		sec = speed*1000;
 	}
 	
 	
