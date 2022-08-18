@@ -335,10 +335,9 @@ a {
 .header_name {
     float: left;
     width: calc(60% - 1.7361vw);
-    height: calc(100% - 3.4722vw);
-    padding: 1.7361vw;
+    padding: 10px;
     font-family: 'times';
-    font-size: 1.7361vw;
+    font-size: 20px;
     color: #fff;
 }
 
@@ -346,10 +345,10 @@ a {
     float: left;
     display: flex;
     width: calc(40% - 5.2083vw);
-    height: calc(100% - 3.4722vw);
-    padding: 1.7361vw;
-    font-size: 1.7361vw;
+    padding: 10px;
+    font-size: 20px;
     text-align: center;
+    font-family:'times'
 }
 
 .Login_menu {
@@ -383,7 +382,6 @@ header {
     position: fixed;
     left: 15%;
     width: 85%;
-    height: 10%;
     background-color: #A66F5B;
 }
 
@@ -448,6 +446,7 @@ table {
     border-collapse: collapse;
 }
 
+
 .board_list {
     width: 100%;
     margin-top: 1.2rem;
@@ -502,6 +501,7 @@ table {
 
 .cctv_img p {
     width: 50%;
+    margin:10px;
     cursor: pointer;
 
 }
@@ -592,19 +592,21 @@ button.f-btn {
 }
 
 .bar_logo a {
-    font-size: 1.8vw;
+    font-size: 19px;
     color: #fff;
     font-family: 'times';
 }
 
 .bar_logo {
     height: calc(10% - 3.4722vw);
-    padding: 1.7361vw;
+    padding-top: 1.7361vw;
+	padding-bottom: 1.7361vw;
+    
 }
 
 .bar_logo i {
     color:white;
-    font-size: 1.8vw;
+    font-size: 19px;
     margin-left: -1.5vw;
 }
 
@@ -630,7 +632,7 @@ button.f-btn {
 .nav_li li a {
 	color: #fff;
     padding:2.5vw;
-    font-size: 15px;
+    font-size: 20px;
     font-family:'times';
 }
 
@@ -679,7 +681,6 @@ button.f-btn {
     .menu {
         width: 65vw;
         height: auto;
-        padding: 1.5vw;
         font-size:15px;
         flex-direction: row-reverse;
     }
@@ -717,6 +718,14 @@ button.f-btn {
     .nav_li.active{
         display: block;
     }
+    
+    .cctv_img p {
+    width: 50%;
+    margin:5px;
+    cursor: pointer;
+
+}
+
 }
 
 
