@@ -305,7 +305,10 @@ public class HomeController {
 			
 			String select = httpServletRequest.getParameter("sel");
 			
-			if(select.equals("sel")) {
+			if(select==null) {
+				
+			}
+			else if(select.equals("sel")) {
 				String url = httpServletRequest.getParameter("url");
 				System.out.println(url);
 				url=url.replace("@","%");
@@ -316,6 +319,9 @@ public class HomeController {
 				model.addAttribute("cctv",lVO);
 				
 				return "Capture";
+			}
+			else {
+				
 			}
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
 			lVO = lDao.selectOne(seq);
