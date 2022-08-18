@@ -65,28 +65,28 @@
 	<div class="all">
 		<ul class="bar_menu">
 			<li class="bar_logo"><i class="fa-solid fa-car-crash"></i> <a
-				href="/">Han Sung</a>
+				href="/">HANSUNG</a>
 				                <a href="#" class="bar_toogle">
                     <i class="fa-solid fa-bars"></i>
                 </a>   
 				</li>
 			<div class="nav_li">
-				<li><a href="/carList">시시티비</a></li>
-				<li><a href="/CarModel">Car_model </a></li>
-				<li><a href="/free">Free_Board</a></li>
-				<li><a href="/QnA">QnA</a></li>
+				<li><a href="/carList">CCTV</a></li>
+				<li><a href="/CarModel">Vehicle </a></li>
+				<li><a href="/free">Spaces</a></li>
+				<li><a href="/QnA">Questions</a></li>
 				<li><a href="/developer">Developer</a></li>
 			</div>
 		</ul>
 
 		<header>
-			<div class="header_name">시시티비</div>
+			<div class="header_name">CCTV</div>
 			<div class="menu">
 				<div class="Login_menu" onclick="logOut()">
-					<a href="/?option=logOut">로그아웃</a>
+					<a href="/?option=logOut">EXIT</a>
 				</div>
 				<div class="Login_menu" onclick="CCTV()">
-				<a href="/carList?option=cctv">슬라이드 버튼</a>
+				<a href="/carList?option=cctv">DL CCTV</a>
 				</div>
 			</div>
 		</header>
@@ -138,10 +138,11 @@
 				</table>
 
 
-				<div class="modal1">
+				<!-- <div class="modal1">
+				
 					<button class="x">&times;</button>
 					<div class="modal_content">
-						<!--이미지 받아오는 곳-->
+						
 						<div class="img_container1">
 							<img src="" alt="">
 						</div>
@@ -154,19 +155,19 @@
 							<p></p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-
+				<!--  
 				<div class="modal2">
 					<button class="x">&times;</button>
 					<div class="modal_content">
-						<!--이미지 받아오는 곳-->
+						
 						<div class="img_container">
-							<!-- Slider main container -->
+						
 							<div class="swiper-container">
-								<!-- 보여지는 영역 -->
+								
 								<div class="swiper-wrapper" id="swiper-wrapper">
-									<!-- <div class="swiper-slide">내용</div> 를 추가하면된다 -->
+									
 									<div class="swiper-slide slide">
 										<img src="">
 										<div class="modal_content1">
@@ -201,7 +202,7 @@
 										</div>
 									</div>
 								</div>
-								<!-- 페이징 버튼 처리 상황에 따라 추가 삭제가능-->
+								
 							</div>
 						</div>
 						<div class="swiper-navigation">
@@ -220,8 +221,8 @@
 						
 					</div>
 
-					<!--slide2-->
-				</div>
+					
+			</div>-->
 
 
 

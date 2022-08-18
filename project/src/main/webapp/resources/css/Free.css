@@ -337,7 +337,7 @@ a {
     width: calc(60% - 1.7361vw);
     height: calc(100% - 3.4722vw);
     padding: 1.7361vw;
-    font-family: 'HaenamFont';
+    font-family: 'times';
     font-size: 1.7361vw;
     color: #fff;
 }
@@ -354,16 +354,15 @@ a {
 
 .Login_menu {
     width: 50%;
-    margin-top: -0.5vh;
 }
 
 .Login_menu a {
     color: #fff;
-    font-family: 'HaenamFont';
+    font-family: 'Helvetica';
 }
 
 .Login_menu a:hover {
-    background-color: #d49466;
+    background-color: #D99873;
     border-radius: 4px;
 }
 
@@ -385,7 +384,7 @@ header {
     left: 15%;
     width: 85%;
     height: 10%;
-    background-color: #4279ff;
+    background-color: #A66F5B;
 }
 
 
@@ -397,8 +396,8 @@ header {
 }
 
 select {
-    border: 1px solid #4279ff;
-    border-bottom: 1px solid #4279ff;
+    border: 1px solid #D99873;
+    border-bottom: 1px solid #D99873;
     border-radius: 8px;
     width: 90px;
     height: 32px;
@@ -411,27 +410,27 @@ input::-webkit-input-placeholder {
 
 .search-input {
     border: none;
-    border-bottom: 1px solid #4279ff;
+    border-bottom: 1px solid #D99873;
     height: 32px;
     text-align: left;
     width: 50vw;
 }
 
 .search-btn {
-    width: 2.8vw;
-    height: 32px;
+	position:absolute;
+	top:15px;
     font-size: 25px;
     background: transparent;
     border: none;
     cursor: pointer;
-    color: #4279ff;
+    color: #D99873;
 }
 
 .board_list_wrap {
     padding-left: 1em;
-    width: calc(100% - 3em);
+   	padding-right: 1em;
     height: 15%;
-    font-family: 'WooridaumB';
+    font-family: "Helvetica";
 
 }
 
@@ -465,7 +464,7 @@ table {
 }
 
 .board_list tr {
-    border-bottom: 0.1px solid #7193C1;
+    border-bottom: 0.1px solid #D99873;
 }
 
 .board_list th,
@@ -579,7 +578,7 @@ button.f-btn {
 .bar_menu {
     position: fixed;
     list-style: none;
-    background-color: #0d82eb;
+    background-color: #315259;
     width: 15%;
     height: 100%;
     float: left;
@@ -595,7 +594,7 @@ button.f-btn {
 .bar_logo a {
     font-size: 1.8vw;
     color: #fff;
-    font-family: 'Electrolize';
+    font-family: 'times';
 }
 
 .bar_logo {
@@ -627,21 +626,16 @@ button.f-btn {
     line-height: 18vh;
 }
 
-.nav_li li a:first-child {
-    font-family: 'HaenamFont';
-    color: #fff;
-    font-size:15px;
-}
 
 .nav_li li a {
-    font-family: "Apple SD Gothic Neo";
-    color: #fff;
+	color: #fff;
     padding:2.5vw;
     font-size: 15px;
+    font-family:'times';
 }
 
 .nav_li li:hover {
-    background-color: #4279ff;
+    background-color: #D99873;
 }
 
 @media screen and (max-width: 768px){
