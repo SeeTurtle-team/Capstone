@@ -357,7 +357,7 @@ a {
 
 .Login_menu a {
     color: #fff;
-    font-family: 'Helvetica';
+    font-family: 'times';
 }
 
 .Login_menu a:hover {
@@ -592,21 +592,20 @@ button.f-btn {
 }
 
 .bar_logo a {
-    font-size: 19px;
+    font-size: 1.6rem;
     color: #fff;
     font-family: 'times';
 }
 
 .bar_logo {
-    height: calc(10% - 3.4722vw);
-    padding-top: 1.7361vw;
-	padding-bottom: 1.7361vw;
+    padding-top: 1.75rem;
+	padding-bottom: 1.75rem;
     
 }
 
 .bar_logo i {
     color:white;
-    font-size: 19px;
+    font-size: 1.6rem;
     margin-left: -1.5vw;
 }
 
@@ -619,7 +618,7 @@ button.f-btn {
 }
 
 .nav_li {
-    height: 90%;
+    height: calc(100% - 5.1rem);
 }
 
 .nav_li li {
@@ -682,7 +681,6 @@ button.f-btn {
         height: auto;
         font-size:15px;
         flex-direction: row-reverse;
-        font-weight:bolder;
     }
 
     .all_tb {

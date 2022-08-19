@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="건호" content="width=device-width, initial-scale=1.0">
-    <title>Free_Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CarModel</title>
     <link rel="stylesheet" href="/resources/css/Free.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,28 +42,32 @@ console.log("${nowBlock}");
 
     
 <div class="all">
-    <header class="back_color"></header><!----3.23--->
-    <footer class="back_color2"></footer><!---3.23-->
         <ul class="bar_menu">
             <li class="bar_logo">
                 <i class="fa-solid fa-car-crash"></i>
-                <a href="/"><b>HansungProject</b></a>
+                <a href="/">HANSUNG</a>
+                				    <a href="#" class="bar_toogle">
+                    <i class="fa-solid fa-bars"></i>
+                </a>   
             </li>
-            <li><a href="/carList">CCTV_analysis</a></li>
-            <li><a href="/CarModel">Car_model </a></li>
-            <li><a href="/free">Free_Board</a></li>
-            <li><a href="/QnA">QnA</a></li>
+         <div class="nav_li">
+            <li><a href="/carList">CCTV</a></li>
+            <li><a href="/CarModel">Vehicle</a></li>
+            <li><a href="/free">Spaces</a></li>
+            <li><a href="/QnA">Questions</a></li>
             <li><a href="/developer">Developer</a></li>
-    
+    	</div>
         </ul>    
-     
-<br>
-
+        
+                <header>
+            <div class="header_name">Vehicle</div>
+            <div class="menu">
+                <div class="Login_menu" onclick="logOut()">
+                <a>EXIT</a></div>
+            </div>
+        </header>
+        
 <div class="all_tb">
-    <div class="Login_menu" onclick="logOut()"> <a >Logout</a></div>
-    <div class="title">
-        <h1>Car_Model</h1>
-    </div>
     <div class="search-wrap">
     <select id="sel">
         <option value="carkind">차종</option>
@@ -71,40 +75,11 @@ console.log("${nowBlock}");
     </select>  
     <input type="text" id="search" class="search-input" placeholder="Please Enter Text" autocomplete="off">
 
-     <button onclick="search()" class="search-btn">검색</button>
-    </div>
+     <button class="search-btn" type="button" onclick="search()">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+	</div>
 <!--  -->
-    <div class="imgList1">
-    	<div class="imgC">
-		<c:forEach items="${list}" var="dataVO">
-		<div class="imgPlusp">
-		<c:set var="img" value="${dataVO.carImage}"/>
-		<img class="cropped" src="<c:out value='${img}'/>"/>
-		<p class="kind"><c:out value="${dataVO.carKind}"/></p>
-		<p class="detail" style="color:transparent">가격 : <c:out value="${dataVO.carPrice}"/> | 제조사 : <c:out value="${dataVO.carMaker}"/> | 연비 : <c:out value="${dataVO.carFuel}"/> </p>
-		<p class="detail2" style="color:transparent">차 엔진 : <c:out value="${dataVO.carEngine}"/> | 적재용량 : <c:out value="${dataVO.carRoad}"/></p>
-		</div>
-		</c:forEach>
-		</div>
-	</div>
-
-
-	<!-- 팝업 될 곳 -->
-	<div class="modal">
-		<button>&times;</button>
-		<div class="modalBox">
-			<img src="" alt=""><!--이미지 받아오는 곳-->
-            <strong><p></p></strong>
-            <div class="modal_content">
-                <pre class="info" id="set1">
-                	
-                </pre>
-                
-            </div>
-            
-		</div>
-	</div>
-
 
 
     <div class ="board_list_wrap">
@@ -132,7 +107,36 @@ console.log("${nowBlock}");
 		 <span>[ <a href="/CarModel?page=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
 	</div>
-
+	
+	    <div class="imgList1">
+    	<div class="imgC">
+		<c:forEach items="${list}" var="dataVO">
+		<div class="imgPlusp">
+		<c:set var="img" value="${dataVO.carImage}"/>
+		<img class="cropped" src="<c:out value='${img}'/>"/>
+		<p class="kind"><c:out value="${dataVO.carKind}"/></p>
+		<p class="detail" style="color:transparent">가격 : <c:out value="${dataVO.carPrice}"/> | 제조사 : <c:out value="${dataVO.carMaker}"/> | 연비 : <c:out value="${dataVO.carFuel}"/> </p>
+		<p class="detail2" style="color:transparent">차 엔진 : <c:out value="${dataVO.carEngine}"/> | 적재용량 : <c:out value="${dataVO.carRoad}"/></p>
+		</div>
+		</c:forEach>
+		</div>
+	</div>
+	
+	
+			<!-- 팝업 될 곳 -->
+	<div class="modal">
+		<button>&times;</button>
+		<div class="modalBox">
+			<img src="" alt=""><!--이미지 받아오는 곳-->
+            <strong><p></p></strong>
+            <div class="modal_content">
+                <pre class="info" id="set1">             	
+                </pre>            
+            </div>
+            
+		</div>
+	</div>
+	
         <div class="modal_admin">
             <button class="x">&times;</button>
             <div class="modalBox_admin"> 

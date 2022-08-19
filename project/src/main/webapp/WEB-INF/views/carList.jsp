@@ -20,7 +20,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <!--제이쿼리 가져옴-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<title>시시 티비</title>
+<title>CarList</title>
 <script src="https://kit.fontawesome.com/af4e1eff79.js" crossorigin="anonymous"></script>
 
 </head>

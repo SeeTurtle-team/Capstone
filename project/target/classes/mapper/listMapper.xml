@@ -26,6 +26,12 @@
 	<select id="selectOne" resultType="hansung.cap.project.listVO">
 		select * from list where seq = #{a}
 	</select>
+	
+	<select id="selectUrl" resultType="hansung.cap.project.listVO">
+		select * 
+		from list 
+		where imgUrl like #{url}
+	</select>
 	<!-- 총 게시글 갯수 출력 -->
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM list

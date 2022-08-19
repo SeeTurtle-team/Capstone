@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="건호" content="width=device-width, initial-scale=1.0">
-    <title>Free_Board</title>
+    <title>CarModel</title>
     <link rel="stylesheet" href="/resources/css/Free.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@ console.log("${nowBlock}");
         <ul class="bar_menu">
             <li class="bar_logo">
                 <i class="fa-solid fa-car-crash"></i>
-                <a href="/"><b>HansungProject</b></a>
+                <a href="/">HANSUNG</a>
             </li>
             <li><a href="/carList">CCTV_analysis</a></li>
             <li><a href="/CarModel">Car_model </a></li>
