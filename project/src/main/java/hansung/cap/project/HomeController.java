@@ -657,6 +657,13 @@ public class HomeController {
 		Paging paging = new Paging();
 		paging.set(Ipage, list.size());
 
+		try {
+			list = fDao.listPage(paging.displayPost, paging.postNum);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		
 		if(option==null) {
 			
 		}
@@ -674,25 +681,39 @@ public class HomeController {
 				return "Free";
 			}
 			
-			if(select.equals("title")) { //제목으로 검색
-				list = fDao.SearchTitle("%"+s+"%");
-			}
-			else if(select.equals("userId")) {  //작성자로 검색
-				list = fDao.SearchUser("%"+s+"%");
-			}
-			else if(select.equals("multi")) {  // 둘 다 검색
-				list = fDao.Search("%"+s+"%");
-			}
-			model.addAttribute("list",list);
+			list = fDao.SearchTitle("%"+s+"%");
 			paging.set(Ipage, list.size());
-			session.setAttribute("list", list);
+
+			try {
+				list = fDao.searchPage(paging.displayPost, paging.postNum,"%"+s+"%");  //이게 문제임
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+
+
+			model.addAttribute("option",option);
+			model.addAttribute("key",s);
 			
-			model.addAttribute("startPageNum", paging.startPageNum);
-			model.addAttribute("endPageNum", paging.endPageNum);
-			model.addAttribute("prev", paging.prev);
-			model.addAttribute("next", paging.next);
-			model.addAttribute("select", Ipage);
-			return "SFree";
+//			if(select.equals("title")) { //제목으로 검색
+//				list = fDao.SearchTitle("%"+s+"%");
+//			}
+//			else if(select.equals("userId")) {  //작성자로 검색
+//				list = fDao.SearchUser("%"+s+"%");
+//			}
+//			else if(select.equals("multi")) {  // 둘 다 검색
+//				list = fDao.Search("%"+s+"%");
+//			}
+//			model.addAttribute("list",list);
+//			paging.set(Ipage, list.size());
+//			session.setAttribute("list", list);
+//			
+//			model.addAttribute("startPageNum", paging.startPageNum);
+//			model.addAttribute("endPageNum", paging.endPageNum);
+//			model.addAttribute("prev", paging.prev);
+//			model.addAttribute("next", paging.next);
+//			model.addAttribute("select", Ipage);
+//			return "SFree";
 		}
 		else if(option.equals("view")) {   //freeboard 보기
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));

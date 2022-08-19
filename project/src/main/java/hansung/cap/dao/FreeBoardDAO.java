@@ -15,7 +15,6 @@ public interface FreeBoardDAO {
 	public void modify(FreeBoardVO vo);
 	public List<FreeBoardVO> paging(int paging);
 	public int countBoard(FreeBoardVO vo);
-	public int ScountBoard1(String msg);
-	public int ScountBoard2(String msg);
-	public int ScountBoard3(String msg);
+	public List<FreeBoardVO> listPage(int displayPost, int postNum) throws Exception;
+	public List<FreeBoardVO> searchPage(int displayPost, int postNum, String key) throws Exception;
 }
