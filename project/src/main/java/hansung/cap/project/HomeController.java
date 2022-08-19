@@ -79,16 +79,13 @@ public class HomeController {
 		System.out.println("----------------------------------"+user_id);
 		model.addAttribute("id",user_id);
 		
-		String login = null;
 		String option = httpServletRequest.getParameter("option");
 		
 		if(user_id==null) {
 			System.out.println("로그인이 되지 않았습니다");
-			login = "Login";
 			model.addAttribute("login", "login");
 		}
 		else {
-			login = "LogOut";
 			model.addAttribute("login",user_id);
 			model.addAttribute("logOut","logOut");
 		}
@@ -112,13 +109,13 @@ public class HomeController {
 	public String login(HttpServletRequest httpServletRequest, Model model, String id, String pw) {
 		
 		HttpSession session=httpServletRequest.getSession();
-		
+		String referer = httpServletRequest.getHeader("Referer");
 		System.out.println(id);
 		String user_id=(String)session.getAttribute("userId");;
 		
 		if(user_id!=null) {  //로그인이 될 상황일시
 			model.addAttribute("login",user_id);
-			return "index";
+			return "redirect:"+referer;
 		}
 		
 		MemberVO mVo=new MemberVO();
@@ -149,7 +146,7 @@ public class HomeController {
 				model.addAttribute("login",user_id);
 				
 				model.addAttribute("logOut","logOut");
-				return "index";
+				return "redirect:"+referer;
 			}
 		}
 		System.out.println(httpServletRequest.getParameter("id"));
