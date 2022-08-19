@@ -79,16 +79,13 @@ public class HomeController {
 		System.out.println("----------------------------------"+user_id);
 		model.addAttribute("id",user_id);
 		
-		String login = null;
 		String option = httpServletRequest.getParameter("option");
 		
 		if(user_id==null) {
 			System.out.println("로그인이 되지 않았습니다");
-			login = "Login";
 			model.addAttribute("login", "login");
 		}
 		else {
-			login = "LogOut";
 			model.addAttribute("login",user_id);
 			model.addAttribute("logOut","logOut");
 		}
