@@ -137,8 +137,9 @@ margin:auto;
 				return;
 			}
 			console.log(i);
-			document.all.choonDiv.innerHTML = "<img id='cctv_img' src="+img[parseInt(i)]+">";
-		    i=parseInt(i);
+			i=parseInt(i);
+			document.all.choonDiv.innerHTML = "<img id='cctv_img' src="+img[i]+">";
+		    
 			
 			setTimeout("showImg()",sec);
 		}
