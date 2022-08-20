@@ -101,7 +101,7 @@
                 </tr>
          </thead>
          	<tbody>
-            	<c:forEach items="${list}" var="dataVO" begin="${(select-1)*10}" end="${(select*10)-1}"><!--  begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status"> -->
+            	<c:forEach items="${list}" var="dataVO"><!--  begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status"> -->
                       <tr>
                       	  <td><c:out value="${dataVO.seq }"/></td>
 	                      <td onclick="view(${dataVO.seq})"><c:out value="${dataVO.title}"/></td>
@@ -116,14 +116,14 @@
         </table>
         <div class="paging">
 	<c:if test="${prev}">
-		 <span>[ <a href="/free?page=${startPageNum - 1}">이전</a> ]</span>
+		 <span>[ <a href="/free?page=${startPageNum - 1}&option=${option}$key=${key}">이전</a> ]</span>
 		</c:if>
 		
 		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
 		 <span>
 		 
 		  <c:if test="${select != page}">
-		   <a href="/free?page=${page}">${page}</a>
+		   <a href="/free?page=${page}&option=${option}&key=${key}">${page}</a>
 		  </c:if>    
 		  
 		  <c:if test="${select == page}">
@@ -134,7 +134,7 @@
 		</c:forEach>
 		
 		<c:if test="${next}">
-		 <span>[ <a href="/free?page=${endPageNum + 1}">다음</a> ]</span>
+		 <span>[ <a href="/free?page=${endPageNum + 1}&option=${option}&key=${key}">다음</a> ]</span>
 		</c:if>
 	</div>
         
