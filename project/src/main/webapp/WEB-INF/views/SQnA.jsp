@@ -110,7 +110,7 @@
         </table>
         <div class="paging">
 	<c:if test="${prev}">
-		 <span>[ <a href="/SQnA?page=${startPageNum - 1}">이전</a> ]</span>
+		 <span>[ <a href="/SFree?page=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
 		
 		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">

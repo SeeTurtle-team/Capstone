@@ -118,7 +118,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${list}" var="dataVO" begin="${(select-1)*10 }" end="${(select*10)-1 }">
+						<c:forEach items="${list}" begin="0" end="9" var="dataVO">
 							<!--   begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status">-->
 							<tr>
 								<td><c:out value="${dataVO.seq}" /></td>
