@@ -1,7 +1,6 @@
 package hansung.cap.dao;
 
 
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -68,24 +67,19 @@ public class FreeBoardDAOImp implements FreeBoardDAO {
 		int result = sqlSession.selectOne(namespace+".countBoard", vo);
 		return result;
 	}
-	
 	@Override
-	public List<FreeBoardVO> listPage(int displayPost, int postNum) throws Exception{
-		HashMap data = new HashMap();
-		
-		data.put("displayPost",displayPost);
-		data.put("postNum",postNum);
-		
-		return sqlSession.selectList(namespace+".listPage",data);
+	public int ScountBoard1(String msg) {
+		int result = sqlSession.selectOne(namespace+".ScountBoard1", msg);
+		return result;
 	}
-	
 	@Override
-	public List<FreeBoardVO> searchPage(int displayPost, int postNum,String key) throws Exception{
-		HashMap data = new HashMap();
-		data.put("displayPost",displayPost);
-		data.put("postNum",postNum);
-		data.put("key",key);
-
-		return sqlSession.selectList(namespace+".searchSelect",data);
+	public int ScountBoard2(String msg) {
+		int result = sqlSession.selectOne(namespace+".ScountBoard2", msg);
+		return result;
+	}
+	@Override
+	public int ScountBoard3(String msg) {
+		int result = sqlSession.selectOne(namespace+".ScountBoard3", msg);
+		return result;
 	}
 }

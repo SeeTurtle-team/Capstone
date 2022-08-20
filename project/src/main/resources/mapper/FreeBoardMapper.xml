@@ -40,15 +40,5 @@
   	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM freeboard
 	</select>
-	
-	<select id="listPage" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
- 		select *
- 		from freeboard order by time desc
- 		limit #{displayPost},#{postNum}
- 	</select>
- 	
- 	<select id="searchSelect" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
-		select * from (select * from freeboard where title like #{key}) t limit #{displayPost},#{postNum} ;
-	</select>
   </mapper>
   
