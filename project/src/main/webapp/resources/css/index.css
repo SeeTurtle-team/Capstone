@@ -51,13 +51,13 @@ a{
 
 .wrap {
     min-height: 100%;
-    background-color: #D99873;
+    background-color: #FFFF;
 }
 
 .bugi{
     z-index: 999;
     position: absolute;
-    color:#FFFF;
+    color:rgb(241, 241, 241);
     font-size:40px;
     position: absolute;
     left:27%;
@@ -152,13 +152,13 @@ footer.index_footer{
     margin-left:5%;
     margin-right:5%;
     margin-top:37.5%;
-    background: #2e3a64;
+    background:#A66F5B;
   
 }
 
 .name_box{
     font-size:12px;
-    color: rgb(150, 150, 150);
+    color: #fff;
     margin-left:5%;
     margin-top:7%;
     width:300px;
@@ -176,7 +176,7 @@ footer.index_footer{
 
 .name_number{
     font-size:12px;
-    color: rgb(150, 150, 150);
+    color: #fff;
     margin-left:80%;
     margin-top:-35px;
     width:200px;
@@ -399,7 +399,7 @@ position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2f4b77;
+    background-color: #A66F5B; /*sdfdsffsa*/
     padding: 10px 12px;
 }
 
@@ -409,7 +409,7 @@ position: relative;
 }
 
 .bar_logo i{
-    color:rgb(120, 120, 238);
+    color:rgb(197, 188, 160);
 }
 
 .bar_menu{
@@ -422,7 +422,7 @@ padding-left: 0;
 }
 
 .bar_menu li:hover{
-    background-color: #d49466;
+    background-color: #A66F5B;
     border-radius: 4px;
 }
 

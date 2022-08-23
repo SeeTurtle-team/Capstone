@@ -84,8 +84,11 @@
             <input type='file' name='' multiple/>
         </form>
 		 -->
-        <div class="hr">${id}</div>
-        <button class="d-btn"onclick="Enroll()">등록</button >   
+        <div class="hr">
+        	${id}
+        	 
+		</div>
+         <button class="d-btn"onclick="Enroll()">등록</button > 
 
 
 </section>
