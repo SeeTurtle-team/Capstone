@@ -128,8 +128,7 @@ public class HomeController {
 		// String option=httpServletRequest.getParameter("option");
 		// System.out.println(httpServletRequest.getParameter("userId")+","+httpServletRequest.getParameter("userPw"));
 		// System.out.println(option);
-		System.out.println();
-
+		
 		if (id == null) {
 			System.out.println("option null : loginpage loading");
 		}
@@ -150,10 +149,10 @@ public class HomeController {
 				model.addAttribute("login", user_id);
 
 				model.addAttribute("logOut", "logOut");
-				return "redirect:" + referer;
+				return "index";
 			}
 		}
-		System.out.println(httpServletRequest.getParameter("id"));
+		//System.out.println(httpServletRequest.getParameter("id"));
 		return "login";
 	}
 
@@ -494,6 +493,7 @@ public class HomeController {
 
 			if ((qlist) != null) { // 답글이 하나라도 있으면 적용
 				model.addAttribute("rlist", qlist);
+				model.addAttribute("size",qlist.size());
 			}
 
 			model.addAttribute("list", qVo);
@@ -658,7 +658,7 @@ public class HomeController {
 		try {
 			list = fDao.listPage(paging.displayPost, paging.postNum);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			System.out.println(e.getMessage());
 		}
 
@@ -834,7 +834,7 @@ public class HomeController {
 			}
 
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			
 			System.out.println(e1.getMessage());
 		}
 
@@ -877,7 +877,7 @@ public class HomeController {
 			}
 
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			
 			System.out.println(e1.getMessage());
 		}
 
