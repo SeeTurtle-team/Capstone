@@ -30,6 +30,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import hansung.cap.dao.CarKindDAO;
@@ -633,7 +634,7 @@ public class HomeController {
 	}	
 	
 	//----------------------------자유게시판------------------------------//
-	@RequestMapping(value = "/free", method = RequestMethod.GET)
+	@RequestMapping(value = "/free", method = {RequestMethod.GET, RequestMethod.POST})
 	public String free(HttpServletRequest httpServletRequest, Model model) {
 		HttpSession session=httpServletRequest.getSession();
 		String user_id=(String)session.getAttribute("userId"); ;
@@ -647,15 +648,23 @@ public class HomeController {
 		list = fDao.QueryAll();
 		FreeBoardVO fVo = new FreeBoardVO();
 		
-		String page = httpServletRequest.getParameter("page");
-		String option = httpServletRequest.getParameter("option");
 		
-		if(page==null) {
-			page="1";
+		
+		String option = httpServletRequest.getParameter("option");
+		String Num = httpServletRequest.getParameter("num");
+		
+		int pageNum;
+		
+		if(Num==null) {
+			pageNum=1;
 		}
-		int Ipage = Integer.parseInt(page);
+		else {
+			pageNum = Integer.parseInt(Num);
+		}
+		
+		
 		Paging paging = new Paging();
-		paging.set(Ipage, list.size());
+		paging.set(pageNum, list.size());
 
 		try {
 			list = fDao.listPage(paging.displayPost, paging.postNum);
@@ -668,50 +677,37 @@ public class HomeController {
 			
 		}
 		else if(option.equals("search")) {  //freeboard 검색
-			String s = httpServletRequest.getParameter("text");
+			String key = httpServletRequest.getParameter("key");
 			String select = httpServletRequest.getParameter("select");
-			if(s.equals("")) {
-				model.addAttribute("page", page);
-				model.addAttribute("list",list);
-				model.addAttribute("startPageNum", paging.startPageNum);
-				model.addAttribute("endPageNum", paging.endPageNum);
-				model.addAttribute("prev", paging.prev);
-				model.addAttribute("next", paging.next);
-				model.addAttribute("select", Ipage);
-				return "Free";
+			if(key.length()==0) {
+				
+			}
+			else {
+				if(select.equals("title")) { //제목으로 검색
+					//list = fDao.SearchTitle("%"+key+"%");
+					paging.set(pageNum, list.size());
+
+					try {
+						list = fDao.searchPage(paging.displayPost, paging.postNum,"%"+key+"%");  //이게 문제임
+						model.addAttribute("option",option);
+						model.addAttribute("key",key);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						System.out.println(e.getMessage());
+					}
+
+					
+				}
+				else if(select.equals("userId")) {  //작성자로 검색
+					list = fDao.SearchUser("%"+key+"%");
+					paging.set(pageNum, list.size());
+				}
+				else if(select.equals("multi")) {  // 둘 다 검색
+					list = fDao.Search("%"+key+"%");
+				}
 			}
 			
-			if(select.equals("title")) { //제목으로 검색
-				list = fDao.SearchTitle("%"+s+"%");
-				paging.set(Ipage, list.size());
 
-				try {
-					list = fDao.searchPage(paging.displayPost, paging.postNum,"%"+s+"%");  //이게 문제임
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					System.out.println(e.getMessage());
-				}
-
-
-				model.addAttribute("option",option);
-				model.addAttribute("key",s);
-			}
-			else if(select.equals("userId")) {  //작성자로 검색
-				list = fDao.SearchUser("%"+s+"%");
-			}
-			else if(select.equals("multi")) {  // 둘 다 검색
-				list = fDao.Search("%"+s+"%");
-			}
-//			model.addAttribute("list",list);
-//			paging.set(Ipage, list.size());
-//			session.setAttribute("list", list);
-//			
-//			model.addAttribute("startPageNum", paging.startPageNum);
-//			model.addAttribute("endPageNum", paging.endPageNum);
-//			model.addAttribute("prev", paging.prev);
-//			model.addAttribute("next", paging.next);
-//			model.addAttribute("select", Ipage);
-//			return "SFree";
 		}
 		else if(option.equals("view")) {   //freeboard 보기
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
@@ -809,8 +805,10 @@ public class HomeController {
 			model.addAttribute("list",fVo);
 			return "freeView";
 		}
-		model.addAttribute("page", page);
+		
 		model.addAttribute("list",list);
+		model.addAttribute("page", paging.pageNum);
+		
 		// 시작 및 끝 번호
 		model.addAttribute("startPageNum", paging.startPageNum);
 		model.addAttribute("endPageNum", paging.endPageNum);
@@ -820,7 +818,7 @@ public class HomeController {
 		model.addAttribute("next", paging.next);
 		
 		// 현재 페이지
-		model.addAttribute("select", Ipage);
+		model.addAttribute("select", pageNum);
 		
 		return "Free";
 	}

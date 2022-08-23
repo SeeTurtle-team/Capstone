@@ -60,12 +60,13 @@
 	
 	<select id="listPage" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
  		select *
- 		from freeboard order by time desc
+ 		from freeboard 
+ 		order by seq desc  <!-- 경우에 따라 time으로 바꿔줄 필요 있음 -->
  		limit #{displayPost},#{postNum}
  	</select>
  	
  	<select id="searchSelect" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
-		select * from (select * from freeboard where title like #{key}) t limit #{displayPost},#{postNum} ;
+		select * from (select * from freeboard where title like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
 	</select>
   </mapper>
   

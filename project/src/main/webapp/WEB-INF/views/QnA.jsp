@@ -39,7 +39,7 @@
 	
 	function search(){
 		var keyWord = document.getElementById("keyword").value;
-		var selection = document.getElementById("selection").value;
+		var selection = document.getElementById("sel").value;
 		
 		console.log(selection);
 		console.log(keyWord);
@@ -76,7 +76,7 @@
 		</ul>
      
      	<header>
-			<div class="header_name">Spaces</div>
+			<div class="header_name">QnA</div>
 			<div class="menu">
 				<div class="Login_menu" onclick="logOut()">
 					<a href="/?option=logOut">EXIT</a>

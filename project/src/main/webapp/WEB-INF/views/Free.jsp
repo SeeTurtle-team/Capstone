@@ -32,13 +32,13 @@
 	}
 	
 	function search(){
-		var text  = document.getElementById("search").value;
-		var selection = document.getElementById("selection").value;
+		var text  = document.getElementById("search").value;  //검색어
+		var selection = document.getElementById("sel").value; //카테고리
 		
 		console.log(selection);
 		console.log(text);
 		
-		location.href = "/free"+"?option=search&text="+text+"&select="+selection;
+		location.href = "/free"+"?option=search&key="+text+"&select="+selection;
 	}
 	
 	function gotoEnroll(){
@@ -122,28 +122,28 @@
             </tbody>
         </table>
         <div class="paging">
-	<c:if test="${prev}">
-		 <span>[ <a href="/free?page=${startPageNum - 1}&option=${option}$key=${key}">이전</a> ]</span>
-		</c:if>
-		
-		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
-		 <span>
-		 
-		  <c:if test="${select != page}">
-		   <a href="/free?page=${page}&option=${option}&key=${key}">${page}</a>
-		  </c:if>    
-		  
-		  <c:if test="${select == page}">
-		   <a>${page}</a>
-		  </c:if>
-		    
-		 </span>
-		</c:forEach>
-		
-		<c:if test="${next}">
-		 <span>[ <a href="/free?page=${endPageNum + 1}&option=${option}&key=${key}">다음</a> ]</span>
-		</c:if>
-	</div>
+			<c:if test="${prev}">
+			 	<span>[ <a href="/free?num=${startPageNum - 1}&option=${option}$key=${key}">이전</a> ]</span>
+			</c:if>
+			
+			<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+				 <span>
+				 
+				  <c:if test="${select != num}">
+				   <a href="/free?num=${num}&option=${option}&key=${key}">${num}</a>
+				  </c:if>    
+				  
+				  <c:if test="${select == num}">
+				   <a>${num}</a>
+				  </c:if>
+				    
+				 </span>
+			</c:forEach>
+			
+			<c:if test="${next}">
+			 	<span>[ <a href="/free?num=${endPageNum + 1}&option=${option}&key=${key}">다음</a> ]</span>
+			</c:if>
+		</div>
         
 
 
