@@ -6,35 +6,52 @@
 
   <mapper namespace="hansung.cap.mapper.FreeBoardMapper">
     <select id="queryAll" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard order by time desc
+  		select * 
+  		from freeboard 
+  		order by time desc
   	</select>
   	
   	<insert id = "insertFreeBoard">
-  		insert into freeboard(title,content,userId,time,image) values (#{title},#{content},#{userId},#{time},#{image})
+  		insert into freeboard(title,content,userId,time,image)
+		values (#{title},#{content},#{userId},#{time},#{image})
   	</insert>
   	
   	<select id="searchAll" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard where title like #{s} or userid like #{s} order by time desc
+  		select * 
+  		from freeboard
+  		where title like #{s} or userid like #{s} 
+  		order by time desc
   	</select>
   	
   	<select id="searchTitle" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard where title like #{s} order by time desc
+  		select * 
+  		from freeboard 
+  		where title like #{s} 
+  		order by time desc
   	</select>
   	
   	<select id="searchUser" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard where userid like #{s} order by time desc
+  		select * 
+  		from freeboard 
+  		where userid like #{s} 
+  		order by time desc
   	</select>
   	
   	<select id="read" resultType="hansung.cap.project.FreeBoardVO">
-  		select * from freeboard where seq like #{a} 
+  		select * 
+  		from freeboard 
+  		where seq like #{a} 
   	</select>
   	
   	<select id = "delete">
-  		delete from freeboard where seq like #{a}
+  		delete from freeboard 
+  		where seq like #{a}
   	</select>
   	
   	<update id = "modify">
-  		update freeboard set title=#{title}, content=#{content}, userId=#{userId}, time = #{time} where seq like #{seq} 
+  		update freeboard 
+  		set title=#{title}, content=#{content}, userId=#{userId}, time = #{time}
+		where seq like #{seq} 
   	</update>
   	
   	<select id="countBoard" resultType="int">

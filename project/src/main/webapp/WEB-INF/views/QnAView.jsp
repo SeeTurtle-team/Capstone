@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="건호" content="width=device-width, initial-scale=1.0">
-    <title>QnA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Questions_view</title>
     <link rel="stylesheet" href="resources/css/Free_view.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,6 @@
      crossorigin="anonymous"></script>
 
 </head>
-
 <script>
 
 	var seq = "${list.seq}";
@@ -73,81 +72,89 @@
 	}
 </script>
 <body>
-      
-        <ul class="bar_menu">
-            <li class="bar_logo">
-                <i class="fa-solid fa-car-crash"></i>
-                <a href="/"><b>HansungProject</b></a>
-            </li>
-            <li><a href="/carList">CCTV_analysis</a></li>
-            <li><a href="/CarModel">Car_model </a></li>
-            <li><a href="/QnA">QnA</a></li>
-            <li><a href="/free">Free_Board</a></li>
-    		<li><a href="/developer">Developer</a></li>
-        </ul>    
-     
+      <div class="all">
+		<ul class="bar_menu">
+			<li class="bar_logo"><i class="fa-solid fa-car-crash"></i> <a
+				href="/">HANSUNG</a>
+				                <a href="#" class="bar_toogle">
+                    <i class="fa-solid fa-bars"></i>
+                </a>   
+				</li>
+			<div class="nav_li">
+				<li><a href="/carList">CCTV</a></li>
+				<li><a href="/CarModel">Vehicle </a></li>
+				<li><a href="/free">Spaces</a></li>
+				<li><a href="/QnA">Questions</a></li>
+				<li><a href="/developer">Developer</a></li>
+			</div>
+		</ul>
+	
+		<header>
+			<div class="header_name">Questions View </div>
+		</header>
+		
+		
+	<div class="Main">
 
-
-<div class="BackGround"></div>
-<div class="Main">
-    <div class="title">
-        <h2>1</h2>
-        <h1>QnA_View</h1>
-    </div>
     
     <div class="bar2"><h1 class="write_title2">작성 제목</h1></div>
     <div class="search-input">${list.title}</div>
 
     <div class="bar3"> <h1 class="write_title2">작성 내용</h1></div>
     <div class="content_table">
-		${list.content}
-		<div>
-			<img src="${imgSrc}">
-		</div>
+	${list.content}
+	<div>
+		<img src="${imgSrc}">
 	</div>
+	</div>
+	
 	<div class="wab">
-	    <div class="WriterAndbtn">
-	    <div id="revise" onclick = "modify()" >수정</div>
-	    <div id="delete" onclick = "delQnA()">삭제</div>
-	    </div>
-	</div>
+    <div class="WriterAndbtn">
+    <div id="revise" onclick = "modify()">수정</div>
+    <div id="delete" onclick = "delQnA()">삭제</div>
+    </div></div>
 	<div class="Writer">${list.userId}</div>
-	
-	<c:forEach items="${manage}" var="dataVO">
-		<div id="form-commentInfo"> 
-		<input id="comment-input" placeholder="댓글을 입력해 주세요."> 
-		<button onclick="enroll()">등록</button> </div>
-		<div id=comments> </div>
-	</c:forEach>
+
+<div id="form-commentInfo"> 
+<div id="comment-count">댓글 <span id="count">${size}</span></div>
+<input id="comment-input" placeholder="댓글을 입력해 주세요."  > 
+<button id="submit" onclick="comment()">등록</button>
+<div id=comments> </div>
 
 
-	<!-- QnA 답글 -->
-	<c:forEach items="${rlist}" var="dataVO">
-		<div class="coment_writer">
-		    <div class="inline">
-		    관리자</div>
-		     <div class="inline">${dataVO.time}</div>
-		        
-		    <div class="conment_box">
-				${dataVO.text}
-			</div>
-		    <div class="pull-right">
-		       
-		        <div id="delete" onclick="del('${dataVO.commentNum}')">삭제</div>
-		    </div>
-		</div>
-	
-	</c:forEach>
+<c:forEach items="${rlist}" var="dataVO">
+	<div class="coment_writer">
+	    <div class="inline"><c:out value="${dataVO.userId}"/></div>
+	    <div class="inline"><c:out value="${dataVO.time}"/></div>
+	        
+	    <div class="conment_box">
+	        <c:out value="${dataVO.text}"/> 
+	    </div>
+	    <div class="pull-right">
+	        
+	        <div id="delete" onclick="commentDelete(${dataVO.commentNum} ,'${dataVO.userId}')">삭제</div>
+	        </div>
+	</div>
+</c:forEach>
 
 
 
 
+</div> <!---------form-commentInfo-->
+</div> <!-------Main-->
 
-
+</div><!--all -->
 </body>
 
 <script>
+        const bar_toogle=document.querySelector('.bar_toogle');
+    const menu =document.querySelector('.nav_li');
+    const header =document.querySelector('header');
 
+    bar_toogle.addEventListener('click', () =>{
+        menu.classList.toggle('active');
+        header.classList.toggle('active');
+    });
 </script>
 
 

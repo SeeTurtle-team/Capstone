@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="건호" content="width=device-width, initial-scale=1.0">
-    <title>QnA</title>
+    <title>Questions</title>
     <link rel="stylesheet" href="resources/css//Free.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,50 +59,56 @@
 
     
 <div class="all">
-    <header class="back_color"></header><!----3.23--->
-    <footer class="back_color2"></footer><!---3.23-->
-        <ul class="bar_menu">
-            <li class="bar_logo">
-                <i class="fa-solid fa-car-crash"></i>
-                <a href="/"><b>HansungProject</b></a>
-            </li>
-            <li><a href="/carList">CCTV_analysis</a></li>
-            <li><a href="/CarModel">Car_model </a></li>
-            <li><a href="/free">Free_Board</a></li>
-            <li><a href="/QnA">QnA</a></li>
-            <li><a href="/developer">Developer</a></li>
-    
-        </ul>    
+		<ul class="bar_menu">
+			<li class="bar_logo"><i class="fa-solid fa-car-crash"></i> <a
+				href="/">HANSUNG</a>
+				                <a href="#" class="bar_toogle">
+                    <i class="fa-solid fa-bars"></i>
+                </a>   
+				</li>
+			<div class="nav_li">
+				<li><a href="/carList">CCTV</a></li>
+				<li><a href="/CarModel">Vehicle </a></li>
+				<li><a href="/free">Spaces</a></li>
+				<li><a href="/QnA">Questions</a></li>
+				<li><a href="/developer">Developer</a></li>
+			</div>
+		</ul>
      
-<br>
-
+     	<header>
+			<div class="header_name">Spaces</div>
+			<div class="menu">
+				<div class="Login_menu" onclick="logOut()">
+					<a href="/?option=logOut">EXIT</a>
+				</div>
+			</div>
+		</header>
+     
  <div class="all_tb">
-    <div class="Login_menu" onclick="logOut()"> <a >Logout</a></div> 
-    <div class="title">
-        <h1>QnA</h1>
-    </div>
     <div class="search-wrap">
-    <select id="selection">
+    <select id="sel">
         <option value="title">제목</option>
         <option value="userId">작성자</option>
         <option value="multi">제목+작성자</option>
     </select>  
     <input type="text" class="search-input" placeholder="Please Enter Text" id="keyword" value = "" autocomplete="off" >
 
-     <button  class="search-btn" onclick="search()">검색</button>
+          		<button class="search-btn" type="button" onclick="search()">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
     </div>
 
     <div class ="board_list_wrap">
         <table class="board_list">
         
-            <thead>
-                <tr>
-                	<th>번호</th>
-	                <th>제목</th>
-	                <th>작성자</th>
-	                <th>시간</th>                
-                </tr>
-         </thead>
+					<thead>
+						<tr>
+							<th>번&nbsp;호</th>
+							<th>제&nbsp;목</th>
+							<th>글&nbsp;쓴&nbsp;이</th>
+							<th>시&nbsp;간</th>
+						</tr>
+					</thead>
             <tbody>
 				<c:forEach items="${list}" begin="0" end="9" var="dataVO"><!--  begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status"> -->
                       <tr>
@@ -150,7 +156,14 @@
 </body>
 
 <script>
+const bar_toogle=document.querySelector('.bar_toogle');
+const menu =document.querySelector('.nav_li');
+const header =document.querySelector('header');
 
+bar_toogle.addEventListener('click', () =>{
+    menu.classList.toggle('active');
+    header.classList.toggle('active');
+});
 </script>
 
 

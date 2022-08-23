@@ -1,51 +1,59 @@
+@font-face {
+    font-family: 'WooridaumB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/WooridaumB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBMPlexSansKR-ExtraLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-ExtraLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Tium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/Tium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HaenamFont';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/HaenamFont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Apple SD Gothic Neo";
+    src: url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot");
+    src: url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff") format("woff"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.svg#Apple SD Gothic Neo") format("svg");
+}
+
 body{
-    margin: 0;
-    font-family:'Electrolize';
-    height: 100%;
-     
+    margin: 0;     
   
 }
 
-a{
-
-    text-decoration: none;
-    color: black;
-}
-
-.all{ 
-height: 100%;
-margin-top: -20px; 
-
-}
-
-.back_color{ /*****곡선 주기 위한 박스*******/
-    position: fixed;
-    width: 1018px;
-    height: 200px;
-    background-color: #7193C1;
-}
-
-.back_color2{ /***곡선 주기 위한 박스***/
-    position: fixed;
-    top:-0.42px;
-    width: 1018px;
-    height:100%;
-    background-color: #7193C1;
-}
 
 /***********타이틀부터 댓글까지 묶음***********/
 .BackGroundBox_Psfixed{   /******큰 박스*********/
-   
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    background:#C0D0E6;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-	margin-left:250px;
-  
+   	position: fixed;
+   	left:15%;
+   	height: 94h;
+    width: 85%;
+    float:left;
+    margin-top:6vh;
+
     
 }
+a {
+    text-decoration: none;
+}
+
 
 .title h1{
     position: relative;
@@ -72,10 +80,57 @@ margin-top: -20px;
 
 
    /*************section에 묶인 아이들은 아래쪽에 있답니다******/
+    header {
+	position: fixed;
+    left: 15%;
+    width: 85%;
+    background-color: #A66F5B;
+    }
 
+.header_name {
+    float: left;
+    width: calc(60% - 1.7361vw);
+    padding: 10px;
+    font-family: 'times';
+    font-size: 20px;
+    color: #fff;
+}
+.Login_menu {
+    width: 50%;
+    padding:10px;
+}
+
+.Login_menu a {
+    color: #fff;
+    font-family: 'times';
+}
+
+.Login_menu a:hover {
+    background-color: #D99873;
+    border-radius: 4px;
+}
+
+.menu {
+    float: left;
+    display: flex;
+    width: calc(40% - 5.2083vw);
+    font-size: 20px;
+    text-align: center;
+    font-family:'times'
+}
+.all_tb {
+    background-attachment: local;
+    background: #fff;
+    left: 15%;
+    width: 85%;
+    margin-top: 4.7%;
+    float: left;
+    height: 90%;
+    position: fixed;
+}
 section{  /*****부모 ****/
-    width:70%;
-    height:80%;
+    width:85%;
+    height:93vh;
     margin-left:auto;
     margin-right:auto;
 }
@@ -87,16 +142,23 @@ section{  /*****부모 ****/
     width:805px;
     
 }
+
+form{
+	
+	color:#D99873;
+	height:100%;
+	width:100%;
+}
 .write_title1{
     text-align: right;
     font-size: 15px;
 }
 
 .bar2{ /*****작성 제목 타이틀*****/
-    width:170px;
+    width:100%;
     height: 30px;
     font-size: 10px;
-    margin-left:-30px;
+    margin-top:3%;
 }
 
 .bar2 h1{ /***"작성제목"*3.30***/
@@ -104,16 +166,14 @@ section{  /*****부모 ****/
 }
 
 .search-input{ /*******작성제목을 유져가 기입하는곳*******/
- margin-left:-30px;
  height: 32px;
  text-align: left;
- width:950px;
- border: 1px solid black;
+ width:100%;
+ border:1px solid #D99873;
 }
 
 .bar3{ /********작성 내용 타이틀********/
-    margin-left:-30px;
-    width:170px;
+    width:100%;
     height: 30px;
     font-size: 10px;
     
@@ -123,42 +183,46 @@ section{  /*****부모 ****/
 }
 /***********content_table**************/
 .content_table{ /**table 로  자식으로 .content가 있음*/
-    margin-left:-30px;
     margin-bottom:10px;
+    width:100%;
 }
 
 td textarea.content{ /*작성내용 작성 하는 공간*/
-    width:950px;
+    width:100%;
     height:300px;
     white-space:pre-line;
+    border:1px solid #D99873;
 }
 /************content_table***************/
 
 .data{ /*데이터 올리는 공간*/
-    margin-left:-30px;
-    width:955px;
-    border: 1px solid black;
+    width:100%;
+	border:1px solid #d99873;
     margin-bottom:10px;
 }
+
+
 
 
 
 .hr{ /*****작성자 ID 존재하는 곳*******/
     margin-bottom:10px;
-    margin-left:-30px;
     border: 1px solid black; 
-    width:250px;
-    height:30px;
- 
+	padding:2px;
+	display:inline-block;
+	color:black; 
 }
 
 button.d-btn{  /*게시글 등록 완료 버튼*/
-    margin-left:400px;
+	position:absolute;
     background: black;
     color:#fff;
     width:80px;
     height: 40px;
+    top:90%;
+    left:45%;
     border:0px;
+    border-radius:10%;
 }
 
 button.d-btn:hover{/*마우스 가져다 대면 색 변경*/
@@ -184,47 +248,156 @@ width:0px;
 
  /*********Prontbar*******************/
 
-.bar_menu{
+.bar_menu {
     position: fixed;
-    margin-bottom: -20px;
     list-style: none;
-    padding:5px;
-    background:#7193C1;
-    width: 180px;
+    background-color: #315259;
+    width: 15%;
     height: 100%;
-
-    }
-
-.bar_menu li.bar_logo{
-   
+    float: left;
+    padding:0;
+    margin:0;
 }
-.bar_menu li.bar_logo:hover{
-    background-color: #7193C1;
-    width:140.8px;
-   
+
+.nav_li li:hover {
+    background-color: #D99873;
 }
+
  
-.bar_menu li:hover{
-     background-color: #d49466;
-            border-radius: 20px;
-           
-            width:140.8px;
-        }
-     
-.bar_menu li{
-        padding: 50px 19px;
-        font-size: 19px;
-     
-        
-    }
+.bar_logo{
+	padding-top:1.75rem;
+	padding-bottom:1.75rem;
+}
+.bar_menu li {
+    /**li class =bar_logo*/
+    text-align: center;
+}
 
-.bar_menu .bar_logo a{
-        font-size:15.5px;
-      
-    }
-.bar_logo i{
-        color:rgb(120, 120, 238);
-        font-size: 17px;
-    }
+
+.bar_logo a {
+    font-size: 1.6rem;
+    color: #fff;
+    font-family: 'times';
+}
+
+.bar_logo i {
+    color:white;
+    font-size: 1.6rem;
+    margin-left: -1.5vw;
+}
 /*************pront end*****************************/
+.bar_toogle i{
+    display: none;
+    position: absolute;
+    right:22px;
+    top:2px;
+    font-size:24px;
+}
 
+.nav_li {
+    height: calc(100% - 5.1rem);
+}
+
+.nav_li li {
+    height: 20%;
+    text-align: center;
+    line-height: 18vh;
+}
+
+
+.nav_li li a {
+	color: #fff;
+    font-size: 20px;
+    font-family:'times';
+}
+
+.nav_li li:hover {
+    background-color: #D99873;
+}
+
+@media screen and (max-width: 768px){
+
+	.BackGroundBox_Psfixed{
+	left:0;
+	height:auto;
+	width:100%;
+	overflow:scroll;
+	}
+	
+	button.d-btn{
+	position:inherit;
+	margin-left:40vw;
+	height:25px;
+	margin-top:0px;
+	}
+	
+    .bar_menu {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        position: relative;
+    }
+    .nav_li{
+        height: 90%;
+        display: none;
+    }
+
+    .nav_li li {
+        height: 20%;
+        line-height: 4.5vh;
+    }
+
+    .nav_li li a{
+        font-size:20px;
+    }
+    .bar_logo {
+        padding: 0;
+    }
+
+    .header_name {
+        width: 31vw;
+        height: auto;
+      	font-size:15px;
+        font-weight:bolder;
+    }
+    
+	 header {
+        display: none;
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+       .menu {
+        width: 69vw;
+        height: auto;
+        font-size:15px;
+        flex-direction: row-reverse;
+    }
+    .board_list_wrap .paging {
+        position : absolute;
+        width: 90vw;
+        left:4.5vw;
+        top:85vh;
+    }
+
+    .bar_toogle i{
+        display: block;
+    }
+	.bar_toogle a{
+		display:none;
+	}
+    .bar_logo a, .bar_logo i{
+        font-size: 25px;
+        padding-top:2.5px;
+        padding-bottom:2.5px;
+    }
+
+    header.active{
+        display: flex;
+    }
+
+    .nav_li.active{
+        display: block;
+    }
+    
+}

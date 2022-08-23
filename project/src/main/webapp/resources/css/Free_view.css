@@ -10,49 +10,85 @@ a{
 }
 
 /*******bar_menu 프론트바 부모****************/
-.bar_menu{
+.bar_menu {
     position: fixed;
     list-style: none;
-    padding:5px;
-    background:#7193C1;
+    background-color: #315259;
     width: 15%;
     height: 100%;
+    float: left;
+    padding:0;
+    margin:0;
+}
+
+.bar_menu li {
+    /**li class =bar_logo*/
+    text-align: center;
+}
+
+header {
+    margin-left: 15%;
+    width: 85%;
+    background-color: #A66F5B;
     float:left;
-   margin-top: -11.5px;
- 
-    }
-    .bar_menu li.bar_logo{
-   
-    }
-    .bar_menu li.bar_logo:hover{
-        background-color: #7193C1;
-        width:140.8px;
-     
-    }
-     
-    .bar_menu li:hover{
-         background-color: #d49466;
-                border-radius: 20px;
-               
-                width:140.8px;
-            }
-         
-    .bar_menu li{
-            padding: 50px 17px;
-            font-size: 17px;
-        
-         
-            
-        }
+}
+
+.header_name{
+	float:left;
+	width: calc(60% - 1.7361vw);
+    padding: 10px;
+    font-family: 'times';
+    font-size: 20px;
+    color: #fff;
+}
+
+.bar_logo a {
+    font-size: 1.6rem;
+    color: #fff;
+    font-family: 'times';
+}
+
+.bar_logo {
+    padding-top: 1.75rem;
+	padding-bottom: 1.75rem;
     
-    .bar_menu .bar_logo a{
-            font-size:15.5px;
-          
-        }
-    .bar_logo i{
-            color:rgb(120, 120, 238);
-            font-size: 17px;
-        }
+}
+
+.bar_logo i {
+    color:white;
+    font-size: 1.6rem;
+    margin-left: -1.5vw;
+}
+
+.bar_toogle i{
+    display: none;
+    position: absolute;
+    right:22px;
+    top:2px;
+    font-size:24px;
+}
+
+.nav_li {
+    height: calc(100% - 5.1rem);
+}
+
+.nav_li li {
+    height: 20%;
+    text-align: center;
+    line-height: 18vh;
+}
+
+
+.nav_li li a {
+	color: #fff;
+    font-size: 20px;
+    font-family:'times';
+}
+
+.nav_li li:hover {
+    background-color: #D99873;
+}
+
 
 
     /***********bar_menu 프론트바 부모는 위에 있습니다*****/
@@ -68,15 +104,12 @@ a{
 }
 /***********타이틀부터 댓글까지 묶음***********/
 .Main{   /******큰 박스*********/
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    background:#C0D0E6;
-    height: 100%;
     position: relative;
-    left: 13%;
-    width: 87%;
+    left: 15%;
+    width: 75vw;
     float:left;
-    
+    height:93vh;
+    margin-left:5vw;
 }
 
 .title { /*****타이틀 창입니다 Free_view 묶은 부모창*****/
@@ -99,62 +132,43 @@ a{
 }
 
 .bar2{ /*****작성 제목 타이틀*****/
-    width:170px;
+    width:100%;
     height: 30px;
     font-size: 10px;
-    margin-left:auto;
-  margin-right:auto;
 }
 
 .bar2 h1{ /***"작성제목"*3.30***/
-    position: relative;
-    left: -390px;
+	color:#d99873;
     }
 
 .search-input{
-    margin-left:auto;
-    margin-right:auto;
     height: 25px;
    text-align: left;
-   width:950px;
-   border: 1px solid black;
+   width:75vw;
+   border:1px solid #d99873;
    background: #fff;
    font-size:16px;
 }
 
 .bar3{ /********작성 내용 타이틀********/
-    width:170px;
+    width:100%;
     height: 30px;
     font-size: 10px;
-    margin-left:auto;
-  margin-right:auto;
-
-}
-.bar3 h1{ /**"작성내용"* 3.30일*/ 
-position: relative;
-left: -390px;
+	color:#dd9873;
 }
 
 .content_table{ /***작성자가 기입하는 내용이 들어가는 곳*****/
     margin-left:auto;
   margin-right:auto;
-    width:950px;
-    height: 300px;
-    border: 1px solid black;
+    width:100%;
+    height: 45vh;
+	border: 1px solid #d99873;
 	overflow-y:auto;
 	background: #fff;
-	border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
 
 .wab{ /*글 수정 삭제를 묶고 있는 부모 */
-    position: relative;
-  	left:-350px;
-    margin-left:auto;
-    margin-right:auto;
-    width:250px;
+    width:100%;
     height:30px;
 }
 
@@ -175,23 +189,18 @@ left: -390px;
     border: 1px solid transparent;
      }
 .Writer{ /**작성자*/
-        position: relative;
-          left:-350px;
-        margin-top: 30px;
-       margin-left:auto;
-      margin-right:auto;
-        margin-bottom: 20px;
-        border: 1px solid black; 
-        width:250px;
-          height:25px;
-        display: flex;
-        background: #fff;
+        margin-top: -5px;
+		border:1px solid #d99873;
+        display: inline-block;
     }
     /*******댓글 쓰는 곳********/
     #form-commentInfo{ 
-        margin-left:auto;
+    position:relative;
+    margin-left:auto;
     margin-right:auto;
-      width:950px;
+    width:100%;
+    overflow-y:scroll;
+    padding-bottom:10px;
       }
        #comment-count{ margin-bottom: 10px; width:500px;}
         #comment-input{ width: 89%; height: 3.3em; }
@@ -209,10 +218,7 @@ left: -390px;
 
 /******댓글 작성자 이름, 내용 묶음 부모 ******/
 .coment_writer{
-   
-     margin-left:auto;
-  margin-right:auto;
-   width:950px;
+   width: calc(100% - 1.8vw)
 }
 
 .conment_box { /**댓글 내용*/
@@ -279,7 +285,6 @@ margin-right:auto;
      border: 1px solid navy;
      border-radius: 100px;
      color:black;
-     background: rgb(241, 241, 241);
      }
  
  
@@ -288,8 +293,100 @@ margin-right:auto;
  }
  
  
-.paging a.bt{
-     background:#7193C1;
-     border: 1px solid #ccc;
- }
  /******페이징 부분********/
+ 
+ 
+ @media screen and (max-width: 768px){
+	.Main{
+	left:0;
+	width:90vw;
+	margin-left:4.2vw
+	}
+	
+	.search-input{
+	width:90vw;
+	}
+	
+	button.d-btn{
+	position:inherit;
+	margin-left:40vw;
+	height:25px;
+	margin-top:0px;
+	}
+	
+    .bar_menu {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        position: relative;
+    }
+    .nav_li{
+        height: 90%;
+        display: none;
+    }
+
+    .nav_li li {
+        height: 20%;
+        line-height: 4.5vh;
+    }
+
+    .nav_li li a{
+        font-size:20px;
+    }
+    .bar_logo {
+        padding: 0;
+    }
+
+    .header_name {
+        width: 31vw;
+        height: auto;
+      	font-size:15px;
+        font-weight:bolder;
+    }
+    
+	 header {
+        display: none;
+        position: relative;
+        width: 100%;
+        left: 0;
+        margin-left:0;
+    }
+       .menu {
+        width: 69vw;
+        height: auto;
+        font-size:15px;
+        flex-direction: row-reverse;
+    }
+    .board_list_wrap .paging {
+        position : absolute;
+        width: 90vw;
+        left:4.5vw;
+        top:85vh;
+    }
+
+    .bar_toogle i{
+        display: block;
+    }
+	.bar_toogle a{
+		display:none;
+	}
+    .bar_logo a, .bar_logo i{
+        font-size: 25px;
+        padding-top:2.5px;
+        padding-bottom:2.5px;
+    }
+
+    header.active{
+        display: flex;
+    }
+
+    .nav_li.active{
+        display: block;
+    }
+    
+    #form-commentInfo{
+    position: inherit;
+    }
+    
+    
+}

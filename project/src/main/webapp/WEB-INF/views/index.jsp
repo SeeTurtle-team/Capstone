@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Hansung Project</title>
+    <title>HASNUNG</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" /> 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="resources/css/index.css"/>
@@ -47,14 +47,14 @@
             <nav class="prontbar" id="index_prontbar">
                     <div class="bar_logo">
                     <i class="fa-solid fa-car-crash"></i>
-                    <a href="">HansungProject</a>
+                    <a href="">HANSUNG</a>
                     </div>
         
                 <ul class="bar_menu">
-                    <li title="딥러닝을 통한 CCTV 분석 페이지"><a href="/carList">CCTV_analysis</a></li>
-                    <li title="차에 대한 다양한 정보 페이지"><a href="/CarModel">Car_model </a></li>
-                    <li title="자유롭게 나누는 자유게시판"><a href="/free">Free_Board</a></li>
-                    <li title="질문이 있다면 QnA 게시판"><a href="/QnA">QnA</a></li>
+                    <li title="딥러닝을 통한 CCTV 분석 페이지"><a href="/carList">CCTV</a></li>
+                    <li title="차에 대한 다양한 정보 페이지"><a href="/CarModel">Vehicle </a></li>
+                    <li title="자유롭게 나누는 자유게시판"><a href="/free">Spaces</a></li>
+                    <li title="질문이 있다면 QnA 게시판"><a href="/QnA">Questions</a></li>
                     <li title="만든 이들"><a href="/developer">Developer</a></li>
                 </ul>
         
@@ -79,7 +79,6 @@
             <img src="https://ifh.cc/g/rp1twW.png" id="img-1">
             <img src="https://ifh.cc/g/AD5DHx.png" id="img-2">
             <img src="https://ifh.cc/g/H5kNHW.png" id="img-3">
-
         </div>
 
        
@@ -219,23 +218,18 @@
 
 </script>-->
 
+<script>
 
+const bar_toogle=document.querySelector('.bar_toogle');
+const menu =document.querySelector('.bar_menu');
+const header =document.querySelector('.Login_menu');
 
+bar_toogle.addEventListener('click', () =>{
+    menu.classList.toggle('active');
+    header.classList.toggle('active');
+});
 
-    <!----<script>
-
-    $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
-            if (scroll >= 650) {
-                $(".main").addClass("active");
-            }
-        });
-             
-    
-            
-    
-    
-</script> ---->
+</script>
 
 
 

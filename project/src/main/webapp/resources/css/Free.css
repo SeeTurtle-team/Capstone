@@ -77,6 +77,17 @@ body {
     transition: 0.5s;
 }
 
+.modal {
+    display: none;
+    z-index: 500;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    font-family: 'WooridaumB';
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8)
+}
 
 .modal1 {
     display: none;
@@ -102,7 +113,18 @@ body {
     background-color: rgba(0, 0, 0, 0.8)
 }
 
-
+.modal .x {
+    position: absolute;
+    z-index: 500;
+    top: 3rem;
+    right: 3rem;
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+    font-size: 3rem;
+    cursor: pointer;
+}
+f
 .modal1 .x {
     position: absolute;
     z-index: 500;
@@ -157,8 +179,10 @@ span.info {
 
 
 .img_container {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 70%;
+    margin:auto;
+    margin-top:2vh;
 }
 
 .img_container1 {
@@ -209,30 +233,33 @@ span.info {
     background-color: transparent;
     font-size: 1.5rem;
     font-family: 'IBMPlexSansKR-ExtraLight';
-    padding: .2rem;
+    padding:.2rem;
     padding-left: 20px;
     padding-bottom: 20px;
     text-align: center;
+    margin:0px;
 }
 
 .modal_content1 p {
     color: #ffffff;
     background-color: transparent;
-    font-size: 1.5rem;
+    font-size: calc(0.75em + 1vw);
     font-family: 'IBMPlexSansKR-ExtraLight';
-    padding-bottom: 20px;
     text-align: center;
     height: 10%;
+    margin:0px;
 }
 
 .modal_content2 p {
     color: #ffffff;
     background-color: transparent;
-    font-size: 1.5rem;
+    font-size: calc(0.6em + 1vw);
     font-family: 'IBMPlexSansKR-ExtraLight';
     padding-bottom: 20px;
     text-align: center;
     height: 10%;
+    margin:0px;
+    margin-bottom: 5%;
 }
 
 .modal_admin {
@@ -331,6 +358,14 @@ a {
     background-color: #7193C1;
 } */
 
+.menu {
+    float: left;
+    display: flex;
+    width: calc(40% - 5.2083vw);
+    font-size: 20px;
+    text-align: center;
+    font-family:'times'
+}
 
 .header_name {
     float: left;
@@ -339,15 +374,6 @@ a {
     font-family: 'times';
     font-size: 20px;
     color: #fff;
-}
-
-.menu {
-    float: left;
-    display: flex;
-    width: calc(40% - 5.2083vw);
-    font-size: 20px;
-    text-align: center;
-    font-family:'times'
 }
 
 .Login_menu {
@@ -687,7 +713,6 @@ button.f-btn {
         left: auto;
         margin-top: 40px;
         width: 100vw;
-        height: auto;
     }
 
     .board_list_wrap .paging {
@@ -723,7 +748,10 @@ button.f-btn {
     cursor: pointer;
 
 }
-
+	.imgList1{
+	margin:auto;
+	}
+	
 }
 
 
