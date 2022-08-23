@@ -294,7 +294,7 @@ public class HomeController {
 			model.addAttribute("prev", paging.prev);
 			model.addAttribute("next", paging.next);
 			model.addAttribute("select", Ipage);
-			return "ScarList";
+			return "carList";
 		}
 		
 		else if(option.equals("img")) {
@@ -1026,39 +1026,6 @@ public class HomeController {
 		return "SQnA";
 	}
 	
-	//--------------------------자유게시판 검색결과 반환--------------------//
-	@RequestMapping(value = "/SFree", method = RequestMethod.GET)
-	public String SFree(HttpServletRequest httpServletRequest, Model model) {
-		HttpSession session=httpServletRequest.getSession();
-		
-		String user_id=(String)session.getAttribute("userId");;
-		if(user_id==null) {
-			return "login";
-		}
-		model.addAttribute("login",user_id);
-		
-		List<FreeBoardVO> list = (List<FreeBoardVO>)session.getAttribute("list");
-		String page = httpServletRequest.getParameter("page");
-		if(page==null) {		//웹 페이지에서 넘겨준 값이 없으면 초기 페이지 값 1
-			page = "1";
-		}
-		int Ipage = Integer.parseInt(page);
-		Paging paging = new Paging();
-		paging.set(Ipage, list.size());
-		
-		model.addAttribute("page", page);
-		model.addAttribute("list",list);
-		// 시작 및 끝 번호
-		model.addAttribute("startPageNum", paging.startPageNum);
-		model.addAttribute("endPageNum", paging.endPageNum);
-
-		// 이전 및 다음 
-		model.addAttribute("prev", paging.prev);
-		model.addAttribute("next", paging.next);
-
-		model.addAttribute("select", Ipage);
-		return "SFree";
-	}
 	
 	//-------------------------CCTV 분석결과 검색결과 반환------------------//
 	@RequestMapping(value = "/ScarList", method = RequestMethod.GET)
