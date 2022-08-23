@@ -27,6 +27,7 @@
 		
 		if(comment ==""){
 			alert("댓글을 입력하세요");
+			return;
 		}
 		
 		location.href = "/free"+"?option=comment&comment="+comment+"&seq="+freeBoardSeq+"&time="+timeString;
