@@ -80,12 +80,32 @@ public class FreeBoardDAOImp implements FreeBoardDAO {
 	}
 	
 	@Override
-	public List<FreeBoardVO> searchPage(int displayPost, int postNum,String key) throws Exception{
+	public List<FreeBoardVO> searchTitle(int displayPost, int postNum,String key) throws Exception{
 		HashMap data = new HashMap();
 		data.put("displayPost",displayPost);
 		data.put("postNum",postNum);
 		data.put("key",key);
 
 		return sqlSession.selectList(namespace+".searchSelect",data);
+	}
+	
+	@Override
+	public List<FreeBoardVO> searchUser(int displayPost, int postNum, String key) throws Exception{
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		data.put("key",key);
+
+		return sqlSession.selectList(namespace+".user",data);
+	}
+	
+	@Override
+	public List<FreeBoardVO> searchAll(int displayPost, int postNum, String key) throws Exception{
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		data.put("key",key);
+
+		return sqlSession.selectList(namespace+".All",data);
 	}
 }

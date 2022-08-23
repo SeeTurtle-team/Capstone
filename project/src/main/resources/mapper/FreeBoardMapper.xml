@@ -30,12 +30,7 @@
   		order by time desc
   	</select>
   	
-  	<select id="searchUser" resultType="hansung.cap.project.FreeBoardVO">
-  		select * 
-  		from freeboard 
-  		where userid like #{s} 
-  		order by time desc
-  	</select>
+  	
   	
   	<select id="read" resultType="hansung.cap.project.FreeBoardVO">
   		select * 
@@ -67,6 +62,21 @@
  	
  	<select id="searchSelect" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
 		select * from (select * from freeboard where title like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
+	
+	<select id="searchUser" resultType="hansung.cap.project.FreeBoardVO">
+  		select * 
+  		from freeboard 
+  		where userid like #{s} 
+  		order by time desc
+  	</select>
+  	
+  	<select id="user" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
+		select * from (select * from freeboard where userId like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
+  	
+  	<select id="allr" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
+		select * from (select * from freeboard where userId like #{key} or title like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
 	</select>
   </mapper>
   

@@ -684,13 +684,12 @@ public class HomeController {
 			}
 			else {
 				if(select.equals("title")) { //제목으로 검색
-					//list = fDao.SearchTitle("%"+key+"%");
+					list = fDao.SearchTitle("%"+key+"%");
 					paging.set(pageNum, list.size());
 
 					try {
-						list = fDao.searchPage(paging.displayPost, paging.postNum,"%"+key+"%");  //이게 문제임
-						model.addAttribute("option",option);
-						model.addAttribute("key",key);
+						list = fDao.searchTitle(paging.displayPost, paging.postNum,"%"+key+"%");  //이게 문제임
+						
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						System.out.println(e.getMessage());
@@ -701,10 +700,29 @@ public class HomeController {
 				else if(select.equals("userId")) {  //작성자로 검색
 					list = fDao.SearchUser("%"+key+"%");
 					paging.set(pageNum, list.size());
+					try {
+						list = fDao.searchUser(paging.displayPost, paging.postNum,"%"+key+"%");  //이게 문제임
+						
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						System.out.println(e.getMessage());
+					}
 				}
 				else if(select.equals("multi")) {  // 둘 다 검색
 					list = fDao.Search("%"+key+"%");
+					paging.set(pageNum, list.size());
+					try {
+						list = fDao.searchUser(paging.displayPost, paging.postNum,"%"+key+"%");  //이게 문제임
+						
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						System.out.println(e.getMessage());
+					}
 				}
+				
+				model.addAttribute("option",option);
+				model.addAttribute("key",key);
+				model.addAttribute("sel",select);
 			}
 			
 
@@ -805,6 +823,9 @@ public class HomeController {
 			model.addAttribute("list",fVo);
 			return "freeView";
 		}
+		System.out.println(paging.startPageNum);
+		System.out.println(paging.endPageNum);
+		System.out.println(paging.pageNum);
 		
 		model.addAttribute("list",list);
 		model.addAttribute("page", paging.pageNum);

@@ -130,7 +130,7 @@
 				 <span>
 				 
 				  <c:if test="${select != num}">
-				   <a href="/free?num=${num}&option=${option}&key=${key}">${num}</a>
+				   <a href="/free?num=${num}&option=${option}&key=${key}&select=${sel}">${num}</a>
 				  </c:if>    
 				  
 				  <c:if test="${select == num}">
