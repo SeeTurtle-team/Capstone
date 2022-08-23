@@ -7,37 +7,56 @@
   <mapper namespace="hansung.cap.mapper.QnAMapper">
   
   	<insert id="insertQnA">
-  		insert into qna(title,content,userId,time,image) values (#{title},#{content},#{userId},#{time},#{image})
+  		insert into qna(title,content,userId,time,image) 
+  		values (#{title},#{content},#{userId},#{time},#{image})
   	</insert>
   	
   	<select id="queryAll" resultType="hansung.cap.project.QnAVO">
-  		select * from qna order by time desc
+  		select * 
+  		from qna 
+  		order by time desc
   	</select>
   	
   	<select id="search" resultType="hansung.cap.project.QnAVO">
-  		select * from qna where title like #{s} or content like #{s} or userid like #{s} order by time desc
+  		select * 
+  		from qna 
+  		where title 
+  		like #{s} or content like #{s} or userid like #{s} order by time desc
   	</select>
   	
   	<select id="searchTitle" resultType="hansung.cap.project.QnAVO">
-  		select * from qna where title like #{s} order by time desc
+  		select * 
+  		from qna 
+  		where title 
+  		like #{s} order by time desc
   	</select>
   	
   	<select id="searchUser" resultType="hansung.cap.project.QnAVO">
-  		select * from qna where userid like #{s} order by time desc
+  		select * 
+  		from qna 
+  		where userid 
+  		like #{s} order by time desc
   	</select>
   	
   	<select id="read" resultType="hansung.cap.project.QnAVO">
-  		select * from qna where seq like #{s}
+  		select * 
+  		from qna 
+  		where seq 
+  		like #{s}
   	</select>
   	<delete id="delete">
-  		delete from qna where seq like #{s}
+  		delete from qna 
+  		where seq like #{s}
   	</delete>
   	
   	<update id = "modify">
-  		update qna set title=#{title}, content=#{content}, userId=#{userId}, time = #{time} where seq like #{seq} 
+  		update qna 
+  		set title=#{title}, content=#{content}, userId=#{userId}, time = #{time} 
+  		where seq like #{seq} 
   	</update>
   	
   	<select id="countBoard" resultType="int">
-  		SELECT COUNT(*) FROM qna
+  		SELECT COUNT(*) 
+  		FROM qna
   	</select>
   </mapper>

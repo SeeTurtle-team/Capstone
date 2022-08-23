@@ -8,19 +8,26 @@
 <mapper namespace="hansung.cap.mapper.MemberMapper">
 
 	<select id="login" resultType="hansung.cap.project.MemberVO">
-		select * from login where userId=#{userId} and userPw=#{userPw} 
+		select * 
+		from login
+		 where userId=#{userId} and userPw=#{userPw} 
 	</select>
 	
 	<insert id="insertMember">
-		insert into login(userId,userPw,userName,userEmail,userQuestion) values (#{userId},#{userPw},#{userName},#{userEmail},#{userQuestion})
+		insert into login(userId,userPw,userName,userEmail,userQuestion) 
+		values (#{userId},#{userPw},#{userName},#{userEmail},#{userQuestion})
 	</insert>
 	
 	<select id="idCheck" resultType="int">
-		select count(*) from login where userId=#{userId}
+		select count(*) 
+		from login 
+		where userId=#{userId}
 	</select>
 	
 	<select id="forgot" resultType="String">
-		select userPw from login where userId=#{userId} and userQuestion=#{userQuestion}
+		select userPw 
+		from login 
+		where userId=#{userId} and userQuestion=#{userQuestion}
 	</select>
 	
 </mapper>

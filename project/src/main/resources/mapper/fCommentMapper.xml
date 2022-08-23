@@ -6,22 +6,28 @@
   
   <mapper namespace="hansung.cap.mapper.fCommentMapper">
   	<insert id="insertfComment">
-  		insert into freecomment(userId,text,FreeNum,time) values (#{userId},#{text},#{freeNum},#{time})
+  		insert into freecomment(userId,text,FreeNum,time) 
+  		values (#{userId},#{text},#{freeNum},#{time})
   	</insert>
   	
   	<select id="queryAll" resultType="hansung.cap.project.fCommentVO">
-  		select * from freecomment
+  		select * 
+  		from freecomment
   	</select>
   	
   	<select id = "querry" resultType="hansung.cap.project.fCommentVO">
-  		select * from freecomment where freeNum like #{a}
+  		select * 
+  		from freecomment 
+  		where freeNum like #{a}
   	</select>
   	
   	<select id="deleteComment">
-  		delete from freecomment where commentNum like #{a}
+  		delete from freecomment 
+  		where commentNum like #{a}
   	</select>
   	
   	<select id = "deleteAll">
-  		delete from freecomment where freeNum like #{a}
+  		delete from freecomment 
+  		where freeNum like #{a}
   	</select>
   </mapper>

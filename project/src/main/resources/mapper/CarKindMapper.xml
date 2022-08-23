@@ -8,18 +8,24 @@
   <mapper namespace="hansung.cap.mapper.CarKindMapper">
   
   	<select id="queryCAR" resultType="hansung.cap.project.CarKindVO">
-  		select * from carKind where carKind like #{msg}
+  		select * 
+  		from carKind
+  		where carKind like #{msg}
   	</select>
   	
   	<select id="queryMaker" resultType="hansung.cap.project.CarKindVO">
-  		select * from carKind where carMaker like #{msg}
+  		select * 
+  		from carKind 
+  		where carMaker like #{msg}
   	</select>
   	
     <select id="querryAll" resultType="hansung.cap.project.CarKindVO">
-  		select * from carKind 
+  		select * 
+  		from carKind 
   	</select>
   	
   	<select id="countBoard" resultType="int">
-  		SELECT COUNT(*) FROM carKind
+  		SELECT COUNT(*) 
+  		FROM carKind
   	</select>
   </mapper>

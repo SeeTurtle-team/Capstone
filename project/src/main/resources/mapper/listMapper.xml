@@ -8,23 +8,34 @@
 <mapper namespace="hansung.cap.mapper.listMapper">
 
       <select id="queryAll" resultType="hansung.cap.project.listVO">
-    	select * from list order by time desc
+    	select * 
+    	from list 
+    	order by time desc
     </select>
     
     <select id = "queryModel" resultType="hansung.cap.project.listVO">
-   		select * from list where model like #{model} order by time desc
+   		select * 
+   		from list 
+   		where model 
+   		like #{model} order by time desc
     </select>
     
     <select id = "queryTime" resultType="hansung.cap.project.listVO">
-    	select * from list where time like #{time} order by time desc
+    	select * 
+    	from list 
+    	where time like #{time} order by time desc
     </select>
     
 	<select id="searchName" resultType="hansung.cap.project.listVO">
-		select * from list where model like #{msg} or carColor like #{msg} or time like #{msg} order by time desc
+		select * 
+		from list 
+		where model like #{msg} or carColor like #{msg} or time like #{msg} order by time desc
 	</select>
 	
 	<select id="selectOne" resultType="hansung.cap.project.listVO">
-		select * from list where seq = #{a}
+		select * 
+		from list 
+		where seq = #{a}
 	</select>
 	
 	<select id="selectUrl" resultType="hansung.cap.project.listVO">
@@ -34,7 +45,8 @@
 	</select>
 	<!-- 총 게시글 갯수 출력 -->
 	<select id="countBoard" resultType="int">
-		SELECT COUNT(*) FROM list
+		SELECT COUNT(*) 
+		FROM list
 	</select>
 
 </mapper>
