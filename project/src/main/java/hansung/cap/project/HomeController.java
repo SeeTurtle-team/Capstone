@@ -342,7 +342,7 @@ public class HomeController {
 			for (int i = 0; i < size; i++) {
 				System.out.println(clist.get(i).imgUrl);
 				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
-				url = url + "?" + imgUrl[0];
+				url = imgUrl[0] + "?" + url ;
 			}
 
 			System.out.println(url);
@@ -355,23 +355,27 @@ public class HomeController {
 		else if (option.equals("cctvNow")) {
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
 
-			System.out.println(seq);
+			System.out.println("seq="+seq);
 			List<listVO> clist = new ArrayList<listVO>();
-			clist = lDao.QueryAll();
+			clist = lDao.All();
 			int size = clist.size();
 			int imgSeq = 0;
+			System.out.println(clist.get(0).seq + ", "+clist.get(0).model);
 			for (int i = 0; i < size; i++) {
 				if (seq == clist.get(i).seq) {
+					System.out.println("hi" + clist.get(i).seq);
 					imgSeq = i;
 					break;
 				}
 			}
+			
+			System.out.println(imgSeq);
 			String url = "";
 
 			for (int i = imgSeq; i < size; i++) {
 				System.out.println(i);
 				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
-				url = url + "?" + imgUrl[0];
+				url = imgUrl[0] + "?" + url ;
 
 			}
 

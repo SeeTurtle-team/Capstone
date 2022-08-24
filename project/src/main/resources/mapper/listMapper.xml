@@ -10,26 +10,31 @@
       <select id="queryAll" resultType="hansung.cap.project.listVO">
     	select * 
     	from list 
-    	order by time desc
+    	order by seq desc
+    </select>
+    
+    <select id="All" resultType="hansung.cap.project.listVO">
+    	select * 
+    	from list 
     </select>
     
     <select id = "queryModel" resultType="hansung.cap.project.listVO">
    		select * 
    		from list 
    		where model 
-   		like #{model} order by time desc
+   		like #{model} order by seq desc
     </select>
     
     <select id = "queryTime" resultType="hansung.cap.project.listVO">
     	select * 
     	from list 
-    	where time like #{time} order by time desc
+    	where time like #{time} order by seq desc
     </select>
     
 	<select id="searchName" resultType="hansung.cap.project.listVO">
 		select * 
 		from list 
-		where model like #{msg} or carColor like #{msg} or time like #{msg} order by time desc
+		where model like #{msg} or carColor like #{msg} or time like #{msg} order by seq desc
 	</select>
 	
 	<select id="selectOne" resultType="hansung.cap.project.listVO">

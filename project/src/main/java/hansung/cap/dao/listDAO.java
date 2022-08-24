@@ -7,6 +7,7 @@ import java.util.Map;
 
 public interface listDAO {
 	public List<listVO> QueryAll();
+	public List<listVO> All();
 	public List<listVO> QueryModel(String model);
 	public List<listVO> QueryTime(String time);
 	public List<listVO> paging(int paging);

@@ -30,6 +30,11 @@ public class listDAOimp implements listDAO {
     }
     
     @Override
+    public List<listVO> All(){
+    	return sqlSession.selectList(namespace+".All");
+    }
+    
+    @Override
     public List<listVO> QueryModel(String model){
     	return sqlSession.selectList(namespace+".queryModel",model);
     }

@@ -85,8 +85,8 @@
 
 				<div class="shell">
 					<img src="https://ifh.cc/g/rp1twW.png" id="img-1">
-					<img src="https://ifh.cc/g/AD5DHx.png" id="img-2">
-					<img src="https://ifh.cc/g/H5kNHW.png" id="img-3">
+					<!--  <img src="https://ifh.cc/g/AD5DHx.png" id="img-2">
+					<img src="https://ifh.cc/g/H5kNHW.png" id="img-3">-->
 				</div>
 
 			
