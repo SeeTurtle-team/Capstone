@@ -52,10 +52,10 @@ function logOut(){
                         </div>
 
                         <ul class="bar_menu">
-                            <li><a href="/carList">CCTV_analysis</a></li>
-                            <li><a href="/CarModel">Car_model </a></li>
-                            <li><a href="/free">Free_Board</a></li>
-                            <li><a href="/QnA">QnA</a></li>
+                            <li><a href="/carList">CCTV</a></li>
+                            <li><a href="/CarModel">Vehicle </a></li>
+                            <li><a href="/free">Spaces</a></li>
+                            <li><a href="/QnA">Questions</a></li>
                             <li><a href="/developer">Developer</a></li>
 
                         </ul>
@@ -85,12 +85,13 @@ function logOut(){
 
        세상을 바꾸는 개발자가 되고 싶어요.
         </pre>
-                <img class="bugiimg" src="https://ifh.cc/g/mKpm2J.png">
+                <img class="bugiimg" src="https://ifh.cc/g/xdjdg7.png">
                 <img id="down" src="https://ifh.cc/g/XDRRCL.png"></img>
 
 
             </div>
         </section>
+        
         <section class="section">
             <div class="section section_fullpage_dev">
                 <div class="developerBigBox">
