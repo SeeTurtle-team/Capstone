@@ -75,7 +75,7 @@
 		select * from (select * from freeboard where userId like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
 	</select>
   	
-  	<select id="allr" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
+  	<select id="All" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
 		select * from (select * from freeboard where userId like #{key} or title like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
 	</select>
   </mapper>

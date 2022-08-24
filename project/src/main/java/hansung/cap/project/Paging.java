@@ -24,8 +24,7 @@ public class Paging {
         if(endPageNum > pageNum) {
 			 endPageNum = pageNum;
 		}
-        this.prev = startPageNum == 1 ? false : true;
-        this.next = endPageNum * pageNum_cnt >= endPageNum_tmp ? false : true;
-        
-    }
+       this.prev = startPageNum == 1 ? false : true;
+       this.next = endPageNum >= pageNum ? false : true;
+   }
 }
