@@ -685,13 +685,17 @@ public class HomeController {
 
 						list = fDao.searchTitle(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
 
-					} else if (select.equals("userId")) { // 작성자로 검색
+					} 
+					
+					else if (select.equals("userId")) { // 작성자로 검색
 						list = fDao.SearchUser("%" + key + "%");
 						paging.set(pageNum, list.size());
 
 						list = fDao.searchUser(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
 
-					} else if (select.equals("multi")) { // 둘 다 검색
+					} 
+					
+					else if (select.equals("multi")) { // 둘 다 검색
 						list = fDao.Search("%" + key + "%");
 						paging.set(pageNum, list.size());
 						list = fDao.searchAll(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
@@ -797,25 +801,7 @@ public class HomeController {
 			model.addAttribute("list", fVo);
 			model.addAttribute("seq", a);
 			return "FreeModify";
-		} else if (option.equals("modifySuccess")) { // 수정 완료
-
-			fVo.seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
-			fVo.title = httpServletRequest.getParameter("title");
-			fVo.content = httpServletRequest.getParameter("content");
-			fVo.userId = httpServletRequest.getParameter("writer");
-			fVo.time = httpServletRequest.getParameter("time");
-
-			fDao.modify(fVo); // 수정 쿼리
-
-			rlist = frDao.querry(fVo.seq);
-			int size = rlist.size();
-
-			model.addAttribute("id", user_id);
-			model.addAttribute("size", size);
-			model.addAttribute("rlist", rlist);
-			model.addAttribute("list", fVo);
-			return "freeView";
-		}
+		} 
 		System.out.println(paging.startPageNum);
 		System.out.println(paging.endPageNum);
 		System.out.println(paging.pageNum);
@@ -877,8 +863,20 @@ public class HomeController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
-		fDao.insert(fVO);
+		
+		String option = request.getParameter("option");
+		
+		if(option==null) {
+			fDao.insert(fVO);
+		}
+		else if(option.equals("modify")) {
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			fVO.setSeq(seq);
+			fDao.modify(fVO);
+			
+			return "redirect:/free?option=view&seq="+seq;
+		}
+		
 		return "redirect:/free";
 	}
 
@@ -920,8 +918,15 @@ public class HomeController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
-		qDao.enrollQnA(qVO);
+		
+		String option = request.getParameter("option");
+		if(option==null) {
+			qDao.enrollQnA(qVO);
+		}
+		else if(option.equals("modify")) {
+			
+		}
+		
 		return "redirect:/QnA";
 	}
 

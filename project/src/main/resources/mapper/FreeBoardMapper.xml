@@ -45,7 +45,7 @@
   	
   	<update id = "modify">
   		update freeboard 
-  		set title=#{title}, content=#{content}, userId=#{userId}, time = #{time}
+  		set title=#{title}, content=#{content}, userId=#{userId}, time = #{time}, image = #{image}
 		where seq like #{seq} 
   	</update>
   	
