@@ -201,7 +201,14 @@ td textarea.content{ /*작성내용 작성 하는 공간*/
     margin-bottom:10px;
 }
 
-
+.data1{ /*데이터 올리는 공간*/
+    position:absolute;
+    width:20%;
+    height : 30px;
+    left:33%;
+	border:1px solid #d99873;
+    margin-bottom:10px;
+}
 
 
 
@@ -221,6 +228,50 @@ button.d-btn{  /*게시글 등록 완료 버튼*/
     height: 40px;
     top:90%;
     left:45%;
+    border:0px;
+    border-radius:10%;
+}
+button.d-btn1{  /*게시글 등록 완료 버튼*/
+	position:absolute;
+    background: black;
+    color:#fff;
+    width:80px;
+    height: 40px;
+    top:80%;
+    left:38%;
+    border:0px;
+    border-radius:10%;
+}
+button.d-btn2{  /*게시글 등록 완료 버튼*/
+	position:absolute;
+    background: black;
+    color:#fff;
+    width:80px;
+    height: 40px;
+    top:80%;
+    left:45%;
+    border:0px;
+    border-radius:10%;
+}
+button.d-btn3{  /*게시글 등록 완료 버튼*/
+	position:absolute;
+    background: black;
+    color:#fff;
+    width:80px;
+    height: 40px;
+    top:80%;
+    left:52%;
+    border:0px;
+    border-radius:10%;
+}
+button.d-btn4{  /*게시글 등록 완료 버튼*/
+	position:absolute;
+    background: black;
+    color:#fff;
+    width:80px;
+    height: 40px;
+    top:73.5%;
+    left:55%;
     border:0px;
     border-radius:10%;
 }
