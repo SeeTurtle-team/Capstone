@@ -276,6 +276,18 @@ button.d-btn4{  /*게시글 등록 완료 버튼*/
     border-radius:10%;
 }
 
+button.d-btn5{  /*게시글 등록 완료 버튼*/
+	position:absolute;
+    background: black;
+    color:#fff;
+    width:80px;
+    height: 40px;
+    top:90%;
+    left:48%;
+    border:0px;
+    border-radius:10%;
+}
+
 button.d-btn:hover{/*마우스 가져다 대면 색 변경*/
     background-color: #d49466;
     
