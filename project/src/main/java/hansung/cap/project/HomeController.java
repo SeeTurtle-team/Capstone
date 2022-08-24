@@ -435,7 +435,9 @@ public class HomeController {
 
 		if (option == null) {
 
-		} else if (option.equals("search")) { // 검색
+		} 
+		
+		else if (option.equals("search")) { // 검색
 			String keyWord = httpServletRequest.getParameter("keyWord");
 			String select = httpServletRequest.getParameter("select");
 			if (keyWord.equals("")) {
@@ -466,7 +468,9 @@ public class HomeController {
 			model.addAttribute("next", paging.next);
 			model.addAttribute("select", Ipage);
 			return "SQnA";
-		} else if (option.equals("read")) { // 글 열람
+		} 
+		
+		else if (option.equals("read")) { // 글 열람
 			System.out.println("QnA read");
 			int a = Integer.parseInt(httpServletRequest.getParameter("seq"));
 
@@ -502,7 +506,9 @@ public class HomeController {
 
 			model.addAttribute("list", qVo);
 			return "QnAView";
-		} else if (option.equals("enroll")) { // QnA 댓글 등록
+		}
+		
+		else if (option.equals("enroll")) { // QnA 댓글 등록
 			qCommentVO vo = new qCommentVO();
 			vo.QnANum = Integer.parseInt(httpServletRequest.getParameter("seq"));
 			vo.text = httpServletRequest.getParameter("text");
@@ -525,7 +531,9 @@ public class HomeController {
 			model.addAttribute("list", qVo);
 
 			return "QnAView";
-		} else if (option.equals("goToenroll")) { // QnA 작성 칸으로 이동
+		} 
+		
+		else if (option.equals("goToenroll")) { // QnA 작성 칸으로 이동
 			model.addAttribute("id", user_id);
 			return "QnAWrite";
 		}
@@ -537,15 +545,10 @@ public class HomeController {
 			model.addAttribute("list", qVo);
 			model.addAttribute("id", user_id);
 			return "QnAModify";
-		} else if (option.equals("modifyQnA")) { // QnA 글 수정 완료
+		} 
+		
 
-			qVo.seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
-			qVo.title = httpServletRequest.getParameter("title");
-			qVo.content = httpServletRequest.getParameter("content");
-			qVo.userId = httpServletRequest.getParameter("writer");
-			qVo.time = httpServletRequest.getParameter("time");
-			qDao.modify(qVo);
-		} else if (option.equals("delQnA")) { // QnA 글 삭제
+		else if (option.equals("delQnA")) { // QnA 글 삭제
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
 			qDao.delete(seq);
 			qrDao.deleteAll(seq);
@@ -920,12 +923,18 @@ public class HomeController {
 		}
 		
 		String option = request.getParameter("option");
+		
 		if(option==null) {
 			qDao.enrollQnA(qVO);
 		}
 		else if(option.equals("modify")) {
+			int seq = Integer.parseInt(request.getParameter("seq"));
+			qVO.setSeq(seq);
+			qDao.modify(qVO);
 			
+			return "redirect:/QnA?option=read&seq="+seq;
 		}
+		
 		
 		return "redirect:/QnA";
 	}

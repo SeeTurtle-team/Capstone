@@ -45,57 +45,57 @@
 <body>
 
 
-
-	<div class="all">
-		<header class="back_color"></header>
-		<!----3.23--->
-		<footer class="back_color2"></footer>
-		<!---3.23-->
+<div class="all">
 		<ul class="bar_menu">
 			<li class="bar_logo"><i class="fa-solid fa-car-crash"></i> <a
-				href="/"><b>HansungProject</b></a></li>
-			<li><a href="/carList">CCTV_analysis</a></li>
-			<li><a href="/CarModel">Car_model </a></li>
-			<li><a href="/QnA">QnA</a></li>
-			<li><a href="/free">Free_Board</a></li>
-			<li><a href="/developer">Developer</a></li>
+				href="/">HANSUNG</a> <a href="#" class="bar_toogle"> <i
+					class="fa-solid fa-bars"></i>
+			</a></li>
+			<div class="nav_li">
+				<li><a href="/carList">CCTV</a></li>
+				<li><a href="/CarModel">Vehicle </a></li>
+				<li><a href="/free">Spaces</a></li>
+				<li><a href="/QnA">Questions</a></li>
+				<li><a href="/developer">Developer</a></li>
+			</div>
 		</ul>
 
-		<br>
-
-
-		<div class="BackGroundBox_Psfixed">
-			<div class="title">
-				<h1>QnA_Modify</h1>
+		<header>
+			<div class="header_name">QnA</div>
+			<div class="menu">
+				<div class="Login_menu" onclick="logOut()">
+					<a href="/?option=logOut">EXIT</a>
+				</div>
 			</div>
-
+		</header>
+		<div class="BackGroundBox_Psfixed">
 			<section>
-				<div class="bar1">
-					&nbsp
-					<h5 class="write_title1">*표는 필수 입력사항입니다.</h5>
-				</div>
+				<form action="/QnAEnroll?option=modify&seq=${list.seq}" enctype="multipart/form-data"
+					method="post">
+					<div class="bar2">
+						<h1 class="write_title2">작성 제목*</h1>
+					</div>
+					<input name=title type="search-input" class="search-input"
+						id="title" value="${list.title}">
 
-				<div class="bar2">
-					<h1 class="write_title2">작성 제목*</h1>
-				</div>
-				<input type="search-input" class="search-input" id="title"
-					value="${list.title }">
+					<div class="bar3">
+						<h1 class="write_title2">작성 내용*</h1>
+					</div>
+					<table class="content_table">
+						<tr>
+							<td><textarea name="content" class="content" id="content">${list.content}</textarea>
+							</td>
+						</tr>
+					</table>
 
-				<div class="bar3">
-					<h1 class="write_title2">작성 내용*</h1>
-				</div>
-				<table class="content_table">
-					<tr>
-						<td><textarea class="content" id="content">${list.content}</textarea></td>
-					</tr>
-				</table>
-				<!-- 
-        <form class="data" action="서버" method="post" enctype="multipart/form-data">
-            <input type='file' name='' multiple/>
-        </form>
-		 -->
-				<div class="hr">${list.userId}</div>
-				<button class="d-btn" onclick="modify()">수정</button>
+
+					<input class="data" type='file' name='imgFile' multiple />
+
+
+					<div class="hr">${id}</div>
+					<button class="d-btn" type="submit">등록</button>
+				</form>
+
 
 
 			</section>
@@ -112,7 +112,6 @@
 	<!-------all_tb---3.23------->
 
 
-	</div>
 </body>
 
 <script>
