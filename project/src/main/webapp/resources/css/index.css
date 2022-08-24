@@ -57,7 +57,7 @@ a{
 .bugi{
     z-index: 999;
     position: absolute;
-    color:rgb(241, 241, 241);
+    color:rgb(87, 87, 87); /*206, 206, 206);*/
     font-size:40px;
     position: absolute;
     left:27%;
