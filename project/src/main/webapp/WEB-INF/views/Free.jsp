@@ -159,7 +159,7 @@
 
 
 
-				<button class="d-btn" onclick="gotoEnroll()">등록</button>
+				<button class="f-btn" onclick="gotoEnroll()">등록</button>
 
 			</div>
 

@@ -553,7 +553,7 @@ table {
     box-sizing: border-box;
     width: 300px;
     top: 95%;
-    left: 37%;
+    left: 40.5%;
     font-size: 0;
 }
 
@@ -586,7 +586,7 @@ button.f-btn {
     z-index: 1;
     position: absolute;
     left: 45.5%;
-    top: 20%;
+    top: 85%;
     background: black;
     color: #fff;
     width: 80px;
