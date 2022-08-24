@@ -668,7 +668,9 @@ public class HomeController {
 
 		if (option == null) {
 
-		} else if (option.equals("search")) { // freeboard 검색
+		} 
+		
+		else if (option.equals("search")) { // freeboard 검색
 			try {
 
 				String key = httpServletRequest.getParameter("key");
@@ -704,7 +706,9 @@ public class HomeController {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
-		} else if (option.equals("view")) { // freeboard 보기
+		} 
+		
+		else if (option.equals("view")) { // freeboard 보기
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
 
 			fVo = fDao.Read(seq);
@@ -723,7 +727,9 @@ public class HomeController {
 			model.addAttribute("rlist", rlist);
 			model.addAttribute("list", fVo);
 			return "freeView";
-		} else if (option.equals("comment")) { // 댓글 쓰기
+		} 
+		
+		else if (option.equals("comment")) { // 댓글 쓰기
 			fCommentVO fCVO = new fCommentVO();
 			fCVO.userId = user_id;
 			fCVO.text = httpServletRequest.getParameter("comment");
@@ -742,7 +748,9 @@ public class HomeController {
 			model.addAttribute("rlist", rlist);
 			model.addAttribute("list", fVo);
 			return "freeView";
-		} else if (option.equals("commentDel")) { // freeboard 댓글 삭제
+		}
+		
+		else if (option.equals("commentDel")) { // freeboard 댓글 삭제
 			int num = Integer.parseInt(httpServletRequest.getParameter("commentNum"));
 			frDao.DelComment(num);
 
@@ -757,12 +765,25 @@ public class HomeController {
 			model.addAttribute("rlist", rlist);
 			model.addAttribute("list", fVo);
 			return "freeView";
-		} else if (option.equals("delFree")) { // freeboard 글 삭제
+		} 
+		
+		else if (option.equals("delFree")) { // freeboard 글 삭제
 			int seq = Integer.parseInt(httpServletRequest.getParameter("seq"));
 			fDao.deleteFree(seq);
 			frDao.DelCommentAll(seq);
 			list = fDao.QueryAll();
-		} else if (option.equals("gotoEnroll")) { // 글 등록 페이지 이동
+			paging.set(pageNum, list.size());
+			
+			try {
+				list = fDao.listPage(paging.displayPost, paging.postNum);
+			} catch (Exception e) {
+				
+				System.out.println(e.getMessage());
+			}
+
+		} 
+		
+		else if (option.equals("gotoEnroll")) { // 글 등록 페이지 이동
 			model.addAttribute("id", user_id);
 			return "FreeWrite";
 		}
