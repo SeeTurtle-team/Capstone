@@ -115,7 +115,11 @@
                       	  <td><c:out value="${dataVO.seq}"/></td>
 	                      <td onclick="QnAView(${dataVO.seq})"><c:out value="${dataVO.title}"/></td>
 	                      <td><c:out value="${dataVO.userId}"/></td>
-	                      <td><c:out value="${dataVO.time}"/></td>
+	                      <td>
+	                      	<div class="free_tb">
+								<p><c:out value="${dataVO.time}" /></p>
+							</div>
+	                      </td>
 	         
                        </tr>
                  </c:forEach>

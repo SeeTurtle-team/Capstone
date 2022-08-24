@@ -522,14 +522,14 @@ table {
 }
 .cctv_img {
     display: flex;
-    color: #4279ff;
+    /*color: #4279ff;*/
 }
 
 .cctv_img p {
     width: 50%;
     margin:10px;
     cursor: pointer;
-
+ 	text-align: center;
 }
 
 .cctv_img p:hover {
@@ -538,6 +538,12 @@ table {
 }
 
 
+.free_tb p {
+    width: 100%;
+    margin:10px;
+    cursor: pointer;
+ 	text-align: center;
+}
 
 .board_list_wrap .paging {
     display: flex;
