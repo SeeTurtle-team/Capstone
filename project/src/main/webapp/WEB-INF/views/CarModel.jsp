@@ -81,49 +81,45 @@
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
 			</div>
+			
 			<!--  -->
 			<div class="imgList1">
 				<div class="imgC">
-					<c:forEach items="${list}" var="dataVO">
+					<c:forEach items="${list}" var="dataVO" varStatus="status">
 						<div class="imgPlusp">
+							<c:set var="list" value="${dataVO}" />
 							<c:set var="img" value="${dataVO.carImage}" />
-							<img src="<c:out value='${img}'/>" />
-							<p class="kind">
+							<img onclick="modal('${img}','${dataVO.carKind}','${dataVO.carPrice}','${dataVO.carMaker}','${dataVO.carFuel}','${dataVO.carEngine}','${dataVO.carRoad}')" 
+							     id="img" class="cropped" src="<c:out value='${img}'/>" />
+							<p class="kind" id="kind">
 								<c:out value="${dataVO.carKind}" />
 							</p>
-							<p class="detail" style="color: transparent">
-								가격 :
-								<c:out value="${dataVO.carPrice}" />
-								| 제조사 :
-								<c:out value="${dataVO.carMaker}" />
-								| 연비 :
-								<c:out value="${dataVO.carFuel}" />
+							<p class="detail" style="color: transparent" id="detail1">
+								가격 :<c:out value="${dataVO.carPrice}" />| 제조사 :<c:out value="${dataVO.carMaker}" />| 연비 :<c:out value="${dataVO.carFuel}" />
 							</p>
-							<p class="detail2" style="color: transparent">
-								차 엔진 :
-								<c:out value="${dataVO.carEngine}" />
-								| 적재용량 :
-								<c:out value="${dataVO.carRoad}" />
+							<p class="detail2" style="color: transparent" id="detail${status.index} }">
+								차 엔진 :	<c:out value="${dataVO.carEngine}" />| 적재용량 :<c:out value="${dataVO.carRoad}" />
 							</p>
 						</div>
 					</c:forEach>
 				</div>
 			</div>
+			
 			<!-- 팝업 되는 곳-->
 			<div class="modal">
 				<button class="x">x</button>
 				<div class="modal_content">
 					<div class="img_container">
-						<img src="" alt="">
+						<img id="modalImg" src="" alt="">
 						<!--이미지 받아오는 곳-->
 					</div>
 					<div class="modal_content1">
 						<strong>
-							<p></p>
+							<p id="detail1st"></p>
 						</strong>
 					</div>
 					<div class="modal_content2">
-						<p></p>
+						<p id="detail2nd"></p>
 					</div>
 				</div>
 			</div>
@@ -161,62 +157,12 @@
 				<!-- 팝업 될 곳 -->
 
 
-				<div class="modal_admin">
-					<button class="x">&times;</button>
-					<div class="modalBox_admin">
-						<form class="modal_admin_input">
 
-
-							<div class="modal_input_area">
-								<label for="modal_input">차 이름</label> <input type="text"
-									name="modal_input" id="modal_input" autocomplete="off" required>
-
-							</div>
-
-							<div class="modal_input_area">
-								<label for="modal_input">차 가격</label> <input type="text"
-									name="modal_input" id="modal_input" autocomplete="off" required>
-
-							</div>
-
-							<div class="modal_input_area">
-								<label for="modal_input">차 연비</label> <input type="text"
-									name="modal_input" id="modal_input" autocomplete="off" required>
-
-							</div>
-
-							<div class="modal_input_area">
-								<label for="modal_input">차 수용량</label> <input type="text"
-									name="modal_input" id="modal_input" autocomplete="off" required>
-							</div>
-
-							<div class="modal_input_upload">
-								<input type="file" class="mdoal_input_upload" accept="image/*"
-									required multiple>
-							</div>
-
-							<select>
-								<option>경형</option>
-								<option>소형</option>
-								<option>준중형</option>
-								<option>중형</option>
-								<option>중대형</option>
-								<option>대형</option>
-								<option>스포츠카</option>
-							</select>
-
-						</form>
-					</div>
-					<button class="f-btn">등록</button>
-					<!--여기가 업로드 부분-->
-				</div>
-
-				<!-- <button class="d-btn">등록</button > 이 버튼은 밖에서 보이기 위함 장식 및 페이드 인 하기 위함-->
 
 			</div>
 
 		</div>
-		<!-------all_tb---3.23------->
+	
 
 
 	</div>
@@ -226,21 +172,34 @@
 </body>
 
 <script>
+
+	function modal(carImage, carKind, carPrice, carMaker, carFuel, carEngine, carRoad){
+		document.getElementById("modalImg").src=carImage;
+		console.log(carImage);
+		document.getElementById("detail1st").innerText = carKind;
+		document.getElementById("detail2nd").innerText = "가격 : "+carPrice+" 제조사 : "+carMaker+"  연비 : "+carFuel+"\n 차 엔진 : "+carEngine+"  적재 용량 : "+carRoad;
+	}
+	
 	$(function() {
 		// 	이미지 클릭시 해당 이미지 모달
+		
 		$(".imgPlusp").click(function() {
 			$(".modal").show();
 			// 해당 이미지 가져오기
+			/*
 			var imgSrc = $('.imgPlusp').children("img").attr("src");
+			console.log(imgSrc);
 			$(".modal_content img").attr("src", imgSrc);
 
 			// 해당 이미지 텍스트 가져오기
 			var imgTit = $('.imgPlusp').children(".kind").text();
+			console.log($s('.imgPlusp').children(".kind").text());
+			console.log(imgTit);
 			$(".modal_content1 p").text(imgTit);
 			var srcText = $('.imgPlusp').children(".detail").text();
 			var srcText2 = $('.imgPlusp').children(".detail2").text();
 			var srcText3 = srcText + "\n" + srcText2;
-			$(".modal_content2 p").text(srcText3);
+			$(".modal_content2 p").text(srcText3);*/
 			// 해당 이미지에 alt값을 가져와 제목으로
 			//$(".modalBox p").text(imgAlt);
 		});

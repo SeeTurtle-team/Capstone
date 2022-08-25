@@ -111,7 +111,7 @@
 					<img src="${imgSrc}">
 				</div>
 			</div>
-
+			<br>
 			<div class="wab">
 				<div class="WriterAndbtn">
 					<div id="revise" onclick="modify()">수정</div>
@@ -119,7 +119,7 @@
 				</div>
 			</div>
 			<div class="Writer">${list.userId}</div>
-
+			<br><br>
 			<div id="form-commentInfo">
 				<div id="comment-count">
 				<c:if test="${size ==0}">
