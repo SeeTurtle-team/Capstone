@@ -176,8 +176,8 @@
 	function modal(carImage, carKind, carPrice, carMaker, carFuel, carEngine, carRoad){
 		document.getElementById("modalImg").src=carImage;
 		console.log(carImage);
-		document.getElementById("detail1st").innerText = carKind;
-		document.getElementById("detail2nd").innerText = "가격 : "+carPrice+" 제조사 : "+carMaker+"  연비 : "+carFuel+"\n 차 엔진 : "+carEngine+"  적재 용량 : "+carRoad;
+		document.getElementById("detail1st").innerText = "모델명 : "+carKind;
+		document.getElementById("detail2nd").innerText = "가격 : "+carPrice+"\u00A0 \u00A0 제조사 : "+carMaker+"\u00A0 \u00A0  연비 : "+carFuel+"\n 차 엔진 : "+carEngine+"\u00A0 \u00A0  적재 용량 : "+carRoad;
 	}
 	
 	$(function() {
