@@ -92,7 +92,9 @@ i {
 		<header>
 			<div class="header_name">CCTV</div>
 			<div class="menu">
-			
+				<div class="Login_menu" >
+					<a href="/carList">LIST</a>
+				</div>
 				<div class="Login_menu" onclick="logOut()">
 					<a href="/?option=logOut">EXIT</a>
 				</div>
