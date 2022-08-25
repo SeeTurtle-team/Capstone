@@ -62,9 +62,9 @@ button {
 <body>
 	<div class="all">
 		<ul class="bar_menu">
-			<li class="bar_logo"><i class="fa-solid fa-car-crash"></i> <a
-				href="/">HANSUNG</a> <a href="#" class="bar_toogle"> <i
-					class="fa-solid fa-bars"></i>
+			<li class="bar_logo"><i class="fa-solid fa-car-crash"></i>
+			 <a	href="/">HANSUNG</a> <a href="#" class="bar_toogle"> 
+			 <i	class="fa-solid fa-bars"></i>
 			</a></li>
 			<div class="nav_li">
 				<li><a href="/carList">CCTV</a></li>
@@ -79,6 +79,9 @@ button {
 			<div class="header_name">Spaces</div>
 			<div class="menu">
 				<div class="Login_menu" onclick="logOut()">
+					<a href="/carList">LIST</a>
+				</div>
+				<div class="Login_menu" onclick="logOut()">
 					<a href="/?option=logOut">EXIT</a>
 				</div>
 			</div>
@@ -92,7 +95,7 @@ button {
 				<br>
 				<h2 class="abc">차량 모델 : ${cctv.model}</h2>
 				<h3 class="abcd">지나간 시간 : ${cctv.time}</h3>
-				<button class="d-btn5" id="back">돌아가기</button>
+				<button class="d-btn5" id="back" title="이 시간대부터 CCTV를 보실 수 있습니다">CCTV 보기</button>
 
 			</section>
 
@@ -113,7 +116,8 @@ button {
 <script>
 	$(function() {
 		$("#back").click(function() {
-			location.href = "/carList";
+			var seq = "${cctv.seq}";
+			location.href = "/carList"+"?option=cctvNow&seq="+seq;
 		})
 	})
 </script>

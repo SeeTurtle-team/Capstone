@@ -92,6 +92,7 @@ i {
 		<header>
 			<div class="header_name">CCTV</div>
 			<div class="menu">
+			
 				<div class="Login_menu" onclick="logOut()">
 					<a href="/?option=logOut">EXIT</a>
 				</div>
@@ -165,12 +166,12 @@ i {
 	var url = "${list}";
 	var img = new Array();
 	img = url.split("?");
-	var i = 0;
+	var i = -1;
 	var flag = true;
 	var sec = 1000;
 	function showImg() {
 		i++;
-		if (img[parseInt(i)] === undefined) {
+		if (img[parseInt(i)] === undefined) {  //시연시 null로 수정할 것
 			console.log(i);
 			alert("cctv가 끝났습니다");
 			location.href = "/carList";

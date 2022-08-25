@@ -337,12 +337,17 @@ public class HomeController {
 			List<listVO> clist = new ArrayList<listVO>();
 			clist = lDao.QueryAll();
 			int size = clist.size();
-			String url = "";
+			String url = null;
 
 			for (int i = 0; i < size; i++) {
 				System.out.println(clist.get(i).imgUrl);
 				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
-				url = imgUrl[0] + "?" + url ;
+				if(url==null) {
+					url=imgUrl[0];
+				}
+				else {
+					url =  imgUrl[0] + "?" + url;
+				}
 			}
 
 			System.out.println(url);
@@ -363,19 +368,25 @@ public class HomeController {
 			System.out.println(clist.get(0).seq + ", "+clist.get(0).model);
 			for (int i = 0; i < size; i++) {
 				if (seq == clist.get(i).seq) {
-					System.out.println("hi" + clist.get(i).seq);
+					System.out.println("hi " + clist.get(i).seq);
 					imgSeq = i;
 					break;
 				}
 			}
 			
 			System.out.println(imgSeq);
-			String url = "";
+			String url=null;
 
 			for (int i = imgSeq; i < size; i++) {
 				System.out.println(i);
 				String[] imgUrl = clist.get(i).imgUrl.split("\\?");
-				url = imgUrl[0] + "?" + url ;
+				if(url==null) {
+					url=imgUrl[0];
+				}
+				else {
+					url =  url + "?" + imgUrl[0];
+				}
+				
 
 			}
 
