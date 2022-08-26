@@ -272,7 +272,7 @@ public class HomeController {
 		} else if (option.equals("search")) { // 검색 기능
 			String text = httpServletRequest.getParameter("name");
 			String sel = httpServletRequest.getParameter("sel");
-			List<listVO> clist = new ArrayList<listVO>();
+			//List<listVO> clist = new ArrayList<listVO>();
 			if (text.equals("")) { // 검색 값이 없으면
 				model.addAttribute("page", page);
 				model.addAttribute("list", list);
@@ -284,9 +284,9 @@ public class HomeController {
 				return "carList";
 			}
 			if (sel.equals("model")) { // 모델 명으로 검색
-				clist = lDao.QueryModel("%" + text + "%");
+				list = lDao.QueryModel("%" + text + "%");
 			} else if (sel.equals("time")) { // 차량이 지나간 시간으로 검색
-				clist = lDao.QueryTime("%" + text + "%");
+				list = lDao.QueryTime("%" + text + "%");
 			}
 			model.addAttribute("list", list);
 			paging.set(Ipage, list.size());

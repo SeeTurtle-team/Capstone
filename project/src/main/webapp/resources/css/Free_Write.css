@@ -214,7 +214,7 @@ td textarea.content{ /*작성내용 작성 하는 공간*/
 
 .hr{ /*****작성자 ID 존재하는 곳*******/
     margin-bottom:10px;
-    border: 1px solid black; 
+    border: 1px solid #d99873; 
 	padding:2px;
 	display:inline-block;
 	color:black; 
