@@ -1,10 +1,13 @@
 package hansung.cap.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
+
+import hansung.cap.project.FreeBoardVO;
 import hansung.cap.project.QnAVO;
 import org.springframework.stereotype.Repository;
 
@@ -63,19 +66,44 @@ public class QnADAOImp implements QnADAO {
 		int result = sqlSession.selectOne(namespace+".countBoard", vo);
 		return result;
 	}
+	
 	@Override
-	public int ScountBoard1(String msg) {
-		int result = sqlSession.selectOne(namespace+".ScountBoard1", msg);
-		return result;
+	public List<QnAVO> listPage(int displayPost, int postNum) throws Exception{
+		HashMap data = new HashMap();
+		
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		
+		return sqlSession.selectList(namespace+".listPage",data);
 	}
+	
 	@Override
-	public int ScountBoard2(String msg) {
-		int result = sqlSession.selectOne(namespace+".ScountBoard2", msg);
-		return result;
+	public List<QnAVO> searchTitle(int displayPost, int postNum,String key) throws Exception{
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		data.put("key",key);
+
+		return sqlSession.selectList(namespace+".searchSelect",data);
 	}
+	
 	@Override
-	public int ScountBoard3(String msg) {
-		int result = sqlSession.selectOne(namespace+".ScountBoard3", msg);
-		return result;
+	public List<QnAVO> searchUser(int displayPost, int postNum, String key) throws Exception{
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		data.put("key",key);
+
+		return sqlSession.selectList(namespace+".user",data);
+	}
+	
+	@Override
+	public List<QnAVO> searchAll(int displayPost, int postNum, String key) throws Exception{
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		data.put("key",key);
+
+		return sqlSession.selectList(namespace+".All",data);
 	}
 }

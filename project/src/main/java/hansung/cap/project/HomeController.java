@@ -435,50 +435,64 @@ public class HomeController {
 		QnAVO qVo = new QnAVO();
 
 		String option = httpServletRequest.getParameter("option");
-		String page = httpServletRequest.getParameter("page");
+		String Num = httpServletRequest.getParameter("num");
 
-		if (page == null) {
-			page = "1";
+		int pageNum;
+
+		if (Num == null) {
+			pageNum = 1;
+		} else {
+			pageNum = Integer.parseInt(Num);
 		}
-		int Ipage = Integer.parseInt(page);
-		Paging paging = new Paging();
-		paging.set(Ipage, list.size());
 
+		Paging paging = new Paging();
+		paging.set(pageNum, list.size());
+
+		try {
+			list = qDao.listPage(paging.displayPost, paging.postNum);
+		} catch (Exception e) {
+			
+			System.out.println(e.getMessage());
+		}
 		if (option == null) {
 
 		} 
 		
 		else if (option.equals("search")) { // 검색
-			String keyWord = httpServletRequest.getParameter("keyWord");
-			String select = httpServletRequest.getParameter("select");
-			if (keyWord.equals("")) {
-				model.addAttribute("page", page);
-				model.addAttribute("list", list);
-				model.addAttribute("startPageNum", paging.startPageNum);
-				model.addAttribute("endPageNum", paging.endPageNum);
-				model.addAttribute("prev", paging.prev);
-				model.addAttribute("next", paging.next);
-				model.addAttribute("select", Ipage);
-				return "QnA";
+			try {
+				String key = httpServletRequest.getParameter("key");
+				String select = httpServletRequest.getParameter("select");
+				if(key.length() == 0) {
+					
+				}
+				else {
+					if (select.equals("title")) {
+						list = qDao.searchTitle("%" + key + "%");
+						paging.set(pageNum,  list.size());
+						
+						list = qDao.searchTitle(paging.displayPost, paging.postNum, "%" + key + "%");
+					}
+					else if (select.equals("userId")) {
+						list = qDao.searchUser("%" + key + "%");
+						paging.set(pageNum, list.size());
+
+						list = qDao.searchUser(paging.displayPost, paging.postNum, "%" + key + "%");
+					}
+					else if (select.equals("multi")) { // 둘 다 검색
+						list = qDao.search("%" + key + "%");
+						paging.set(pageNum, list.size());
+						list = qDao.searchAll(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
+
+					}
+
+					model.addAttribute("option", option);
+					model.addAttribute("key", key);
+					model.addAttribute("sel", select);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
 
-			if (select.equals("title")) { // 제목으로 검색
-				list = qDao.searchTitle("%" + keyWord + "%");
-			} else if (select.equals("userId")) { // 작성자 아이디로 검색
-				list = qDao.searchUser("%" + keyWord + "%");
-			} else if (select.equals("multi")) { // 제목 + 작성자로 검색
-				list = qDao.search("%" + keyWord + "%");
-			}
-			model.addAttribute("list", list);
-			paging.set(Ipage, list.size());
-			session.setAttribute("list", list);
-
-			model.addAttribute("startPageNum", paging.startPageNum);
-			model.addAttribute("endPageNum", paging.endPageNum);
-			model.addAttribute("prev", paging.prev);
-			model.addAttribute("next", paging.next);
-			model.addAttribute("select", Ipage);
-			return "SQnA";
 		} 
 		
 		else if (option.equals("read")) { // 글 열람
@@ -564,8 +578,9 @@ public class HomeController {
 			qDao.delete(seq);
 			qrDao.deleteAll(seq);
 		}
-		model.addAttribute("page", page);
 		model.addAttribute("list", list);
+		model.addAttribute("page", paging.pageNum);
+
 		// 시작 및 끝 번호
 		model.addAttribute("startPageNum", paging.startPageNum);
 		model.addAttribute("endPageNum", paging.endPageNum);
@@ -575,7 +590,7 @@ public class HomeController {
 		model.addAttribute("next", paging.next);
 
 		// 현재 페이지
-		model.addAttribute("select", Ipage);
+		model.addAttribute("select", pageNum);
 		return "QnA";
 	}
 

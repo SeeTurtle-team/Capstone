@@ -2,6 +2,7 @@ package hansung.cap.dao;
 
 import java.util.List;
 
+import hansung.cap.project.FreeBoardVO;
 import hansung.cap.project.QnAVO;
 
 public interface QnADAO {
@@ -15,7 +16,10 @@ public interface QnADAO {
 	public void modify(QnAVO vo);
 	public List<QnAVO> paging(int paging);
 	public int countBoard(QnAVO vo);
-	public int ScountBoard1(String msg);
-	public int ScountBoard2(String msg);
-	public int ScountBoard3(String msg);
+
+	public List<QnAVO> listPage(int displayPost, int postNum) throws Exception;
+	public List<QnAVO> searchTitle(int displayPost, int postNum, String key) throws Exception;
+	public List<QnAVO> searchUser(int displayPost, int postNum, String key) throws Exception;
+	public List<QnAVO> searchAll(int displayPost, int postNum, String key) throws Exception;
+	
 }

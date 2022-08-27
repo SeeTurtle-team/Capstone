@@ -31,7 +31,7 @@
   		like #{s} order by time desc
   	</select>
   	
-  	<select id="searchUser" resultType="hansung.cap.project.QnAVO">
+  	<select id="SearchUser" resultType="hansung.cap.project.QnAVO">
   		select * 
   		from qna 
   		where userid 
@@ -59,4 +59,30 @@
   		SELECT COUNT(*) 
   		FROM qna
   	</select>
+  	
+  	<select id="listPage" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
+ 		select *
+ 		from qna 
+ 		order by seq desc  <!-- 경우에 따라 time으로 바꿔줄 필요 있음 -->
+ 		limit #{displayPost},#{postNum}
+ 	</select>
+ 	
+ 	<select id="searchSelect" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
+		select * from (select * from qna where title like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
+	
+	<select id="searchUser" resultType="hansung.cap.project.FreeBoardVO">
+  		select * 
+  		from qna 
+  		where userid like #{s} 
+  		order by time desc
+  	</select>
+  	
+  	<select id="user" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
+		select * from (select * from qna where userId like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
+  	
+  	<select id="All" parameterType="hashMap" resultType="hansung.cap.project.FreeBoardVO">
+		select * from (select * from qna where userId like #{key} or title like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
   </mapper>
