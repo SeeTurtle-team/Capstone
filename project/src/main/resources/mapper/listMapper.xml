@@ -34,7 +34,7 @@
 	<select id="searchName" resultType="hansung.cap.project.listVO">
 		select * 
 		from list 
-		where model like #{msg} or carColor like #{msg} or time like #{msg} order by seq desc
+		where model like #{msg} order by seq desc
 	</select>
 	
 	<select id="selectOne" resultType="hansung.cap.project.listVO">
@@ -52,6 +52,21 @@
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) 
 		FROM list
+	</select>
+	
+	<select id="listPage" parameterType="hashMap" resultType="hansung.cap.project.listVO">
+ 		select *
+ 		from list 
+ 		order by seq desc  <!-- 경우에 따라 time으로 바꿔줄 필요 있음 -->
+ 		limit #{displayPost},#{postNum}
+ 	</select>
+ 	
+ 	<select id="searchSelect" parameterType="hashMap" resultType="hansung.cap.project.listVO">
+		select * from (select * from list where model like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
+	
+	<select id="time" parameterType="hashMap" resultType="hansung.cap.project.listVO">
+		select * from (select * from list where time like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
 	</select>
 
 </mapper>

@@ -256,48 +256,64 @@ public class HomeController {
 
 		List<listVO> list = new ArrayList<listVO>();
 		list = lDao.QueryAll();
+		listVO lVo = new listVO();
 
 		String option = httpServletRequest.getParameter("option");
-		String page = httpServletRequest.getParameter("page");
+		String Num = httpServletRequest.getParameter("num");
 
-		if (page == null) {
-			page = "1";
+		int pageNum;
+
+		if (Num == null) {
+			pageNum = 1;
+		} else {
+			pageNum = Integer.parseInt(Num);
 		}
-		int Ipage = Integer.parseInt(page);
+
 		Paging paging = new Paging();
-		paging.set(Ipage, list.size());
+		paging.set(pageNum, list.size());
+
+		try {
+			list = lDao.listPage(paging.displayPost, paging.postNum);
+		} catch (Exception e) {
+			
+			System.out.println(e.getMessage());
+		}
 
 		if (option == null) { // 웹 페이지에서 넘겨준 값이 있으면 해당 페이지 값으로
 
 		} else if (option.equals("search")) { // 검색 기능
-			String text = httpServletRequest.getParameter("name");
-			String sel = httpServletRequest.getParameter("sel");
-			//List<listVO> clist = new ArrayList<listVO>();
-			if (text.equals("")) { // 검색 값이 없으면
-				model.addAttribute("page", page);
-				model.addAttribute("list", list);
-				model.addAttribute("startPageNum", paging.startPageNum);
-				model.addAttribute("endPageNum", paging.endPageNum);
-				model.addAttribute("prev", paging.prev);
-				model.addAttribute("next", paging.next);
-				model.addAttribute("select", Ipage);
-				return "carList";
-			}
-			if (sel.equals("model")) { // 모델 명으로 검색
-				list = lDao.QueryModel("%" + text + "%");
-			} else if (sel.equals("time")) { // 차량이 지나간 시간으로 검색
-				list = lDao.QueryTime("%" + text + "%");
-			}
-			model.addAttribute("list", list);
-			paging.set(Ipage, list.size());
-			session.setAttribute("list", list);
+			try {
 
-			model.addAttribute("startPageNum", paging.startPageNum);
-			model.addAttribute("endPageNum", paging.endPageNum);
-			model.addAttribute("prev", paging.prev);
-			model.addAttribute("next", paging.next);
-			model.addAttribute("select", Ipage);
-			return "carList";
+				String key = httpServletRequest.getParameter("key");
+				String select = httpServletRequest.getParameter("select");
+				if (key.length() == 0) {
+
+				} 
+				else {
+					if (select.equals("model")) { // 제목으로 검색
+						list = lDao.searchName("%" + key + "%");
+						paging.set(pageNum, list.size());
+
+						list = lDao.searchModel(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
+
+					} 
+					
+					else if (select.equals("time")) {
+						list = lDao.QueryTime("%" + key + "%");
+						paging.set(pageNum, list.size());
+
+						list = lDao.searchTime(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
+
+					}
+
+					model.addAttribute("option", option);
+					model.addAttribute("key", key);
+					model.addAttribute("sel", select);
+				}
+
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
 
 		else if (option.equals("img")) {
@@ -398,8 +414,9 @@ public class HomeController {
 		else {
 
 		}
-		model.addAttribute("page", page);
 		model.addAttribute("list", list);
+		model.addAttribute("page", paging.pageNum);
+
 		// 시작 및 끝 번호
 		model.addAttribute("startPageNum", paging.startPageNum);
 		model.addAttribute("endPageNum", paging.endPageNum);
@@ -409,7 +426,7 @@ public class HomeController {
 		model.addAttribute("next", paging.next);
 
 		// 현재 페이지
-		model.addAttribute("select", Ipage);
+		model.addAttribute("select", pageNum);
 		return "carList";
 	}
 

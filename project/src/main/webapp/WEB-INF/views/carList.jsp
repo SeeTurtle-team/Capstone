@@ -31,15 +31,11 @@
 		alert("로그아웃 되었습니다!");
 		location.href = "/" + "?option=logOut";
 	}
-	function search() {
-		var car = document.getElementById("search").value;
-		console.log(car);
+	function search(){
+		var text  = document.getElementById("search").value;
+		var selection = document.getElementById("sel").value;
 
-		var sel = document.getElementById("sel").value;
-		console.log(sel);
-
-		location.href = "/carList" + "?option=search&name=" + car + "&sel="
-				+ sel;
+		location.href = "/carList"+"?option=search&key="+text+"&select="+selection;
 	}
 
 	function img(seq) {
@@ -119,7 +115,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${list}" begin="0" end="9" var="dataVO">
+						<c:forEach items="${list}" var="dataVO">
 							<!--   begin="${firstIndex}" end="${lastIndex}" step="1" varStatus="status">-->
 							<tr>
 								<td><c:out value="${dataVO.seq}" /></td>
@@ -233,23 +229,27 @@
 
 				<div class="paging">
 					<c:if test="${prev}">
-						<span>[ <a href="/carList?page=${startPageNum - 1}">이전</a>
+						<span>[ <a
+							href="/carList?num=${startPageNum - 1}&option=${option}$key=${key}">이전</a>
 							]
 						</span>
 					</c:if>
 
-					<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
-						<span> <c:if test="${select != page}">
-								<a href="/carList?page=${page}">${page}</a>
-							</c:if> <c:if test="${select == page}">
-								<a>${page}</a>
+					<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+						<span> <c:if test="${select != num}">
+								<a
+									href="/carList?num=${num}&option=${option}&key=${key}&select=${sel}">${num}</a>
+							</c:if> <c:if test="${select == num}">
+								<a>${num}</a>
 							</c:if>
 
 						</span>
 					</c:forEach>
 
 					<c:if test="${next}">
-						<span>[ <a href="/carList?page=${endPageNum + 1}">다음</a> ]
+						<span>[ <a
+							href="/carList?num=${endPageNum + 1}&option=${option}&key=${key}">다음</a>
+							]
 						</span>
 					</c:if>
 				</div>

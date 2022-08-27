@@ -15,6 +15,8 @@ public interface listDAO {
 	public listVO selectOne(int a);
 	public listVO selectImg(String url);
 	public int countBoard(listVO vo);
-	public int ScountBoard1(String msg);
-	public int ScountBoard2(String msg);
+
+	public List<listVO> listPage(int displayPost, int postNum) throws Exception;
+	public List<listVO> searchModel(int displayPost, int postNum, String key) throws Exception;
+	public List<listVO> searchTime(int displayPost, int postNum, String key) throws Exception;
 }
