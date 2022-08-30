@@ -63,6 +63,7 @@
 		<header>
 			<div class="header_name">Vehicle</div>
 			<div class="menu">
+				<div class="Login_menu"></div>
 				<div class="Login_menu" onclick="logOut()">
 					<a>EXIT</a>
 				</div>
@@ -81,7 +82,7 @@
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
 			</div>
-			
+
 			<!--  -->
 			<div class="imgList1">
 				<div class="imgC">
@@ -89,22 +90,32 @@
 						<div class="imgPlusp">
 							<c:set var="list" value="${dataVO}" />
 							<c:set var="img" value="${dataVO.carImage}" />
-							<img onclick="modal('${img}','${dataVO.carKind}','${dataVO.carPrice}','${dataVO.carMaker}','${dataVO.carFuel}','${dataVO.carEngine}','${dataVO.carRoad}')" 
-							     id="img" class="cropped" src="<c:out value='${img}'/>" />
+							<img
+								onclick="modal('${img}','${dataVO.carKind}','${dataVO.carPrice}','${dataVO.carMaker}','${dataVO.carFuel}','${dataVO.carEngine}','${dataVO.carRoad}')"
+								id="img" class="cropped" src="<c:out value='${img}'/>" />
 							<p class="kind" id="kind">
 								<c:out value="${dataVO.carKind}" />
 							</p>
 							<p class="detail" style="color: transparent" id="detail1">
-								가격 :<c:out value="${dataVO.carPrice}" />| 제조사 :<c:out value="${dataVO.carMaker}" />| 연비 :<c:out value="${dataVO.carFuel}" />
+								가격 :
+								<c:out value="${dataVO.carPrice}" />
+								| 제조사 :
+								<c:out value="${dataVO.carMaker}" />
+								| 연비 :
+								<c:out value="${dataVO.carFuel}" />
 							</p>
-							<p class="detail2" style="color: transparent" id="detail${status.index} }">
-								차 엔진 :	<c:out value="${dataVO.carEngine}" />| 적재용량 :<c:out value="${dataVO.carRoad}" />
+							<p class="detail2" style="color: transparent"
+								id="detail${status.index} }">
+								차 엔진 :
+								<c:out value="${dataVO.carEngine}" />
+								| 적재용량 :
+								<c:out value="${dataVO.carRoad}" />
 							</p>
 						</div>
 					</c:forEach>
 				</div>
 			</div>
-			
+
 			<!-- 팝업 되는 곳-->
 			<div class="modal">
 				<button class="x">x</button>
@@ -162,7 +173,7 @@
 			</div>
 
 		</div>
-	
+
 
 
 	</div>
