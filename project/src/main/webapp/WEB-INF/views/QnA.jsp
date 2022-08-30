@@ -76,8 +76,7 @@
 		<header>
 			<div class="header_name">QnA</div>
 			<div class="menu">
-			<div class="Login_menu">
-				</div>
+				<div class="Login_menu"></div>
 				<div class="Login_menu" onclick="logOut()">
 					<a href="/?option=logOut">EXIT</a>
 				</div>
@@ -130,8 +129,8 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				
-				
+
+
 				<div class="paging">
 					<c:if test="${prev}">
 						<span>[ <a

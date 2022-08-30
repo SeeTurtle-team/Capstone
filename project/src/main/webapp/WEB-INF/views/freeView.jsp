@@ -19,9 +19,20 @@
 
 </head>
 <script>
+	history.replaceState({}, null, location.pathname);
+	
+	window.onkeydown = function() {
+		var kcode = event.keyCode;
+		if(kcode == 116) {
+			history.replaceState({}, null, location.pathname);
+		}
+	}
+	
+	var freeBoardSeq = ${list.seq};
+	
 	function comment(){
 		var comment = document.getElementById("comment-input").value;
-		var freeBoardSeq = ${list.seq};
+		
 		var time= new Date();
 		var timeString = time.toLocaleString();
 		console.log(comment);
@@ -29,6 +40,10 @@
 		
 		if(comment ==""){
 			alert("댓글을 입력하세요");
+			return;
+		}
+		if(comment.length>50){
+			alert("댓글이 너무 깁니다");
 			return;
 		}
 		

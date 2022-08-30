@@ -20,6 +20,15 @@
 </head>
 <script>
 
+	history.replaceState({}, null, location.pathname);
+	
+	window.onkeydown = function() {
+		var kcode = event.keyCode;
+		if(kcode == 116) {
+			history.replaceState({}, null, location.pathname);
+		}
+	}
+
 	var seq = "${list.seq}";
 	function enroll(){
 		
@@ -30,7 +39,16 @@
 		console.log(seq);
 		console.log(text);
 		console.log(timeString);
+		console.log(text.length);
 		
+		if(text==""){
+			alert("댓글을 입력하세요");
+			return;
+		}
+		if(text.length>50){
+			alert("댓글이 너무 깁니다");
+			return;
+		}
 		alert("등록이 완료되었습니다");
 		location.href = "/QnA"+"?option=enroll&seq="+seq+"&text="+text+"&&time="+timeString;
 	
@@ -157,7 +175,7 @@
 						<div class="pull-right">
 
 							<div id="delete"
-								onclick="commentDelete(${dataVO.commentNum} ,'${dataVO.userId}')">삭제</div>
+								onclick="del(${dataVO.commentNum})">삭제</div>
 						</div>
 					</div>
 				</c:forEach>
