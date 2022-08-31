@@ -42,7 +42,7 @@
 			alert("댓글을 입력하세요");
 			return;
 		}
-		if(comment.length>50){
+		if(comment.length>100){
 			alert("댓글이 너무 깁니다");
 			return;
 		}
@@ -149,7 +149,7 @@
 				<div id="comment-count">
 					댓글 <span id="count">${size}</span>
 				</div>
-				<input id="comment-input" placeholder="댓글을 입력해 주세요.">
+				<input id="comment-input" placeholder="댓글을 입력해 주세요." maxlength="100">
 				<button id="submit" onclick="comment()">등록</button>
 				<div id=comments></div>
 

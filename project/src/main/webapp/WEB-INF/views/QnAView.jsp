@@ -45,7 +45,7 @@
 			alert("댓글을 입력하세요");
 			return;
 		}
-		if(text.length>50){
+		if(text.length>100){
 			alert("댓글이 너무 깁니다");
 			return;
 		}
@@ -98,7 +98,7 @@
 				href="/">HANSUNG</a> <a href="#" class="bar_toogle"> <i
 					class="fa-solid fa-bars"></i>
 			</a></li>
-			<div class="nav_li">
+			<<div class="nav_li">
 				<li><a href="/carList">CCTV</a></li>
 				<li><a href="/CarModel">Vehicle </a></li>
 				<li><a href="/free">Spaces</a></li>
@@ -151,7 +151,7 @@
 				</div>
 				<div>
 				<c:if test="${manage eq 'manage1234' }">
-					<input id="comment-input" placeholder="댓글을 입력해 주세요.">
+					<input id="comment-input" placeholder="댓글을 입력해 주세요." maxlength="100">
 					<button id="submit" onclick="enroll()">등록</button>
 				</c:if>
 				</div>
