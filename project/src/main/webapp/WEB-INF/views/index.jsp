@@ -117,12 +117,12 @@
 		</section>
 
 		<section class="section">
-			<div class="section section_fullpage">
+			<div class="section section_fullpage" onclick="location.href='/carList'">
 				<img class="pr2"
 					src="https://images.pexels.com/photos/3205735/pexels-photo-3205735.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"><img
 					class="pr3"
 					src="http://www.netchus.com/resources/img/layout/main/banner-3-bg.jpg">
-				<div class="banner-title">
+				<div class="banner-title" >
 					<hr>
 					<p class="title">CCTV_analysis</p>
 					<p class="summary">딥러닝을 이용한 CCTV 분석</p>
@@ -133,10 +133,10 @@
 		</section>
 
 		<section class="section">
-			<div class="section section_fullpage">
+			<div class="section section_fullpage" onclick="location.href='/CarModel'">
 				<img class="pr4"
 					src="https://images.pexels.com/photos/3770875/pexels-photo-3770875.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-				<div class="banner-title_two">
+				<div class="banner-title_two" >
 					<hr>
 					<p class="title">Car_Model</p>
 					<p class="summary">다양한 차량에 대한 정보는 ?</p>
@@ -147,25 +147,25 @@
 		</section>
 
 		<section class="section">
-			<div class="section section_fullpage">
+			<div class="section section_fullpage" onclick="location.href='/QnA'">
 				<img class="pr4"
 					src="https://images.pexels.com/photos/10981242/pexels-photo-10981242.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-				<div class="banner-title_two">
+				<div class="banner-title_two" >
 					<hr>
 					<p class="title">QnA</p>
 					<p class="summary">문의 사항이 있다면</p>
 
-					<a class="arr" href="/QnA">내용보기<img
-						src="http://www.netchus.com/resources/img/layout/main/arr.png"></a>
+					<a class="arr" href="/QnA">내용보기
+					<img src="http://www.netchus.com/resources/img/layout/main/arr.png"></a>
 				</div>
 			</div>
 		</section>
 
 		<section class="section">
-			<div class="section section_fullpage">
+			<div class="section section_fullpage" onclick="location.href='/free'">
 				<img class="pr4"
 					src="https://images.pexels.com/photos/6210598/pexels-photo-6210598.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-				<div class="banner-title_two">
+				<div class="banner-title_two" >
 					<hr>
 					<p class="title">Free_Board</p>
 					<p class="summary">다양한 소통, 다채로운 이야기</p>
@@ -176,7 +176,7 @@
 		</section>
 
 		<section class="section">
-			<div class="section section_fullpage">
+			<div class="section section_fullpage" onclick="location.href='/developer'">
 				<img class="pr5"
 					src="http://www.netchus.com/resources/img/layout/main/banner-4-bg.jpg">
 				<div class="banner-title_two">

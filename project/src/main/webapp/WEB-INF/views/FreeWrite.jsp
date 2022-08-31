@@ -27,11 +27,11 @@
 					class="fa-solid fa-bars"></i>
 			</a></li>
 			<div class="nav_li">
-				<li><a href="/carList">CCTV</a></li>
-				<li><a href="/CarModel">Vehicle </a></li>
-				<li><a href="/free">Spaces</a></li>
-				<li><a href="/QnA">Questions</a></li>
-				<li><a href="/developer">Developer</a></li>
+				<li onclick="location.href='/carList'"><a href="/carList">CCTV</a></li>
+				<li onclick="location.href='/CarModel'"><a href="/CarModel">Vehicle </a></li>
+				<li onclick="location.href='/free'"><a href="/free">Spaces</a></li>
+				<li onclick="location.href='/QnA'"><a href="/QnA">Questions</a></li>
+				<li onclick="location.href='/developer'"><a href="/developer">Developer</a></li>
 			</div>
 		</ul>
 
