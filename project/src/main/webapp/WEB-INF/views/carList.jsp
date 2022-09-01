@@ -62,8 +62,9 @@
 		else{
 			flag = 0;
 		}
-		
-		location.href = "/carList?timeFlag="+flag;
+				
+		//num=${num}&option=${option}&key=${key}&select=${sel}&timeFlag=${flag}
+		location.href = "/carList?timeFlag="+flag//+"&option="+option+"&num="+${num}+"&key="+${key}+"&select="+${sel};
 		
 	}
 </script>

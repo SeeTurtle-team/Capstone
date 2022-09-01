@@ -75,8 +75,16 @@
 		select * from (select * from list where model like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
 	</select>
 	
+	<select id="searchSelectTime" parameterType="hashMap" resultType="hansung.cap.project.listVO">
+		select * from (select * from list where model like #{key}) t order by seq limit #{displayPost},#{postNum} ;
+	</select>
+	
 	<select id="time" parameterType="hashMap" resultType="hansung.cap.project.listVO">
 		select * from (select * from list where time like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
+
+	<select id="timeTime" parameterType="hashMap" resultType="hansung.cap.project.listVO">
+		select * from (select * from list where time like #{key}) t order by seq limit #{displayPost},#{postNum} ;
 	</select>
 
 </mapper>

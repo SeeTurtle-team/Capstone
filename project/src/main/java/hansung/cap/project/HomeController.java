@@ -267,7 +267,8 @@ public class HomeController {
 		
 		String option = httpServletRequest.getParameter("option");
 		String Num = httpServletRequest.getParameter("num");
-		
+		String key = httpServletRequest.getParameter("key");
+		String select = httpServletRequest.getParameter("select");
 		
 
 		int pageNum;
@@ -298,8 +299,7 @@ public class HomeController {
 		} else if (option.equals("search")) { // 검색 기능
 			try {
 
-				String key = httpServletRequest.getParameter("key");
-				String select = httpServletRequest.getParameter("select");
+				
 				if (key.length() == 0) {
 
 				} 
@@ -307,22 +307,29 @@ public class HomeController {
 					if (select.equals("model")) { // 제목으로 검색
 						list = lDao.searchName("%" + key + "%");
 						paging.set(pageNum, list.size());
-
-						list = lDao.searchModel(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
-
+						
+						if(timeFlag.equals("0")){
+							list = lDao.searchModel(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
+						}
+						else {
+							list = lDao.searchModelTime(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
+						}
 					} 
 					
 					else if (select.equals("time")) {
 						list = lDao.QueryTime("%" + key + "%");
 						paging.set(pageNum, list.size());
-
-						list = lDao.searchTime(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
+						if(timeFlag.equals("0")){
+							list = lDao.searchTime(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
+						}
+						else {
+							list = lDao.searchTimeTime(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
+						}
+						
 
 					}
 
-					model.addAttribute("option", option);
-					model.addAttribute("key", key);
-					model.addAttribute("sel", select);
+					
 				}
 
 			} catch (Exception e) {
@@ -334,7 +341,7 @@ public class HomeController {
 
 			listVO lVO = new listVO();
 
-			String select = httpServletRequest.getParameter("sel");
+			select = httpServletRequest.getParameter("sel");
 
 			if (select == null) {
 
@@ -419,7 +426,7 @@ public class HomeController {
 				
 
 			}
-
+		
 			model.addAttribute("list", url);
 
 			return "CCTV";
@@ -443,6 +450,9 @@ public class HomeController {
 		model.addAttribute("select", pageNum);
 		
 		model.addAttribute("flag", timeFlag);
+		model.addAttribute("option", option);
+		model.addAttribute("key", key);
+		model.addAttribute("sel", select);
 		return "carList";
 	}
 

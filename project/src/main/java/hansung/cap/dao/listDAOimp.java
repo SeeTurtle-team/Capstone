@@ -103,6 +103,16 @@ public class listDAOimp implements listDAO {
 	}
 	
 	@Override
+	public List<listVO> searchModelTime(int displayPost, int postNum, String key) throws Exception{
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		data.put("key",key);
+
+		return sqlSession.selectList(namespace+".searchSelectTime",data);
+	}
+	
+	@Override
 	public List<listVO> searchTime(int displayPost, int postNum, String key) throws Exception{
 		HashMap data = new HashMap();
 		data.put("displayPost",displayPost);
@@ -110,5 +120,15 @@ public class listDAOimp implements listDAO {
 		data.put("key",key);
 
 		return sqlSession.selectList(namespace+".time",data);
+	}
+	
+	@Override
+	public List<listVO> searchTimeTime(int displayPost, int postNum, String key) throws Exception{
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		data.put("key",key);
+
+		return sqlSession.selectList(namespace+".timeTime",data);
 	}
 }

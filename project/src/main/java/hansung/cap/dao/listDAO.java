@@ -19,5 +19,7 @@ public interface listDAO {
 	public List<listVO> listPage(int displayPost, int postNum) throws Exception;
 	public List<listVO> listPageTime(int displayPost, int postNum) throws Exception;
 	public List<listVO> searchModel(int displayPost, int postNum, String key) throws Exception;
+	public List<listVO> searchModelTime(int displayPost, int postNum, String key) throws Exception;
 	public List<listVO> searchTime(int displayPost, int postNum, String key) throws Exception;
+	public List<listVO> searchTimeTime(int displayPost, int postNum, String key) throws Exception;
 }

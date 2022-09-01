@@ -115,6 +115,8 @@
 					</c:forEach>
 				</div>
 			</div>
+			
+
 
 			<!-- 팝업 되는 곳-->
 			<div class="modal">
