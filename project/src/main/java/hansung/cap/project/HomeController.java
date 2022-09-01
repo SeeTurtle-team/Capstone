@@ -253,13 +253,22 @@ public class HomeController {
 		if (user_id == null) {
 			return "login";
 		}
-
+		
 		List<listVO> list = new ArrayList<listVO>();
 		list = lDao.QueryAll();
 		listVO lVo = new listVO();
-
+		String timeFlag;
+		timeFlag = httpServletRequest.getParameter("timeFlag");
+		if(timeFlag==null) {
+			timeFlag="0";
+		}
+		
+		model.addAttribute("flag",timeFlag);
+		
 		String option = httpServletRequest.getParameter("option");
 		String Num = httpServletRequest.getParameter("num");
+		
+		
 
 		int pageNum;
 
@@ -273,7 +282,12 @@ public class HomeController {
 		paging.set(pageNum, list.size());
 
 		try {
-			list = lDao.listPage(paging.displayPost, paging.postNum);
+			if(timeFlag.equals("0")) {
+				list = lDao.listPage(paging.displayPost, paging.postNum);
+			}
+			else {
+				list = lDao.listPageTime(paging.displayPost, paging.postNum);
+			}
 		} catch (Exception e) {
 			
 			System.out.println(e.getMessage());
@@ -427,6 +441,8 @@ public class HomeController {
 
 		// 현재 페이지
 		model.addAttribute("select", pageNum);
+		
+		model.addAttribute("flag", timeFlag);
 		return "carList";
 	}
 

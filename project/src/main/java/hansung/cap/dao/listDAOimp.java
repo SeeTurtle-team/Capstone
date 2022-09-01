@@ -83,6 +83,16 @@ public class listDAOimp implements listDAO {
 	}
 	
 	@Override
+	public List<listVO> listPageTime(int displayPost, int postNum) throws Exception{
+		HashMap data = new HashMap();
+		
+		data.put("displayPost",displayPost);
+		data.put("postNum",postNum);
+		
+		return sqlSession.selectList(namespace+".listPagetime",data);
+	}
+	
+	@Override
 	public List<listVO> searchModel(int displayPost, int postNum,String key) throws Exception{
 		HashMap data = new HashMap();
 		data.put("displayPost",displayPost);

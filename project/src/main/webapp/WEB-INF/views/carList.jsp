@@ -53,6 +53,19 @@
 	function CCTV(){
 		location.href = "/carList"+"?option=cctv";
 	}
+	
+	function timeBack(){
+		var flag = ${flag};
+		if(${flag=='0'}){
+			flag = 1;
+		}
+		else{
+			flag = 0;
+		}
+		
+		location.href = "/carList?timeFlag="+flag;
+		
+	}
 </script>
 <body>
 
@@ -94,15 +107,16 @@
 				<select id=sel>
 					<option value="model">차종</option>
 					<option value="time">시간</option>
-
-				</select> <input type="text" class="search-input" id="search" value=""
+					
+				</select> 
+				<input type="text" class="search-input" id="search" value=""
 					placeholder="Please Enter Text" autocomplete="off">
 
 				<button class="search-btn" type="button" onclick="search()">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
 			</div>
-
+			
 			<div class="board_list_wrap">
 				<table class="board_list">
 
@@ -110,7 +124,7 @@
 						<tr>
 							<th>번&nbsp;호</th>
 							<th>차&nbsp;종</th>
-							<th>시&nbsp;간</th>
+							<th onclick="timeBack()">시&nbsp;간↑↓ </th>
 							<th>보&nbsp;기</th>
 						</tr>
 					</thead>
@@ -230,7 +244,7 @@
 				<div class="paging">
 					<c:if test="${prev}">
 						<span>[ <a
-							href="/carList?num=${startPageNum - 1}&option=${option}$key=${key}">이전</a>
+							href="/carList?num=${startPageNum - 1}&option=${option}$key=${key}&timeFlag=${flag}">이전</a>
 							]
 						</span>
 					</c:if>
@@ -238,7 +252,7 @@
 					<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
 						<span> <c:if test="${select != num}">
 								<a
-									href="/carList?num=${num}&option=${option}&key=${key}&select=${sel}">${num}</a>
+									href="/carList?num=${num}&option=${option}&key=${key}&select=${sel}&timeFlag=${flag}">${num}</a>
 							</c:if> <c:if test="${select == num}">
 								<a>${num}</a>
 							</c:if>
@@ -248,7 +262,7 @@
 
 					<c:if test="${next}">
 						<span>[ <a
-							href="/carList?num=${endPageNum + 1}&option=${option}&key=${key}">다음</a>
+							href="/carList?num=${endPageNum + 1}&option=${option}&key=${key}&timeFlag=${flag}">다음</a>
 							]
 						</span>
 					</c:if>

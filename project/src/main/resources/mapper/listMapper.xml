@@ -11,11 +11,14 @@
     	select * 
     	from list 
     	order by seq desc
+    	 
+    	
     </select>
     
     <select id="All" resultType="hansung.cap.project.listVO">
     	select * 
-    	from list 
+    	from list
+    	order by seq 
     </select>
     
     <select id = "queryModel" resultType="hansung.cap.project.listVO">
@@ -58,6 +61,13 @@
  		select *
  		from list 
  		order by seq desc  <!-- 경우에 따라 time으로 바꿔줄 필요 있음 -->
+ 		limit #{displayPost},#{postNum}
+ 	</select>
+ 	
+ 	<select id="listPagetime" parameterType="hashMap" resultType="hansung.cap.project.listVO">
+ 		select *
+ 		from list 
+ 		order by seq  <!-- 경우에 따라 time으로 바꿔줄 필요 있음 -->
  		limit #{displayPost},#{postNum}
  	</select>
  	
