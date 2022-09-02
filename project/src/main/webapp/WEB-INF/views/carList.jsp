@@ -25,6 +25,9 @@
 
 </head>
 <script>
+console.log('${option}');
+console.log('${key}');
+console.log('${sel}');
 	function logOut() {
 		console.log("logOut!!");
 
@@ -62,9 +65,19 @@
 		else{
 			flag = 0;
 		}
-				
+		var option= '${option}';
+		var key = '${key}';
+		var sel = '${sel}';
+		var num = '${num}';
+		
+		if(option==''){
+			location.href = "/carList?timeFlag="+flag
+		}
+		else{
+			location.href = "/carList?timeFlag="+flag+"&option="+option+"&key="+key+"&select="+sel;
+		}
 		//num=${num}&option=${option}&key=${key}&select=${sel}&timeFlag=${flag}
-		location.href = "/carList?timeFlag="+flag//+"&option="+option+"&num="+${num}+"&key="+${key}+"&select="+${sel};
+		
 		
 	}
 </script>
