@@ -67,11 +67,11 @@ button {
 			 <i	class="fa-solid fa-bars"></i>
 			</a></li>
 			<div class="nav_li">
-				<li onclick="location.href='/carList'"><a href="/carList">CCTV</a></li>
-				<li onclick="location.href='/CarModel'"><a href="/CarModel">Vehicle </a></li>
-				<li onclick="location.href='/free'"><a href="/free">Spaces</a></li>
-				<li onclick="location.href='/QnA'"><a href="/QnA">Questions</a></li>
-				<li onclick="location.href='/developer'"><a href="/developer">Developer</a></li>
+				<li title="CCTV 페이지" onclick="location.href='/carList'"><a href="/carList">CCTV</a></li>
+				<li title= "차량 정보 페이지" onclick="location.href='/CarModel'"><a href="/CarModel">Vehicle </a></li>
+				<li title = "자유게시판" onclick="location.href='/free'"><a href="/free">Spaces</a></li>
+				<li title = "QnA 게시판"onclick="location.href='/QnA'"><a href="/QnA">Questions</a></li>
+				<li title = "개발한 이들" onclick="location.href='/developer'"><a href="/developer">Developer</a></li>
 			</div>
 		</ul>
 
