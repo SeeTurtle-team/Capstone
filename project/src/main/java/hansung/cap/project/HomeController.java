@@ -646,48 +646,57 @@ public class HomeController {
 		List<CarKindVO> list = new ArrayList<CarKindVO>();
 		list = cDao.QuerryAll();
 		CarKindVO cVO = new CarKindVO();
-		String page = httpServletRequest.getParameter("page");
+		
 		String option = httpServletRequest.getParameter("option");
+		String Num = httpServletRequest.getParameter("num");
 
-		if (page == null) {
-			page = "1";
+		int pageNum;
+
+		if (Num == null) {
+			pageNum = 1;
+		} else {
+			pageNum = Integer.parseInt(Num);
 		}
-		int Ipage = Integer.parseInt(page);
+
 		Paging paging = new Paging();
-		paging.set(Ipage, list.size());
+		paging.postNum = 6;
+		paging.set(pageNum, list.size());
+
+		try {
+			list = cDao.listPage(paging.displayPost, paging.postNum);
+		} catch (Exception e) {
+			
+			System.out.println(e.getMessage());
+		}
 
 		if (option == null) {
 		} else if (option.equals("search")) { // 검색 기능
-			String searchText = httpServletRequest.getParameter("name");
-			String sel = httpServletRequest.getParameter("sel");
-			if (searchText == "") {
-				model.addAttribute("page", page);
-				model.addAttribute("list", list);
-				model.addAttribute("startPageNum", paging.startPageNum);
-				model.addAttribute("endPageNum", paging.endPageNum);
-				model.addAttribute("prev", paging.prev);
-				model.addAttribute("next", paging.next);
-				model.addAttribute("select", Ipage);
-				return "CarModel";
+			try {
+			String key = httpServletRequest.getParameter("key");
+			String select = httpServletRequest.getParameter("select");
+			if (key.length() == 0) {
 			}
-			if (sel.equals("carkind")) { // 차 이름으로 검색
-				list = cDao.Querrycar("%" + searchText + "%");
-			} else if (sel.equals("carmaker")) { // 제조사로 검색
-				list = cDao.QuerryMaker("%" + searchText + "%");
+			if (select.equals("carkind")) { // 차 이름으로 검색
+				list = cDao.Querrycar("%" + key + "%");
+				paging.set(pageNum,  list.size());
+				
+				list = cDao.searchKind(paging.displayPost, paging.postNum, "%" + key + "%");
+			} else if (select.equals("carmaker")) { //제조사로 검색
+				list = cDao.QuerryMaker("%" + key + "%");
+				paging.set(pageNum,  list.size());
+				
+				list = cDao.searchMaker(paging.displayPost, paging.postNum, "%" + key + "%");
 			}
-			model.addAttribute("list", list);
-			paging.set(Ipage, list.size());
-			session.setAttribute("list", list);
-
-			model.addAttribute("startPageNum", paging.startPageNum);
-			model.addAttribute("endPageNum", paging.endPageNum);
-			model.addAttribute("prev", paging.prev);
-			model.addAttribute("next", paging.next);
-			model.addAttribute("select", Ipage);
-			return "SCarModel";
+			model.addAttribute("option", option);
+			model.addAttribute("key", key);
+			model.addAttribute("sel", select);
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
-		model.addAttribute("page", page);
 		model.addAttribute("list", list);
+		model.addAttribute("page", paging.pageNum);
+
 		// 시작 및 끝 번호
 		model.addAttribute("startPageNum", paging.startPageNum);
 		model.addAttribute("endPageNum", paging.endPageNum);
@@ -697,7 +706,7 @@ public class HomeController {
 		model.addAttribute("next", paging.next);
 
 		// 현재 페이지
-		model.addAttribute("select", Ipage);
+		model.addAttribute("select", pageNum);
 		return "CarModel";
 	}
 

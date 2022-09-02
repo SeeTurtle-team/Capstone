@@ -28,4 +28,19 @@
   		SELECT COUNT(*) 
   		FROM carKind
   	</select>
+  	
+  	<select id="listPage" parameterType="hashMap" resultType="hansung.cap.project.CarKindVO">
+ 		select *
+ 		from carKind 
+ 		order by seq desc  <!-- 경우에 따라 time으로 바꿔줄 필요 있음 -->
+ 		limit #{displayPost},#{postNum}
+ 	</select>
+ 	
+ 	<select id="searchSelect" parameterType="hashMap" resultType="hansung.cap.project.CarKindVO">
+		select * from (select * from carKind where carKind like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
+  	
+  	<select id="maker" parameterType="hashMap" resultType="hansung.cap.project.CarKindVO">
+		select * from (select * from carKind where carMaker like #{key}) t order by seq desc limit #{displayPost},#{postNum} ;
+	</select>
   </mapper>

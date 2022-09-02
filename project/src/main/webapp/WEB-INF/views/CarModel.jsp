@@ -28,18 +28,14 @@
 		location.href = "/" + "?option=logOut";
 	}
 	function search() {
-		var car = document.getElementById("search").value;
-		console.log(car);
-
-		var sel = document.getElementById("sel").value;
-		console.log(sel);
-
-		location.href = "/CarModel" + "?option=search&name=" + car + "&sel="
-				+ sel;
+		var text  = document.getElementById("search").value;  //검색어
+		var selection = document.getElementById("sel").value; //카테고리
+		
+		console.log(selection);
+		console.log(text);
+		
+		location.href = "/CarModel"+"?option=search&key="+text+"&select="+selection;
 	}
-	console.log("${pageSize}");
-	console.log("${page}");
-	console.log("${nowBlock}");
 </script>
 <body>
 
@@ -143,23 +139,27 @@
 				<!--  -->
 				<div class="paging">
 					<c:if test="${prev}">
-						<span>[ <a href="/CarModel?page=${startPageNum - 1}">이전</a>
+						<span>[ <a
+							href="/CarModel?num=${startPageNum - 1}&option=${option}$key=${key}&timeFlag=${flag}">이전</a>
 							]
 						</span>
 					</c:if>
 
-					<c:forEach begin="${startPageNum}" end="${endPageNum}" var="page">
-						<span> <c:if test="${select != page}">
-								<a href="/CarModel?page=${page}">${page}</a>
-							</c:if> <c:if test="${select == page}">
-								<a>${page}</a>
+					<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+						<span> <c:if test="${select != num}">
+								<a
+									href="/CarModel?num=${num}&option=${option}&key=${key}&select=${sel}&timeFlag=${flag}">${num}</a>
+							</c:if> <c:if test="${select == num}">
+								<a>${num}</a>
 							</c:if>
 
 						</span>
 					</c:forEach>
 
 					<c:if test="${next}">
-						<span>[ <a href="/CarModel?page=${endPageNum + 1}">다음</a> ]
+						<span>[ <a
+							href="/CarModel?num=${endPageNum + 1}&option=${option}&key=${key}&timeFlag=${flag}">다음</a>
+							]
 						</span>
 					</c:if>
 				</div>
