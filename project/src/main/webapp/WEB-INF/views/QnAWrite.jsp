@@ -37,7 +37,7 @@
 		</ul>
     
 		<header>
-			<div class="header_name">Spaces</div>
+		<div class="header_name">QnA</div>
 			<div class="menu">
 				<div class="Login_menu" onclick="logOut()">
 					<a href="/?option=logOut">EXIT</a>
@@ -46,7 +46,7 @@
 		</header>
 <div class="BackGroundBox_Psfixed">
     <section>        
-		<form action="/freeEnroll"enctype="multipart/form-data" method="post"> 
+		<form action="/QnAEnroll"enctype="multipart/form-data" method="post"> 
 		    <div class="bar2"><h1 class="write_title2">작성 제목*</h1></div>
 	    	<input name= title type="search-input" class="search-input" id="title" value="">
 	

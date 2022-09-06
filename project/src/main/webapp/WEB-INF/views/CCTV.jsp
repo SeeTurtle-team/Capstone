@@ -103,7 +103,7 @@ i {
 		<div class="BackGroundBox_Psfixed">
 			<section>
 				<div class="left_right">
-					<i class="fa-solid fa-chevron-left" onclick="i=i-2;"></i> 
+					<i class="fa-solid fa-chevron-left" onclick="i>0?i=i-2:i"></i> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
