@@ -38,6 +38,8 @@
 		<header>
 			<div class="header_name">Spaces</div>
 			<div class="menu">
+				<div class="Login_menu">
+				</div>
 				<div class="Login_menu" onclick="logOut()">
 					<a href="/?option=logOut">EXIT</a>
 				</div>
