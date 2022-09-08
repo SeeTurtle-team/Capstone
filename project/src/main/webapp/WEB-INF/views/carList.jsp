@@ -134,8 +134,8 @@
 					<thead>
 						<tr>
 							<th>번&nbsp;호</th>
-							<th>차&nbsp;종</th>
-							<th onclick="timeBack()">시&nbsp;간↑↓ </th>
+							<th title="해당 시간에 지나간 차종입니다">차&nbsp;종</th>
+							<th title="클릭하시면 시간 순서를 바꾸실 수 있습니다" onclick="timeBack()">시&nbsp;간↑↓ </th>
 							<th>보&nbsp;기</th>
 						</tr>
 					</thead>
@@ -160,94 +160,7 @@
 				</table>
 
 
-				<!-- <div class="modal1">
-				
-					<button class="x">&times;</button>
-					<div class="modal_content">
-						
-						<div class="img_container1">
-							<img src="" alt="">
-						</div>
-						<div class="modal_content1">
-							<strong>
-								<p></p>
-							</strong>
-						</div>
-						<div class="modal_content2">
-							<p></p>
-						</div>
-					</div>
-				</div> -->
-
-				<!--  
-				<div class="modal2">
-					<button class="x">&times;</button>
-					<div class="modal_content">
-						
-						<div class="img_container">
-						
-							<div class="swiper-container">
-								
-								<div class="swiper-wrapper" id="swiper-wrapper">
-									
-									<div class="swiper-slide slide">
-										<img src="">
-										<div class="modal_content1">
-											<strong>
-												<p></p>
-											</strong>
-										</div>
-										<div class="modal_content2">
-											<p></p>
-										</div>
-									</div>
-									<div class="swiper-slide slide">
-										<img src="">
-										<div class="modal_content1">
-											<strong>
-												<p></p>
-											</strong>
-										</div>
-										<div class="modal_content2">
-											<p></p>
-										</div>
-									</div>
-									<div class="swiper-slide slide">
-										<img src="">
-										<div class="modal_content1">
-											<strong>
-												<p></p>
-											</strong>
-										</div>
-										<div class="modal_content2">
-											<p></p>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						<div class="swiper-navigation">
-							<div class="hot_prev">
-								<div class="swiper-button-prev"></div>
-							</div>
-							<div class="hot_next">
-								<div class="swiper-button-next"></div>
-							</div>
-						</div>
-						                        <div class="btn-wrap">
-                            <button class="auto-start">Auto Play</button>
-                            <button class="auto-stop">Auto Stop</button>
-                        </div>
-						
-						
-					</div>
-
-					
-			</div>-->
-
-
-
+			
 
 
 
@@ -299,81 +212,5 @@
         header.classList.toggle('active');
     });
 </script>
-<!-- 
-<script>
 
-$(function () {
-    // 	이미지 클릭시 해당 이미지 모달
-    $("#capture").click(function () {
-        $(".modal1").show();
-        // 해당 이미지 가져오기
-        var imgSrc = $('.imgPlusp').children("img").attr("src");
-        $(".modal_content img").attr("src", imgSrc);
-
-        // 해당 이미지 텍스트 가져오기
-        var imgTit = $('.imgPlusp').children(".kind").text();
-        $(".modal_content1 p").text(imgTit);
-        var srcText = $('.imgPlusp').children(".detail").text();
-        var srcText3 = srcText + "\n";
-        $(".modal_content2 p").text(srcText3);
-    });
-    $(".modal1 button.x").click(function () {
-        $(".modal1").hide();
-    });
-});
-
-
-$(function () {
-    // 	이미지 클릭시 해당 이미지 모달
-    $("#LookForCctv").click(function () {
-        $(".modal2").show();
-        // 해당 이미지 가져오기
-        var imgSrc = $('.imgPlusp').children("img").attr("src");
-        $(".modal_content img").attr("src", imgSrc);
-
-        // 해당 이미지 텍스트 가져오기
-        var imgTit = $('.imgPlusp').children(".kind").text();
-        $(".modal_content1 p").text(imgTit);
-        var srcText = $('.imgPlusp').children(".detail").text();
-        var srcText3 = srcText + "\n";
-        $(".modal_content2 p").text(srcText3);
-    });
-    $(".modal2 button.x").click(function () {
-        $(".modal2").hide();
-    });
-});
-
-$("document").ready(function () {
-    var swiper = new Swiper('.swiper-container',
-        {
-            loop: true,
-            spaceBetween: 30,
-            centeredSlides: true,
-            autoplay: {
-                delay: 2000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-    });
-            $(".auto-start").on("click", function() {
-        // 기본 설정으로 autoplay 시작
-        swiper.autoplay.start();
-    });
-
-    $(".auto-stop").on("click", function() {
-        swiper.autoplay.stop();
-    });
-});
-
-
-</script>
-
- -->
 </html>
