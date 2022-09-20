@@ -93,8 +93,8 @@ public class HomeController {
 			model.addAttribute("logOut", "logOut");
 		}
 
-		if (option == null) {
-		} else if (option.equals("logOut")) {
+		if (option == null) {} 
+		else if (option.equals("logOut")) {
 			System.out.println("log Out!!!");
 			session.invalidate();
 			System.out.println("session delete");
@@ -171,8 +171,8 @@ public class HomeController {
 
 		MemberVO mVo = new MemberVO();
 
-		if (userId == null) {
-		} else {
+		if (userId == null) {} 
+		else {
 			mVo.userId = userId;
 			mVo.userPw = userPw;
 			mVo.userName = userName;
@@ -298,11 +298,7 @@ public class HomeController {
 
 		} else if (option.equals("search")) { // 검색 기능
 			try {
-
-				
-				if (key.length() == 0) {
-
-				} 
+				if (key.length() == 0) {} 
 				else {
 					if (select.equals("model")) { // 제목으로 검색
 						list = lDao.searchName("%" + key + "%");
@@ -325,11 +321,8 @@ public class HomeController {
 						else {
 							list = lDao.searchTimeTime(paging.displayPost, paging.postNum, "%" + key + "%"); // 이게 문제임
 						}
-						
-
 					}
-
-					
+		
 				}
 
 			} catch (Exception e) {
@@ -981,7 +974,6 @@ public class HomeController {
 			}
 
 		} catch (IOException e1) {
-			
 			System.out.println(e1.getMessage());
 		}
 
@@ -1059,11 +1051,7 @@ public class HomeController {
 		HttpSession session = httpServletRequest.getSession();
 
 		String user_id = (String) session.getAttribute("userId");
-		;
-		if (user_id == null) { // 로그인이 안되어 있을시 로그인 페이지로 이동
-			return "login";
-		}
-
+		
 		model.addAttribute("login", user_id);
 		return "developer";
 	}
