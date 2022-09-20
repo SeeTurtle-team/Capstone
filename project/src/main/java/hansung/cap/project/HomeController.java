@@ -364,7 +364,7 @@ public class HomeController {
 			String img = lVO.imgUrl;
 			String[] imgUrl = img.split("\\?");
 			lVO.setImgUrl(imgUrl[0]);
-			String s = "hi";
+			
 			model.addAttribute("cctv", lVO);
 
 			return "Capture";
@@ -641,7 +641,7 @@ public class HomeController {
 	@RequestMapping(value = "/CarModel", method = RequestMethod.GET)
 	public String carModel(HttpServletRequest httpServletRequest, Model model) {
 		// 많은 차들의 다양한 정보를 제공하는 페이지
-		HttpSession session = httpServletRequest.getSession();
+		//HttpSession session = httpServletRequest.getSession();
 
 		List<CarKindVO> list = new ArrayList<CarKindVO>();
 		list = cDao.QuerryAll();
