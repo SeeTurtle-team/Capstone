@@ -1,7 +1,0 @@
-INDEX VERSION 1.131+C:\Users\82109\workspace\Capstone\.metadata\.plugins\org.eclipse.jdt.core
-1865797976.index
-660514414.index
-3581163120.index
-1403223970.index
-1602128660.index
-3328261588.index

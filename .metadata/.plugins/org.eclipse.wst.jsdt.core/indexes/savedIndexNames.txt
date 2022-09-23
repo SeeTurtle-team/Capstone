@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+C:\Users\82109\workspace\Capstone\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3858084573.index
-2633481235.index
-257533481.index
-2547404784.index
-2876040098.index
-755189189.index
-3581163120.index
